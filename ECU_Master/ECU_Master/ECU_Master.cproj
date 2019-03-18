@@ -139,6 +139,25 @@
     <Compile Include="Authentication.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="F:\embedded\Work_space\2_Drivers_atmega32\Layres\0_HAL_test_drivers_\spi\spi2\SPI.c">
+      <SubType>compile</SubType>
+      <Link>SPI.c</Link>
+    </Compile>
+    <Compile Include="F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\GPIO\GPIO.c">
+      <SubType>compile</SubType>
+      <Link>GPIO.c</Link>
+    </Compile>
+    <Compile Include="F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\GPIO\Gpio_Crazy.c">
+      <SubType>compile</SubType>
+      <Link>Gpio_Crazy.c</Link>
+    </Compile>
+    <Compile Include="F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\USART.c">
+      <SubType>compile</SubType>
+      <Link>USART.c</Link>
+    </Compile>
+    <Compile Include="Remot_control.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="eeprom.c">
       <SubType>compile</SubType>
     </Compile>
@@ -157,11 +176,10 @@
       <SubType>compile</SubType>
       <Link>lcd.c</Link>
     </Compile>
-    <Compile Include="F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\GPIO\GPIO.c">
-      <SubType>compile</SubType>
-      <Link>GPIO.c</Link>
-    </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Remot_control.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

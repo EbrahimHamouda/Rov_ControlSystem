@@ -9,6 +9,7 @@
 #include <common/ebra_common.h>
 #include "Authentication.h"
 #include <avr/interrupt.h>
+#include "Remot_control.h"
 
 // Golabl variables it's
 struct_PinsCnfg_t mylcd={{A0,A1,A2,A3},A4,A5};  // lcd_Conifguration to be used from other modules
@@ -19,30 +20,29 @@ bool_t System_logged=0;  //to know if user enter the password or not
 bool_t SYSTEM_OPTIONS_flag=0; // to show the options again
 bool_t TMU_semphore=0; // semphore to indicate the use ability
 bool_t authentication_DispatcherSemphore=0; // to make dispatcher of authentication work
+bool_t Live_ControlSemphore=0; // to make live control work
 
 void Get_option(uint8 num)
 {
+	Keypad_semphore = 0; // to make it free to use from other modules
 	switch(num)
 	{
 		case '1' :
 		{   //authentication
-			Keypad_semphore = 0; // to make it free to use from other modules
 			System_LogIn();
 			break;
 		}
 		case '2' :
 		{	// bootloadr
-			Keypad_semphore = 0; // to make it free to use from other modules
-			
+			break;
 		}
 		case '3' :
-		{	//
-			Keypad_semphore = 0; // to make it free to use from other modules
-			
+		{	//remot control
+			Remot_controlMode();
+			break;
 		}
 		case '4' :
 		{	// change passwor "authentication"
-			Keypad_semphore = 0; // to make it free to use from other modules
 			Change_password();
 			break;
 		}
@@ -53,6 +53,7 @@ void system_init()
 {
 	kpad_init(&mykeypad,Get_option);
 	lcd_init(&mylcd);
+	gpio_spi_cng_master();
 	/*
 	lcd_goto(&mylcd,0,4);
 	lcd_str(&mylcd,"welcome");
@@ -98,6 +99,10 @@ int main(void)
 		if (authentication_DispatcherSemphore)
 		{
 			Authentication_Dispatcher();
+		}
+		if (Live_ControlSemphore)
+		{
+			live_controlDisspatcher();
 		}
 	}
 }

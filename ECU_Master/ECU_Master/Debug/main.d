@@ -23,7 +23,11 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  F:\embedded\Work_space\2_Drivers_atmega32\Layres\2_service\ layer\time_mange_unit\time_mange_unit\time_mang_unit.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
+ .././Remot_control.h \
+ F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\USART.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\common\ebra_common.h \
+ F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\HW_UART.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -74,3 +78,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 F:\embedded\Work_space\2_Drivers_atmega32\Layres\2_service\ layer\time_mange_unit\time_mange_unit\time_mang_unit.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+
+.././Remot_control.h:
+
+F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\USART.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\common\ebra_common.h:
+
+F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\HW_UART.h:
