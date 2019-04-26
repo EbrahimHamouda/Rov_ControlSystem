@@ -155,6 +155,10 @@
       <SubType>compile</SubType>
       <Link>USART.c</Link>
     </Compile>
+    <Compile Include="F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\SERVICE\comm_RX\commRX.c">
+      <SubType>compile</SubType>
+      <Link>commRX.c</Link>
+    </Compile>
     <Compile Include="Remot_control.c">
       <SubType>compile</SubType>
     </Compile>

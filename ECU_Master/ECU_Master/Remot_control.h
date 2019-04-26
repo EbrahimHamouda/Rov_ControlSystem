@@ -16,17 +16,20 @@
 #include <util/delay.h>
 #include "F:\embedded\Work_space\2_Drivers_atmega32\Layres\2_service layer\time_mange_unit\time_mange_unit\time_mang_unit.h"
 #include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\USART.h"
+#include "F:\embedded\Work_space\2_Drivers_atmega32\Layres\0_HAL_test_drivers_\spi\spi2\SPI.h"
+#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\SERVICE\comm_RX\commRX.h"
+
 
 //Global variables
 extern struct_PinsCnfg_t mylcd;  // lcd_Conifguration to be used from other modules
 extern	KeyPad_PinCnfg_t mykeypad; // keypad_Conifguration to be used from other modules
-extern	bool_t Keypad_semphore; // semphore to idicate the availbity
+extern	bool_t Keypad_semphore; // semphore?? to idicate the availbity
 extern	bool_t lcd_semphore; // semphore to idicate the availbity
 extern	bool_t System_logged;//to know if user enter the password or not
 extern  bool_t SYSTEM_OPTIONS_flag; // set it if u want to open option for user again
 extern	bool_t TMU_semphore; //set it if i want use tmu
-extern  bool_t Live_ControlSemphore; // to make live control work
-
+extern  bool_t Remote_ControlSemphore; // to make live control work
+extern  bool_t CommRX_DisspatcherSemphore; // to make commrx work
 
 typedef struct
 {
@@ -42,6 +45,6 @@ typedef enum
 } Enum_RemotControl_t;
 
 void Remot_controlMode();
-void live_controlDisspatcher();
+void Remot_controlDisspatcher();
 
 #endif /* REMOT_CONTROL_H_ */

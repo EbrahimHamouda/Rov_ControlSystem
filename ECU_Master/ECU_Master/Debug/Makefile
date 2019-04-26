@@ -42,6 +42,7 @@ F:/embedded/Work_space/2_Drivers_atmega32/Layres/0_HAL_test_drivers_/spi/spi2/SP
 F:/embedded/Work_space/2_Drivers_atmega32/SDK_AVR_ATMEGA32/HAL/GPIO/GPIO.c \
 F:/embedded/Work_space/2_Drivers_atmega32/SDK_AVR_ATMEGA32/HAL/GPIO/Gpio_Crazy.c \
 F:/embedded/Work_space/2_Drivers_atmega32/SDK_AVR_ATMEGA32/HAL/UART/USART.c \
+F:/embedded/Work_space/2_Drivers_atmega32/SDK_AVR_ATMEGA32/SERVICE/comm_RX/commRX.c \
 ../Remot_control.c \
 ../eeprom.c \
 F:/embedded/Work_space/2_Drivers_atmega32/Layres/2_service\ layer/time_mange_unit/time_mange_unit/time_mang_unit.c \
@@ -62,6 +63,7 @@ SPI.o \
 GPIO.o \
 Gpio_Crazy.o \
 USART.o \
+commRX.o \
 Remot_control.o \
 eeprom.o \
 time_mang_unit.o \
@@ -75,6 +77,7 @@ SPI.o \
 GPIO.o \
 Gpio_Crazy.o \
 USART.o \
+commRX.o \
 Remot_control.o \
 eeprom.o \
 time_mang_unit.o \
@@ -88,6 +91,7 @@ SPI.d \
 GPIO.d \
 Gpio_Crazy.d \
 USART.d \
+commRX.d \
 Remot_control.d \
 eeprom.d \
 time_mang_unit.d \
@@ -101,6 +105,7 @@ SPI.d \
 GPIO.d \
 Gpio_Crazy.d \
 USART.d \
+commRX.d \
 Remot_control.d \
 eeprom.d \
 time_mang_unit.d \
@@ -122,6 +127,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
@@ -172,6 +179,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./%.o: F:/embedded/Work_space/2_Drivers_atmega32/SDK_AVR_ATMEGA32/HAL/UART/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./%.o: F:/embedded/Work_space/2_Drivers_atmega32/SDK_AVR_ATMEGA32/SERVICE/comm_RX/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

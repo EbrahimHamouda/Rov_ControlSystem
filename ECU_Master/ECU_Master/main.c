@@ -10,7 +10,7 @@
 #include "Authentication.h"
 #include <avr/interrupt.h>
 #include "Remot_control.h"
-
+ 
 // Golabl variables it's
 struct_PinsCnfg_t mylcd={{A0,A1,A2,A3},A4,A5};  // lcd_Conifguration to be used from other modules
 KeyPad_PinCnfg_t mykeypad={{C2,C3,C4,C5},{C6,C7,D2}}; // keypad_Conifguration to be used from other modules
@@ -20,7 +20,8 @@ bool_t System_logged=0;  //to know if user enter the password or not
 bool_t SYSTEM_OPTIONS_flag=0; // to show the options again
 bool_t TMU_semphore=0; // semphore to indicate the use ability
 bool_t authentication_DispatcherSemphore=0; // to make dispatcher of authentication work
-bool_t Live_ControlSemphore=0; // to make live control work
+bool_t Remote_ControlSemphore=0; // to make live control work
+bool_t CommRX_DisspatcherSemphore=0;// to make commrxwork
 
 void Get_option(uint8 num)
 {
@@ -54,7 +55,8 @@ void system_init()
 	kpad_init(&mykeypad,Get_option);
 	lcd_init(&mylcd);
 	gpio_spi_cng_master();
-	/*
+	gpio_uart_cng();
+	/* WelCome Message
 	lcd_goto(&mylcd,0,4);
 	lcd_str(&mylcd,"welcome");
 	lcd_goto(&mylcd,1,4);
@@ -66,7 +68,6 @@ void system_init()
 	*/
 }
 
-
 void system_options()
 {
 	lcd_clear(&mylcd);
@@ -74,7 +75,6 @@ void system_options()
 	Change_CallBackfunction(Get_option); // change call back funcation
 	Keypad_semphore = 1;  // run the Keypad for get option
 }
-
 
 int main(void)
 {
@@ -100,9 +100,13 @@ int main(void)
 		{
 			Authentication_Dispatcher();
 		}
-		if (Live_ControlSemphore)
+		if (Remote_ControlSemphore)
 		{
-			live_controlDisspatcher();
+			Remot_controlDisspatcher();
+		}
+		if (CommRX_DisspatcherSemphore)
+		{
+			RX_com_dispatch();
 		}
 	}
 }

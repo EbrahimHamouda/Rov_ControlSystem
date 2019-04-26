@@ -5,23 +5,25 @@
 *  Author: ebrah
 */
 #include "Remot_control.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\Layres\0_HAL_test_drivers_\spi\spi2\SPI.h"
+
 
 //static variables
 static Enum_RemotControl_t Rov_ControlStatus=0;
-
 static Struct_Order_t data_rx;
 static uint8 counter=0;
 Spi_Config my_spi={SPI_INTERRUPT_DISABLE,SPI_LSB_FIRST,SPI_MASTER_MODE,SPI_RAISING_EDGE,SPI_SAMPLE,SPI_FOSC_DIV16}; //  init value for spi
+static uint8 handler=0,Auto_BufferSize=0,Auto_BufferIndex=0; // for timer
+static uint8* ptr_AutoBufferCommands;
+static uint8 First_digit,Second_digit;
+volatile static uint8 time_Seconds; // 0>>99
 
-
-static void new_DataRx(uint8 data)
+static void new_DataRx(uint8 data) // from controller
 {
 	if(counter) // counter==1 that mean it rx the key"W S D A"
 	{
 		counter=0;
 		data_rx.power_level=data;
-		Live_ControlSemphore=1;
+		Remote_ControlSemphore=1;
 	}
 	else
 	{
@@ -30,20 +32,83 @@ static void new_DataRx(uint8 data)
 	}
 }
 
+static void Command_TimerFinish()
+{
+	if (Auto_BufferIndex < Auto_BufferSize )
+	{ // the form of command i suppose will be [Dirction_8bit,Power_8bit,Time_16bit]
+		data_rx.key= ptr_AutoBufferCommands[Auto_BufferIndex++]; // take the first mean dirction and increament
+		data_rx.power_level = ptr_AutoBufferCommands[Auto_BufferIndex++]; // the scond should be power and increament
+		time_Seconds  = 0;
+		time_Seconds  = (ptr_AutoBufferCommands[Auto_BufferIndex++]-48)*10; // the second digit
+		time_Seconds += (ptr_AutoBufferCommands[Auto_BufferIndex++]-48); // the first digit
+		First_digit=0;
+		Second_digit=0;
+		Remote_ControlSemphore=1;
+		TMU_semphore=1;
+	}
+	else
+	{
+		// Commands finished
+		end_event(0);
+		TMU_semphore=0;
+		lcd_clear(&mylcd);
+		lcd_str(&mylcd,0,0,"Commands Finish");
+	}
+}
+
+static void OneSecondFinish()
+{
+	if ((--time_Seconds)) // decreament the seconds 
+	{
+		Remote_ControlSemphore=1;
+		First_digit++;
+		if (First_digit>9)
+		{
+			Second_digit++;
+			First_digit=0;
+		}
+	}
+	else
+	{
+		Auto_BufferIndex++;
+		Command_TimerFinish();
+	}
+}
+
+
+
+static void Commands_AutoBufferArrive(uint8* ptr_Data,uint16 Size)
+{
+	CommRX_DisspatcherSemphore=0; // Close the Disspatcher of work Becuase i received what i need
+	Remote_ControlSemphore=1; // work the controller motor
+	Auto_BufferSize=Size-1;
+	ptr_AutoBufferCommands=ptr_Data;
+	Command_TimerFinish();
+	TMU_init(TMR0,_1MS); // set timer to start working
+
+}
+
 static void get_mode(uint8 key)
 {
 	Keypad_semphore=0; // to lock keypad
+	spi_init(&my_spi);
 	if (key == '1')
 	{
 		Rov_ControlStatus = LIVE_CONTROL;
 		Uart_init();   //channel used for live control it can be configured
 		Uart_RxInterruptEnable(new_DataRx);
-		spi_init(&my_spi);
 		digitalWrite(12,SET_VALUE_LOW);
 	}
 	else if(key == '2')
 	{
+		lcd_clear(&mylcd);
+		lcd_str(&mylcd,0,0,"Wait Commands");
 		Rov_ControlStatus = AUTTO_BUFFER_CONTROL;
+		RX_cfg_t Buffer_CommandsConfg={Commands_AutoBufferArrive,UART0,'*'}; // no need for static because it's already saved in static variable in the CommRx.c
+		Comm_RxInit(&Buffer_CommandsConfg);
+		CommRX_DisspatcherSemphore=1;
+		Struct_EventConfg_t NewCommand_Event ={1000,PEROIDEC,1,OneSecondFinish}; // new_event confg  after 1 second will call OneSecondFinish
+		creat_oneHandlerEvent(&NewCommand_Event);
 	}
 	else
 	{
@@ -69,14 +134,14 @@ void Remot_controlMode()
 	}
 }
 
-void live_controlDisspatcher()
+void Remot_controlDisspatcher()
 {
-	Live_ControlSemphore=0;
+	Remote_ControlSemphore=0;
+	lcd_clear(&mylcd);
 	switch (data_rx.key)
 	{
 		case 'w':// forward
 		{
-			lcd_clear(&mylcd);
 			lcd_str(&mylcd,0,0,"Rov Go forward*");
 			spi_master_tx('w');
 			/*_delay_ms(1);*/
@@ -85,7 +150,6 @@ void live_controlDisspatcher()
 		}
 		case 's'://backward
 		{
-			lcd_clear(&mylcd);
 			lcd_str(&mylcd,0,0,"Rov Go backword*");
 			spi_master_tx('s');
 			/*_delay_ms(1);*/
@@ -94,7 +158,6 @@ void live_controlDisspatcher()
 		}
 		case 'd'://right
 		{
-			lcd_clear(&mylcd);
 			lcd_str(&mylcd,0,0,"Rov Go right*");
 			spi_master_tx('d');
 			/*_delay_ms(1);*/
@@ -103,7 +166,6 @@ void live_controlDisspatcher()
 		}
 		case 'a'://left
 		{
-			lcd_clear(&mylcd);
 			lcd_str(&mylcd,0,0,"Rov Go left*");
 			spi_master_tx('a');
 			/*_delay_ms(1);*/
@@ -112,7 +174,6 @@ void live_controlDisspatcher()
 		}
 		default:
 		{
-			lcd_clear(&mylcd);
 			spi_master_tx(0);
 			spi_master_tx(0);
 			lcd_str(&mylcd,0,0,"Rov stable*");
@@ -120,4 +181,10 @@ void live_controlDisspatcher()
 	}
 	lcd_str(&mylcd,1,0,"Power:");
 	lcd_chr(&mylcd,data_rx.power_level);
+	if (Rov_ControlStatus==AUTTO_BUFFER_CONTROL)
+	{
+		lcd_str(&mylcd,2,0,"Time:");
+		lcd_chr(&mylcd,Second_digit+48);
+		lcd_chr(&mylcd,First_digit+48);
+	}
 }

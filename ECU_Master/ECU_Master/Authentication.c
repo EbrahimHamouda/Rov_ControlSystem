@@ -63,9 +63,9 @@ static void One_SecondFinish()	// this funcation called from TMU module when sec
 
 static void Set_TimerOneMinute()
 {
-	Struct_EventConfg_t My_event ={1000,PEROIDEC,1,One_SecondFinish}; // new_event confg
+	Struct_EventConfg_t Authentication_Event ={1000,PEROIDEC,1,One_SecondFinish}; // new_event confg
 	TMU_init(TMR0,_1MS);
-	Creat_NewEvent(&My_event,&handler);
+	Creat_NewEvent(&Authentication_Event,&handler);
 	TMU_semphore=1;
 	num_S1=0;  // set to 00
 	num_S2=0;

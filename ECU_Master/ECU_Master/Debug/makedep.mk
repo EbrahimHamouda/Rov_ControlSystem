@@ -12,6 +12,8 @@ F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\GPIO\Gpio_Crazy.c
 
 F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\USART.c
 
+F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\SERVICE\comm_RX\commRX.c
+
 Remot_control.c
 
 eeprom.c
