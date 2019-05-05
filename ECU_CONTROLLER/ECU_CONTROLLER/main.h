@@ -10,10 +10,10 @@
 #define MAIN_H_
 
 #include <avr/io.h>
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\USART.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\GPIO\GPIO.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\Layres\2_service layer\time_mange_unit\time_mange_unit\time_mang_unit.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\ADC\ADC.h"
+#include "USART.h"
+#include "GPIO.h"
+#include "time_mang_unit.h"
+#include "ADC.h"
 #include <util/delay.h>
 #include <avr/interrupt.h>
 

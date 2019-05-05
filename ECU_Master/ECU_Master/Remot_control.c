@@ -17,6 +17,8 @@ static uint8* ptr_AutoBufferCommands;
 static uint8 First_digit,Second_digit;
 volatile static uint8 time_Seconds; // 0>>99
 
+
+
 static void new_DataRx(uint8 data) // from controller
 {
 	if(counter) // counter==1 that mean it rx the key"W S D A"
@@ -58,7 +60,7 @@ static void Command_TimerFinish()
 
 static void OneSecondFinish()
 {
-	if ((--time_Seconds)) // decreament the seconds 
+	if ((--time_Seconds)) // decreament the seconds
 	{
 		Remote_ControlSemphore=1;
 		First_digit++;
@@ -84,6 +86,11 @@ static void Commands_AutoBufferArrive(uint8* ptr_Data,uint16 Size)
 	Auto_BufferSize=Size-1;
 	ptr_AutoBufferCommands=ptr_Data;
 	Command_TimerFinish();
+	lcd_clear(&mylcd);
+	lcd_str(&mylcd,0,0,"State:");
+	lcd_str(&mylcd,1,0,"Power:");
+	lcd_str(&mylcd,2,0,"Time:");
+	
 	TMU_init(TMR0,_1MS); // set timer to start working
 
 }
@@ -94,6 +101,9 @@ static void get_mode(uint8 key)
 	spi_init(&my_spi);
 	if (key == '1')
 	{
+		lcd_clear(&mylcd);
+		lcd_str(&mylcd,0,0,"State:");
+		lcd_str(&mylcd,1,0,"Power:");
 		Rov_ControlStatus = LIVE_CONTROL;
 		Uart_init();   //channel used for live control it can be configured
 		Uart_RxInterruptEnable(new_DataRx);
@@ -137,38 +147,33 @@ void Remot_controlMode()
 void Remot_controlDisspatcher()
 {
 	Remote_ControlSemphore=0;
-	lcd_clear(&mylcd);
 	switch (data_rx.key)
 	{
 		case 'w':// forward
 		{
-			lcd_str(&mylcd,0,0,"Rov Go forward*");
+			lcd_str(&mylcd,0,6,"forward ");
 			spi_master_tx('w');
-			/*_delay_ms(1);*/
 			spi_master_tx(data_rx.power_level);
 			break;
 		}
 		case 's'://backward
 		{
-			lcd_str(&mylcd,0,0,"Rov Go backword*");
+			lcd_str(&mylcd,0,6,"backword");
 			spi_master_tx('s');
-			/*_delay_ms(1);*/
 			spi_master_tx(data_rx.power_level);
 			break;
 		}
 		case 'd'://right
 		{
-			lcd_str(&mylcd,0,0,"Rov Go right*");
+			lcd_str(&mylcd,0,6,"right   ");
 			spi_master_tx('d');
-			/*_delay_ms(1);*/
 			spi_master_tx(data_rx.power_level);
 			break;
 		}
 		case 'a'://left
 		{
-			lcd_str(&mylcd,0,0,"Rov Go left*");
+			lcd_str(&mylcd,0,6,"left    ");
 			spi_master_tx('a');
-			/*_delay_ms(1);*/
 			spi_master_tx(data_rx.power_level);
 			break;
 		}
@@ -176,14 +181,14 @@ void Remot_controlDisspatcher()
 		{
 			spi_master_tx(0);
 			spi_master_tx(0);
-			lcd_str(&mylcd,0,0,"Rov stable*");
+			lcd_str(&mylcd,0,6,"stable  ");
 		}
 	}
-	lcd_str(&mylcd,1,0,"Power:");
+	lcd_goto(&mylcd,1,6);
 	lcd_chr(&mylcd,data_rx.power_level);
-	if (Rov_ControlStatus==AUTTO_BUFFER_CONTROL)
+	if (Rov_ControlStatus==AUTTO_BUFFER_CONTROL) // time needed for auto buffer control mode
 	{
-		lcd_str(&mylcd,2,0,"Time:");
+		lcd_goto(&mylcd,2,5);
 		lcd_chr(&mylcd,Second_digit+48);
 		lcd_chr(&mylcd,First_digit+48);
 	}

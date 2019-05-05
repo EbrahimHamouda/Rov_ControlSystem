@@ -9,15 +9,15 @@
 #ifndef REMOT_CONTROL_H_
 #define REMOT_CONTROL_H_
 
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\ECUS\LCD\lcd.h"
+#include "lcd.h"
 #include "eeprom.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\ECUS\KEYPAD\key_pad.h"
+#include "key_pad.h"
 #include <common/ebra_common.h>
 #include <util/delay.h>
-#include "F:\embedded\Work_space\2_Drivers_atmega32\Layres\2_service layer\time_mange_unit\time_mange_unit\time_mang_unit.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\UART\USART.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\Layres\0_HAL_test_drivers_\spi\spi2\SPI.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\SERVICE\comm_RX\commRX.h"
+#include "time_mang_unit.h"
+#include "USART.h"
+#include "SPI.h"
+#include "commRX.h"
 
 
 //Global variables
@@ -37,7 +37,13 @@ typedef struct
 	uint8 power_level;
 } Struct_Order_t;
 
-
+typedef enum
+{
+	FORWARD,
+	BACKWARD,
+	RIGHT,
+	LIFT,
+} Rov_state_t;
 typedef enum
 {
 	LIVE_CONTROL,

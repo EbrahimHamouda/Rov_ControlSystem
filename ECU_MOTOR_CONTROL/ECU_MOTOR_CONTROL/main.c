@@ -7,7 +7,7 @@
 #include <avr/io.h>
 #include "motor_driver.h"
 #include "pwm.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\HAL\SPI\SPI.h"
+#include "SPI.h"
 #include <avr\interrupt.h>
 
 Spi_Config my_spi={SPI_INTERRUPT_ENABLE,SPI_LSB_FIRST,SPI_SLAVE_MODE,SPI_RAISING_EDGE,SPI_SAMPLE,SPI_FOSC_DIV16};

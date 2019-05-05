@@ -9,12 +9,12 @@
 #ifndef AUTHENTICATION_H_
 #define AUTHENTICATION_H_
 
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\ECUS\LCD\lcd.h"
-#include "F:\embedded\Work_space\2_Drivers_atmega32\SDK_AVR_ATMEGA32\ECUS\KEYPAD\key_pad.h"
+#include "lcd.h"
+#include "key_pad.h"
 #include "eeprom.h"
 #include <common/ebra_common.h>
 #include <util/delay.h>
-#include "F:\embedded\Work_space\2_Drivers_atmega32\Layres\2_service layer\time_mange_unit\time_mange_unit\time_mang_unit.h"
+#include "time_mang_unit.h"
 
 //Global variables
 extern struct_PinsCnfg_t mylcd;  // lcd_Conifguration to be used from other modules

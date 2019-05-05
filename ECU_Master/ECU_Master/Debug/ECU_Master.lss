@@ -3,31 +3,31 @@ ECU_Master.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000014e8  00000000  00000000  00000094  2**1
+  0 .text         00001538  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000222  00800060  000014e8  0000157c  2**0
+  1 .data         0000020e  00800060  00001538  000015cc  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000043a  00800282  00800282  0000179e  2**0
+  2 .bss          0000043a  0080026e  0080026e  000017da  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000179e  2**0
+  3 .comment      00000030  00000000  00000000  000017da  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000017d0  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000180c  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000318  00000000  00000000  0000180c  2**0
+  5 .debug_aranges 00000318  00000000  00000000  00001848  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000037c2  00000000  00000000  00001b24  2**0
+  6 .debug_info   0000387a  00000000  00000000  00001b60  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00001497  00000000  00000000  000052e6  2**0
+  7 .debug_abbrev 00001497  00000000  00000000  000053da  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000023ad  00000000  00000000  0000677d  2**0
+  8 .debug_line   000023cf  00000000  00000000  00006871  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000077c  00000000  00000000  00008b2c  2**2
+  9 .debug_frame  0000077c  00000000  00000000  00008c40  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000011de  00000000  00000000  000092a8  2**0
+ 10 .debug_str    000011de  00000000  00000000  000093bc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000019e1  00000000  00000000  0000a486  2**0
+ 11 .debug_loc    000019e1  00000000  00000000  0000a59a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000278  00000000  00000000  0000be67  2**0
+ 12 .debug_ranges 00000278  00000000  00000000  0000bf7b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -44,7 +44,7 @@ Disassembly of section .text:
       20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
       24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
       28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-      2c:	0c 94 f1 06 	jmp	0xde2	; 0xde2 <__vector_11>
+      2c:	0c 94 19 07 	jmp	0xe32	; 0xe32 <__vector_11>
       30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
       34:	0c 94 a8 04 	jmp	0x950	; 0x950 <__vector_13>
       38:	0c 94 81 04 	jmp	0x902	; 0x902 <__vector_14>
@@ -67,18 +67,18 @@ Disassembly of section .text:
       60:	12 e0       	ldi	r17, 0x02	; 2
       62:	a0 e6       	ldi	r26, 0x60	; 96
       64:	b0 e0       	ldi	r27, 0x00	; 0
-      66:	e8 ee       	ldi	r30, 0xE8	; 232
-      68:	f4 e1       	ldi	r31, 0x14	; 20
+      66:	e8 e3       	ldi	r30, 0x38	; 56
+      68:	f5 e1       	ldi	r31, 0x15	; 21
       6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
       6c:	05 90       	lpm	r0, Z+
       6e:	0d 92       	st	X+, r0
-      70:	a2 38       	cpi	r26, 0x82	; 130
+      70:	ae 36       	cpi	r26, 0x6E	; 110
       72:	b1 07       	cpc	r27, r17
       74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
 
 00000076 <__do_clear_bss>:
       76:	26 e0       	ldi	r18, 0x06	; 6
-      78:	a2 e8       	ldi	r26, 0x82	; 130
+      78:	ae e6       	ldi	r26, 0x6E	; 110
       7a:	b2 e0       	ldi	r27, 0x02	; 2
       7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
 
@@ -86,11 +86,11 @@ Disassembly of section .text:
       7e:	1d 92       	st	X+, r1
 
 00000080 <.do_clear_bss_start>:
-      80:	ac 3b       	cpi	r26, 0xBC	; 188
+      80:	a8 3a       	cpi	r26, 0xA8	; 168
       82:	b2 07       	cpc	r27, r18
       84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
-      86:	0e 94 47 0a 	call	0x148e	; 0x148e <main>
-      8a:	0c 94 72 0a 	jmp	0x14e4	; 0x14e4 <_exit>
+      86:	0e 94 6f 0a 	call	0x14de	; 0x14de <main>
+      8a:	0c 94 9a 0a 	jmp	0x1534	; 0x1534 <_exit>
 
 0000008e <__bad_interrupt>:
       8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -106,7 +106,7 @@ static void Buffer_Password(uint8 key)
 	if ((key!='#')&&(buffer_index < PASSWORD_LENGTH)) // check user end the password
       94:	83 32       	cpi	r24, 0x23	; 35
       96:	59 f1       	breq	.+86     	; 0xee <Buffer_Password+0x5c>
-      98:	90 91 8f 02 	lds	r25, 0x028F	; 0x80028f <buffer_index>
+      98:	90 91 7b 02 	lds	r25, 0x027B	; 0x80027b <buffer_index>
       9c:	99 30       	cpi	r25, 0x09	; 9
       9e:	38 f5       	brcc	.+78     	; 0xee <Buffer_Password+0x5c>
       a0:	c8 2f       	mov	r28, r24
@@ -119,9 +119,9 @@ static void Buffer_Password(uint8 key)
       a2:	6a e2       	ldi	r22, 0x2A	; 42
       a4:	8d e6       	ldi	r24, 0x6D	; 109
       a6:	90 e0       	ldi	r25, 0x00	; 0
-      a8:	0e 94 73 09 	call	0x12e6	; 0x12e6 <lcd_chr>
+      a8:	0e 94 9b 09 	call	0x1336	; 0x1336 <lcd_chr>
 		Input_PasswordCs += (buffer_index*key);
-      ac:	20 91 8f 02 	lds	r18, 0x028F	; 0x80028f <buffer_index>
+      ac:	20 91 7b 02 	lds	r18, 0x027B	; 0x80027b <buffer_index>
       b0:	2c 9f       	mul	r18, r28
       b2:	c0 01       	movw	r24, r0
       b4:	11 24       	eor	r1, r1
@@ -129,35 +129,35 @@ static void Buffer_Password(uint8 key)
       b8:	00 0c       	add	r0, r0
       ba:	aa 0b       	sbc	r26, r26
       bc:	bb 0b       	sbc	r27, r27
-      be:	40 91 8b 02 	lds	r20, 0x028B	; 0x80028b <Input_PasswordCs>
-      c2:	50 91 8c 02 	lds	r21, 0x028C	; 0x80028c <Input_PasswordCs+0x1>
-      c6:	60 91 8d 02 	lds	r22, 0x028D	; 0x80028d <Input_PasswordCs+0x2>
-      ca:	70 91 8e 02 	lds	r23, 0x028E	; 0x80028e <Input_PasswordCs+0x3>
+      be:	40 91 77 02 	lds	r20, 0x0277	; 0x800277 <Input_PasswordCs>
+      c2:	50 91 78 02 	lds	r21, 0x0278	; 0x800278 <Input_PasswordCs+0x1>
+      c6:	60 91 79 02 	lds	r22, 0x0279	; 0x800279 <Input_PasswordCs+0x2>
+      ca:	70 91 7a 02 	lds	r23, 0x027A	; 0x80027a <Input_PasswordCs+0x3>
       ce:	84 0f       	add	r24, r20
       d0:	95 1f       	adc	r25, r21
       d2:	a6 1f       	adc	r26, r22
       d4:	b7 1f       	adc	r27, r23
-      d6:	80 93 8b 02 	sts	0x028B, r24	; 0x80028b <Input_PasswordCs>
-      da:	90 93 8c 02 	sts	0x028C, r25	; 0x80028c <Input_PasswordCs+0x1>
-      de:	a0 93 8d 02 	sts	0x028D, r26	; 0x80028d <Input_PasswordCs+0x2>
-      e2:	b0 93 8e 02 	sts	0x028E, r27	; 0x80028e <Input_PasswordCs+0x3>
+      d6:	80 93 77 02 	sts	0x0277, r24	; 0x800277 <Input_PasswordCs>
+      da:	90 93 78 02 	sts	0x0278, r25	; 0x800278 <Input_PasswordCs+0x1>
+      de:	a0 93 79 02 	sts	0x0279, r26	; 0x800279 <Input_PasswordCs+0x2>
+      e2:	b0 93 7a 02 	sts	0x027A, r27	; 0x80027a <Input_PasswordCs+0x3>
 		buffer_index++;
       e6:	2f 5f       	subi	r18, 0xFF	; 255
-      e8:	20 93 8f 02 	sts	0x028F, r18	; 0x80028f <buffer_index>
+      e8:	20 93 7b 02 	sts	0x027B, r18	; 0x80027b <buffer_index>
       ec:	20 c0       	rjmp	.+64     	; 0x12e <Buffer_Password+0x9c>
 	}
 	else
 	{
 		if(Change_PasswordSemphore)
-      ee:	80 91 83 02 	lds	r24, 0x0283	; 0x800283 <Change_PasswordSemphore>
+      ee:	80 91 6f 02 	lds	r24, 0x026F	; 0x80026f <Change_PasswordSemphore>
       f2:	88 23       	and	r24, r24
       f4:	a1 f0       	breq	.+40     	; 0x11e <Buffer_Password+0x8c>
 		{
 			if (confirm_passwordCs==0)
-      f6:	80 91 87 02 	lds	r24, 0x0287	; 0x800287 <confirm_passwordCs>
-      fa:	90 91 88 02 	lds	r25, 0x0288	; 0x800288 <confirm_passwordCs+0x1>
-      fe:	a0 91 89 02 	lds	r26, 0x0289	; 0x800289 <confirm_passwordCs+0x2>
-     102:	b0 91 8a 02 	lds	r27, 0x028A	; 0x80028a <confirm_passwordCs+0x3>
+      f6:	80 91 73 02 	lds	r24, 0x0273	; 0x800273 <confirm_passwordCs>
+      fa:	90 91 74 02 	lds	r25, 0x0274	; 0x800274 <confirm_passwordCs+0x1>
+      fe:	a0 91 75 02 	lds	r26, 0x0275	; 0x800275 <confirm_passwordCs+0x2>
+     102:	b0 91 76 02 	lds	r27, 0x0276	; 0x800276 <confirm_passwordCs+0x3>
      106:	89 2b       	or	r24, r25
      108:	8a 2b       	or	r24, r26
      10a:	8b 2b       	or	r24, r27
@@ -165,14 +165,14 @@ static void Buffer_Password(uint8 key)
 			{
 				Au_status=_CONFRIM_PASSWORD;
      10e:	86 e0       	ldi	r24, 0x06	; 6
-     110:	80 93 82 02 	sts	0x0282, r24	; 0x800282 <__data_end>
+     110:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <__data_end>
      114:	07 c0       	rjmp	.+14     	; 0x124 <Buffer_Password+0x92>
 			}
 			else
 			{
 				Au_status=_CHECK_CHANGE_PASSWORD;
      116:	87 e0       	ldi	r24, 0x07	; 7
-     118:	80 93 82 02 	sts	0x0282, r24	; 0x800282 <__data_end>
+     118:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <__data_end>
      11c:	03 c0       	rjmp	.+6      	; 0x124 <Buffer_Password+0x92>
 			}
 		}
@@ -180,13 +180,13 @@ static void Buffer_Password(uint8 key)
 		{
 			Au_status=_CHECK_PASSWORD;
      11e:	82 e0       	ldi	r24, 0x02	; 2
-     120:	80 93 82 02 	sts	0x0282, r24	; 0x800282 <__data_end>
+     120:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <__data_end>
 		}
 		Keypad_semphore=0; // don't need any key else from user
-     124:	10 92 bb 06 	sts	0x06BB, r1	; 0x8006bb <Keypad_semphore>
+     124:	10 92 a7 06 	sts	0x06A7, r1	; 0x8006a7 <Keypad_semphore>
 		authentication_DispatcherSemphore=1;
      128:	81 e0       	ldi	r24, 0x01	; 1
-     12a:	80 93 b7 06 	sts	0x06B7, r24	; 0x8006b7 <authentication_DispatcherSemphore>
+     12a:	80 93 a3 06 	sts	0x06A3, r24	; 0x8006a3 <authentication_DispatcherSemphore>
 	}
 }
      12e:	cf 91       	pop	r28
@@ -205,11 +205,11 @@ static void Give_UserNewTry(uint8 temp) // this funcation called when password e
      136:	68 2f       	mov	r22, r24
      138:	80 e1       	ldi	r24, 0x10	; 16
      13a:	90 e0       	ldi	r25, 0x00	; 0
-     13c:	0e 94 e9 06 	call	0xdd2	; 0xdd2 <EEPROM_write>
+     13c:	0e 94 11 07 	call	0xe22	; 0xe22 <EEPROM_write>
 	lcd_clear(&mylcd);	// clear lcd
      140:	8d e6       	ldi	r24, 0x6D	; 109
      142:	90 e0       	ldi	r25, 0x00	; 0
-     144:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     144:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 	lcd_str(&mylcd,0,0,"password wronge*Number trials:"); // write massage
      148:	23 e8       	ldi	r18, 0x83	; 131
      14a:	30 e0       	ldi	r19, 0x00	; 0
@@ -217,13 +217,13 @@ static void Give_UserNewTry(uint8 temp) // this funcation called when password e
      14e:	60 e0       	ldi	r22, 0x00	; 0
      150:	8d e6       	ldi	r24, 0x6D	; 109
      152:	90 e0       	ldi	r25, 0x00	; 0
-     154:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     154:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 	lcd_chr(&mylcd,(temp|(0x30)));
      158:	6c 2f       	mov	r22, r28
      15a:	60 63       	ori	r22, 0x30	; 48
      15c:	8d e6       	ldi	r24, 0x6D	; 109
      15e:	90 e0       	ldi	r25, 0x00	; 0
-     160:	0e 94 73 09 	call	0x12e6	; 0x12e6 <lcd_chr>
+     160:	0e 94 9b 09 	call	0x1336	; 0x1336 <lcd_chr>
 	lcd_str(&mylcd,2,0,"Enter password*"); // write massage
      164:	22 ea       	ldi	r18, 0xA2	; 162
      166:	30 e0       	ldi	r19, 0x00	; 0
@@ -231,19 +231,19 @@ static void Give_UserNewTry(uint8 temp) // this funcation called when password e
      16a:	62 e0       	ldi	r22, 0x02	; 2
      16c:	8d e6       	ldi	r24, 0x6D	; 109
      16e:	90 e0       	ldi	r25, 0x00	; 0
-     170:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     170:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 	buffer_index=0;
-     174:	10 92 8f 02 	sts	0x028F, r1	; 0x80028f <buffer_index>
+     174:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <buffer_index>
 	Input_PasswordCs=0;
-     178:	10 92 8b 02 	sts	0x028B, r1	; 0x80028b <Input_PasswordCs>
-     17c:	10 92 8c 02 	sts	0x028C, r1	; 0x80028c <Input_PasswordCs+0x1>
-     180:	10 92 8d 02 	sts	0x028D, r1	; 0x80028d <Input_PasswordCs+0x2>
-     184:	10 92 8e 02 	sts	0x028E, r1	; 0x80028e <Input_PasswordCs+0x3>
+     178:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <Input_PasswordCs>
+     17c:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <Input_PasswordCs+0x1>
+     180:	10 92 79 02 	sts	0x0279, r1	; 0x800279 <Input_PasswordCs+0x2>
+     184:	10 92 7a 02 	sts	0x027A, r1	; 0x80027a <Input_PasswordCs+0x3>
 	Keypad_semphore =1; // to start receive password again
      188:	81 e0       	ldi	r24, 0x01	; 1
-     18a:	80 93 bb 06 	sts	0x06BB, r24	; 0x8006bb <Keypad_semphore>
+     18a:	80 93 a7 06 	sts	0x06A7, r24	; 0x8006a7 <Keypad_semphore>
 	Au_status = _BUFFER_PASSWORD;
-     18e:	10 92 82 02 	sts	0x0282, r1	; 0x800282 <__data_end>
+     18e:	10 92 6e 02 	sts	0x026E, r1	; 0x80026e <__data_end>
 }
      192:	cf 91       	pop	r28
      194:	08 95       	ret
@@ -257,63 +257,63 @@ static void One_SecondFinish()	// this funcation called from TMU module when sec
      198:	63 e0       	ldi	r22, 0x03	; 3
      19a:	8d e6       	ldi	r24, 0x6D	; 109
      19c:	90 e0       	ldi	r25, 0x00	; 0
-     19e:	0e 94 94 09 	call	0x1328	; 0x1328 <lcd_goto>
+     19e:	0e 94 bc 09 	call	0x1378	; 0x1378 <lcd_goto>
 	lcd_chr(&mylcd,(0x30|num_S2));
-     1a2:	60 91 85 02 	lds	r22, 0x0285	; 0x800285 <num_S2>
+     1a2:	60 91 71 02 	lds	r22, 0x0271	; 0x800271 <num_S2>
      1a6:	60 63       	ori	r22, 0x30	; 48
      1a8:	8d e6       	ldi	r24, 0x6D	; 109
      1aa:	90 e0       	ldi	r25, 0x00	; 0
-     1ac:	0e 94 73 09 	call	0x12e6	; 0x12e6 <lcd_chr>
+     1ac:	0e 94 9b 09 	call	0x1336	; 0x1336 <lcd_chr>
 	lcd_goto(&mylcd,3,1);
      1b0:	41 e0       	ldi	r20, 0x01	; 1
      1b2:	63 e0       	ldi	r22, 0x03	; 3
      1b4:	8d e6       	ldi	r24, 0x6D	; 109
      1b6:	90 e0       	ldi	r25, 0x00	; 0
-     1b8:	0e 94 94 09 	call	0x1328	; 0x1328 <lcd_goto>
+     1b8:	0e 94 bc 09 	call	0x1378	; 0x1378 <lcd_goto>
 	lcd_chr(&mylcd,(0x30|num_S1));
-     1bc:	60 91 86 02 	lds	r22, 0x0286	; 0x800286 <num_S1>
+     1bc:	60 91 72 02 	lds	r22, 0x0272	; 0x800272 <num_S1>
      1c0:	60 63       	ori	r22, 0x30	; 48
      1c2:	8d e6       	ldi	r24, 0x6D	; 109
      1c4:	90 e0       	ldi	r25, 0x00	; 0
-     1c6:	0e 94 73 09 	call	0x12e6	; 0x12e6 <lcd_chr>
+     1c6:	0e 94 9b 09 	call	0x1336	; 0x1336 <lcd_chr>
 	if ((num_S2==6)&&(num_S1==0)) // that mean the minute finished
-     1ca:	80 91 85 02 	lds	r24, 0x0285	; 0x800285 <num_S2>
+     1ca:	80 91 71 02 	lds	r24, 0x0271	; 0x800271 <num_S2>
      1ce:	86 30       	cpi	r24, 0x06	; 6
      1d0:	a1 f4       	brne	.+40     	; 0x1fa <One_SecondFinish+0x64>
-     1d2:	80 91 86 02 	lds	r24, 0x0286	; 0x800286 <num_S1>
+     1d2:	80 91 72 02 	lds	r24, 0x0272	; 0x800272 <num_S1>
      1d6:	81 11       	cpse	r24, r1
      1d8:	10 c0       	rjmp	.+32     	; 0x1fa <One_SecondFinish+0x64>
 	{
 		end_event(handler);// to end tmu event and
-     1da:	80 91 84 02 	lds	r24, 0x0284	; 0x800284 <handler>
-     1de:	0e 94 a4 07 	call	0xf48	; 0xf48 <end_event>
+     1da:	80 91 70 02 	lds	r24, 0x0270	; 0x800270 <handler>
+     1de:	0e 94 cc 07 	call	0xf98	; 0xf98 <end_event>
 		TMU_DeInit(); // to stop ISR from timer
-     1e2:	0e 94 ad 07 	call	0xf5a	; 0xf5a <TMU_DeInit>
+     1e2:	0e 94 d5 07 	call	0xfaa	; 0xfaa <TMU_DeInit>
 		TMU_semphore=0; // to free the tmu
-     1e6:	10 92 b8 06 	sts	0x06B8, r1	; 0x8006b8 <TMU_semphore>
+     1e6:	10 92 a4 06 	sts	0x06A4, r1	; 0x8006a4 <TMU_semphore>
 		EEPROM_write(WRONG_TRIALS_LOCATION,0); //clear_WrongTrails
      1ea:	60 e0       	ldi	r22, 0x00	; 0
      1ec:	80 e1       	ldi	r24, 0x10	; 16
      1ee:	90 e0       	ldi	r25, 0x00	; 0
-     1f0:	0e 94 e9 06 	call	0xdd2	; 0xdd2 <EEPROM_write>
+     1f0:	0e 94 11 07 	call	0xe22	; 0xe22 <EEPROM_write>
 		Give_UserNewTry(0); // zero because i just cleared the num_trials
      1f4:	80 e0       	ldi	r24, 0x00	; 0
      1f6:	0e 94 99 00 	call	0x132	; 0x132 <Give_UserNewTry>
 	}
 	num_S1++;
-     1fa:	80 91 86 02 	lds	r24, 0x0286	; 0x800286 <num_S1>
+     1fa:	80 91 72 02 	lds	r24, 0x0272	; 0x800272 <num_S1>
      1fe:	8f 5f       	subi	r24, 0xFF	; 255
-     200:	80 93 86 02 	sts	0x0286, r24	; 0x800286 <num_S1>
+     200:	80 93 72 02 	sts	0x0272, r24	; 0x800272 <num_S1>
 	if (num_S1>9)
      204:	8a 30       	cpi	r24, 0x0A	; 10
      206:	38 f0       	brcs	.+14     	; 0x216 <One_SecondFinish+0x80>
 	{
 		num_S2++;
-     208:	80 91 85 02 	lds	r24, 0x0285	; 0x800285 <num_S2>
+     208:	80 91 71 02 	lds	r24, 0x0271	; 0x800271 <num_S2>
      20c:	8f 5f       	subi	r24, 0xFF	; 255
-     20e:	80 93 85 02 	sts	0x0285, r24	; 0x800285 <num_S2>
+     20e:	80 93 71 02 	sts	0x0271, r24	; 0x800271 <num_S2>
 		num_S1=0;
-     212:	10 92 86 02 	sts	0x0286, r1	; 0x800286 <num_S1>
+     212:	10 92 72 02 	sts	0x0272, r1	; 0x800272 <num_S1>
      216:	08 95       	ret
 
 00000218 <Change_PasswordCs>:
@@ -323,45 +323,45 @@ void Change_PasswordCs()
 {
 	uint8 i=PASSWOR_CS_LOCATION;
 	EEPROM_write(i++,(uint8)(Input_PasswordCs));
-     218:	60 91 8b 02 	lds	r22, 0x028B	; 0x80028b <Input_PasswordCs>
+     218:	60 91 77 02 	lds	r22, 0x0277	; 0x800277 <Input_PasswordCs>
      21c:	89 e0       	ldi	r24, 0x09	; 9
      21e:	90 e0       	ldi	r25, 0x00	; 0
-     220:	0e 94 e9 06 	call	0xdd2	; 0xdd2 <EEPROM_write>
+     220:	0e 94 11 07 	call	0xe22	; 0xe22 <EEPROM_write>
 	EEPROM_write(i++,(uint8)(Input_PasswordCs>>8));
-     224:	80 91 8b 02 	lds	r24, 0x028B	; 0x80028b <Input_PasswordCs>
-     228:	90 91 8c 02 	lds	r25, 0x028C	; 0x80028c <Input_PasswordCs+0x1>
-     22c:	a0 91 8d 02 	lds	r26, 0x028D	; 0x80028d <Input_PasswordCs+0x2>
-     230:	b0 91 8e 02 	lds	r27, 0x028E	; 0x80028e <Input_PasswordCs+0x3>
+     224:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <Input_PasswordCs>
+     228:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <Input_PasswordCs+0x1>
+     22c:	a0 91 79 02 	lds	r26, 0x0279	; 0x800279 <Input_PasswordCs+0x2>
+     230:	b0 91 7a 02 	lds	r27, 0x027A	; 0x80027a <Input_PasswordCs+0x3>
      234:	69 2f       	mov	r22, r25
      236:	7a 2f       	mov	r23, r26
      238:	8b 2f       	mov	r24, r27
      23a:	99 27       	eor	r25, r25
      23c:	8a e0       	ldi	r24, 0x0A	; 10
      23e:	90 e0       	ldi	r25, 0x00	; 0
-     240:	0e 94 e9 06 	call	0xdd2	; 0xdd2 <EEPROM_write>
+     240:	0e 94 11 07 	call	0xe22	; 0xe22 <EEPROM_write>
 	EEPROM_write(i++,(uint8)(Input_PasswordCs>>16));
-     244:	80 91 8b 02 	lds	r24, 0x028B	; 0x80028b <Input_PasswordCs>
-     248:	90 91 8c 02 	lds	r25, 0x028C	; 0x80028c <Input_PasswordCs+0x1>
-     24c:	a0 91 8d 02 	lds	r26, 0x028D	; 0x80028d <Input_PasswordCs+0x2>
-     250:	b0 91 8e 02 	lds	r27, 0x028E	; 0x80028e <Input_PasswordCs+0x3>
+     244:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <Input_PasswordCs>
+     248:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <Input_PasswordCs+0x1>
+     24c:	a0 91 79 02 	lds	r26, 0x0279	; 0x800279 <Input_PasswordCs+0x2>
+     250:	b0 91 7a 02 	lds	r27, 0x027A	; 0x80027a <Input_PasswordCs+0x3>
      254:	bd 01       	movw	r22, r26
      256:	88 27       	eor	r24, r24
      258:	99 27       	eor	r25, r25
      25a:	8b e0       	ldi	r24, 0x0B	; 11
      25c:	90 e0       	ldi	r25, 0x00	; 0
-     25e:	0e 94 e9 06 	call	0xdd2	; 0xdd2 <EEPROM_write>
+     25e:	0e 94 11 07 	call	0xe22	; 0xe22 <EEPROM_write>
 	EEPROM_write(i++,(uint8)(Input_PasswordCs>>24));
-     262:	80 91 8b 02 	lds	r24, 0x028B	; 0x80028b <Input_PasswordCs>
-     266:	90 91 8c 02 	lds	r25, 0x028C	; 0x80028c <Input_PasswordCs+0x1>
-     26a:	a0 91 8d 02 	lds	r26, 0x028D	; 0x80028d <Input_PasswordCs+0x2>
-     26e:	b0 91 8e 02 	lds	r27, 0x028E	; 0x80028e <Input_PasswordCs+0x3>
+     262:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <Input_PasswordCs>
+     266:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <Input_PasswordCs+0x1>
+     26a:	a0 91 79 02 	lds	r26, 0x0279	; 0x800279 <Input_PasswordCs+0x2>
+     26e:	b0 91 7a 02 	lds	r27, 0x027A	; 0x80027a <Input_PasswordCs+0x3>
      272:	6b 2f       	mov	r22, r27
      274:	77 27       	eor	r23, r23
      276:	88 27       	eor	r24, r24
      278:	99 27       	eor	r25, r25
      27a:	8c e0       	ldi	r24, 0x0C	; 12
      27c:	90 e0       	ldi	r25, 0x00	; 0
-     27e:	0e 94 e9 06 	call	0xdd2	; 0xdd2 <EEPROM_write>
+     27e:	0e 94 11 07 	call	0xe22	; 0xe22 <EEPROM_write>
      282:	08 95       	ret
 
 00000284 <Change_password>:
@@ -371,14 +371,14 @@ void Change_PasswordCs()
 void Change_password()
 {
 	if (System_logged) // system not logged
-     284:	80 91 ba 06 	lds	r24, 0x06BA	; 0x8006ba <System_logged>
+     284:	80 91 a6 06 	lds	r24, 0x06A6	; 0x8006a6 <System_logged>
      288:	88 23       	and	r24, r24
      28a:	e1 f0       	breq	.+56     	; 0x2c4 <Change_password+0x40>
 	{
 		lcd_clear(&mylcd);
      28c:	8d e6       	ldi	r24, 0x6D	; 109
      28e:	90 e0       	ldi	r25, 0x00	; 0
-     290:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     290:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 		lcd_str(&mylcd,0,0,"enter New*Password please*");
      294:	22 eb       	ldi	r18, 0xB2	; 178
      296:	30 e0       	ldi	r19, 0x00	; 0
@@ -386,19 +386,19 @@ void Change_password()
      29a:	60 e0       	ldi	r22, 0x00	; 0
      29c:	8d e6       	ldi	r24, 0x6D	; 109
      29e:	90 e0       	ldi	r25, 0x00	; 0
-     2a0:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     2a0:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 		Au_status = _BUFFER_PASSWORD;
-     2a4:	10 92 82 02 	sts	0x0282, r1	; 0x800282 <__data_end>
+     2a4:	10 92 6e 02 	sts	0x026E, r1	; 0x80026e <__data_end>
 		confirm_passwordCs=0;
-     2a8:	10 92 87 02 	sts	0x0287, r1	; 0x800287 <confirm_passwordCs>
-     2ac:	10 92 88 02 	sts	0x0288, r1	; 0x800288 <confirm_passwordCs+0x1>
-     2b0:	10 92 89 02 	sts	0x0289, r1	; 0x800289 <confirm_passwordCs+0x2>
-     2b4:	10 92 8a 02 	sts	0x028A, r1	; 0x80028a <confirm_passwordCs+0x3>
+     2a8:	10 92 73 02 	sts	0x0273, r1	; 0x800273 <confirm_passwordCs>
+     2ac:	10 92 74 02 	sts	0x0274, r1	; 0x800274 <confirm_passwordCs+0x1>
+     2b0:	10 92 75 02 	sts	0x0275, r1	; 0x800275 <confirm_passwordCs+0x2>
+     2b4:	10 92 76 02 	sts	0x0276, r1	; 0x800276 <confirm_passwordCs+0x3>
 		Change_PasswordSemphore=1;
      2b8:	81 e0       	ldi	r24, 0x01	; 1
-     2ba:	80 93 83 02 	sts	0x0283, r24	; 0x800283 <Change_PasswordSemphore>
+     2ba:	80 93 6f 02 	sts	0x026F, r24	; 0x80026f <Change_PasswordSemphore>
 		authentication_DispatcherSemphore=1;
-     2be:	80 93 b7 06 	sts	0x06B7, r24	; 0x8006b7 <authentication_DispatcherSemphore>
+     2be:	80 93 a3 06 	sts	0x06A3, r24	; 0x8006a3 <authentication_DispatcherSemphore>
      2c2:	08 95       	ret
 	}
 	else
@@ -406,7 +406,7 @@ void Change_password()
 		lcd_clear(&mylcd);
      2c4:	8d e6       	ldi	r24, 0x6D	; 109
      2c6:	90 e0       	ldi	r25, 0x00	; 0
-     2c8:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     2c8:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 		lcd_str(&mylcd,0,0,"enter system*first please*");
      2cc:	2d ec       	ldi	r18, 0xCD	; 205
      2ce:	30 e0       	ldi	r19, 0x00	; 0
@@ -414,7 +414,7 @@ void Change_password()
      2d2:	60 e0       	ldi	r22, 0x00	; 0
      2d4:	8d e6       	ldi	r24, 0x6D	; 109
      2d6:	90 e0       	ldi	r25, 0x00	; 0
-     2d8:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     2d8:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
@@ -433,7 +433,7 @@ void Change_password()
 		_delay_ms(1000);
 		SYSTEM_OPTIONS_flag=1; // to open options one more time
      2ee:	81 e0       	ldi	r24, 0x01	; 1
-     2f0:	80 93 b9 06 	sts	0x06B9, r24	; 0x8006b9 <SYSTEM_OPTIONS_flag>
+     2f0:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <SYSTEM_OPTIONS_flag>
      2f4:	08 95       	ret
 
 000002f6 <Authentication_Dispatcher>:
@@ -459,9 +459,9 @@ void Authentication_Dispatcher()
      312:	0f be       	out	0x3f, r0	; 63
      314:	cd bf       	out	0x3d, r28	; 61
 	authentication_DispatcherSemphore=0;
-     316:	10 92 b7 06 	sts	0x06B7, r1	; 0x8006b7 <authentication_DispatcherSemphore>
+     316:	10 92 a3 06 	sts	0x06A3, r1	; 0x8006a3 <authentication_DispatcherSemphore>
 	switch(Au_status)
-     31a:	80 91 82 02 	lds	r24, 0x0282	; 0x800282 <__data_end>
+     31a:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <__data_end>
      31e:	83 30       	cpi	r24, 0x03	; 3
      320:	09 f4       	brne	.+2      	; 0x324 <Authentication_Dispatcher+0x2e>
      322:	56 c0       	rjmp	.+172    	; 0x3d0 <Authentication_Dispatcher+0xda>
@@ -485,18 +485,18 @@ void Authentication_Dispatcher()
 		case _BUFFER_PASSWORD:
 		{
 			Input_PasswordCs=0;buffer_index=0;
-     344:	10 92 8b 02 	sts	0x028B, r1	; 0x80028b <Input_PasswordCs>
-     348:	10 92 8c 02 	sts	0x028C, r1	; 0x80028c <Input_PasswordCs+0x1>
-     34c:	10 92 8d 02 	sts	0x028D, r1	; 0x80028d <Input_PasswordCs+0x2>
-     350:	10 92 8e 02 	sts	0x028E, r1	; 0x80028e <Input_PasswordCs+0x3>
-     354:	10 92 8f 02 	sts	0x028F, r1	; 0x80028f <buffer_index>
+     344:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <Input_PasswordCs>
+     348:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <Input_PasswordCs+0x1>
+     34c:	10 92 79 02 	sts	0x0279, r1	; 0x800279 <Input_PasswordCs+0x2>
+     350:	10 92 7a 02 	sts	0x027A, r1	; 0x80027a <Input_PasswordCs+0x3>
+     354:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <buffer_index>
 			Change_CallBackfunction(Buffer_Password);
      358:	89 e4       	ldi	r24, 0x49	; 73
      35a:	90 e0       	ldi	r25, 0x00	; 0
-     35c:	0e 94 10 09 	call	0x1220	; 0x1220 <Change_CallBackfunction>
+     35c:	0e 94 38 09 	call	0x1270	; 0x1270 <Change_CallBackfunction>
 			Keypad_semphore=1;
      360:	81 e0       	ldi	r24, 0x01	; 1
-     362:	80 93 bb 06 	sts	0x06BB, r24	; 0x8006bb <Keypad_semphore>
+     362:	80 93 a7 06 	sts	0x06A7, r24	; 0x8006a7 <Keypad_semphore>
 			break;
      366:	f7 c0       	rjmp	.+494    	; 0x556 <__LOCK_REGION_LENGTH__+0x156>
 	}
@@ -506,7 +506,7 @@ static void Check_Password()
 {
 	authentication_DispatcherSemphore=1;
      368:	81 e0       	ldi	r24, 0x01	; 1
-     36a:	80 93 b7 06 	sts	0x06B7, r24	; 0x8006b7 <authentication_DispatcherSemphore>
+     36a:	80 93 a3 06 	sts	0x06A3, r24	; 0x8006a3 <authentication_DispatcherSemphore>
 
 static uint32 Read_PasswordCs()
 {
@@ -515,17 +515,17 @@ static uint32 Read_PasswordCs()
 	Password_Cs |= (uint32)EEPROM_read(i++);
      36e:	89 e0       	ldi	r24, 0x09	; 9
      370:	90 e0       	ldi	r25, 0x00	; 0
-     372:	0e 94 e2 06 	call	0xdc4	; 0xdc4 <EEPROM_read>
+     372:	0e 94 0a 07 	call	0xe14	; 0xe14 <EEPROM_read>
      376:	18 2f       	mov	r17, r24
 	Password_Cs |= (uint32)(EEPROM_read(i++))<<8;
      378:	8a e0       	ldi	r24, 0x0A	; 10
      37a:	90 e0       	ldi	r25, 0x00	; 0
-     37c:	0e 94 e2 06 	call	0xdc4	; 0xdc4 <EEPROM_read>
+     37c:	0e 94 0a 07 	call	0xe14	; 0xe14 <EEPROM_read>
      380:	08 2f       	mov	r16, r24
 	Password_Cs |= (uint32)(EEPROM_read(i++))<<16;
      382:	8b e0       	ldi	r24, 0x0B	; 11
      384:	90 e0       	ldi	r25, 0x00	; 0
-     386:	0e 94 e2 06 	call	0xdc4	; 0xdc4 <EEPROM_read>
+     386:	0e 94 0a 07 	call	0xe14	; 0xe14 <EEPROM_read>
      38a:	c8 2e       	mov	r12, r24
      38c:	d1 2c       	mov	r13, r1
      38e:	e1 2c       	mov	r14, r1
@@ -538,7 +538,7 @@ static uint32 Read_PasswordCs()
 	Password_Cs |= (uint32)(EEPROM_read(i))<<24;
      39c:	8c e0       	ldi	r24, 0x0C	; 12
      39e:	90 e0       	ldi	r25, 0x00	; 0
-     3a0:	0e 94 e2 06 	call	0xdc4	; 0xdc4 <EEPROM_read>
+     3a0:	0e 94 0a 07 	call	0xe14	; 0xe14 <EEPROM_read>
 }
 
 static void Check_Password()
@@ -546,10 +546,10 @@ static void Check_Password()
 	authentication_DispatcherSemphore=1;
 	if (Input_PasswordCs==Read_PasswordCs())//to check if the buffer index == to buffer index
      3a4:	f8 2a       	or	r15, r24
-     3a6:	80 91 8b 02 	lds	r24, 0x028B	; 0x80028b <Input_PasswordCs>
-     3aa:	90 91 8c 02 	lds	r25, 0x028C	; 0x80028c <Input_PasswordCs+0x1>
-     3ae:	a0 91 8d 02 	lds	r26, 0x028D	; 0x80028d <Input_PasswordCs+0x2>
-     3b2:	b0 91 8e 02 	lds	r27, 0x028E	; 0x80028e <Input_PasswordCs+0x3>
+     3a6:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <Input_PasswordCs>
+     3aa:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <Input_PasswordCs+0x1>
+     3ae:	a0 91 79 02 	lds	r26, 0x0279	; 0x800279 <Input_PasswordCs+0x2>
+     3b2:	b0 91 7a 02 	lds	r27, 0x027A	; 0x80027a <Input_PasswordCs+0x3>
      3b6:	8c 15       	cp	r24, r12
      3b8:	9d 05       	cpc	r25, r13
      3ba:	ae 05       	cpc	r26, r14
@@ -558,14 +558,14 @@ static void Check_Password()
 	{
 		Au_status = _PASSWORD_RIGHT;
      3c0:	83 e0       	ldi	r24, 0x03	; 3
-     3c2:	80 93 82 02 	sts	0x0282, r24	; 0x800282 <__data_end>
+     3c2:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <__data_end>
      3c6:	c7 c0       	rjmp	.+398    	; 0x556 <__LOCK_REGION_LENGTH__+0x156>
 	}
 	else
 	{
 		Au_status = _PASSWORD_WRONG;
      3c8:	84 e0       	ldi	r24, 0x04	; 4
-     3ca:	80 93 82 02 	sts	0x0282, r24	; 0x800282 <__data_end>
+     3ca:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <__data_end>
      3ce:	c3 c0       	rjmp	.+390    	; 0x556 <__LOCK_REGION_LENGTH__+0x156>
 			Check_Password();
 			break;
@@ -575,7 +575,7 @@ static void Check_Password()
 			lcd_clear(&mylcd); // clear
      3d0:	8d e6       	ldi	r24, 0x6D	; 109
      3d2:	90 e0       	ldi	r25, 0x00	; 0
-     3d4:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     3d4:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 			lcd_str(&mylcd,0,0,"password Right"); // tell user it's password right
      3d8:	28 ee       	ldi	r18, 0xE8	; 232
      3da:	30 e0       	ldi	r19, 0x00	; 0
@@ -583,7 +583,7 @@ static void Check_Password()
      3de:	60 e0       	ldi	r22, 0x00	; 0
      3e0:	8d e6       	ldi	r24, 0x6D	; 109
      3e2:	90 e0       	ldi	r25, 0x00	; 0
-     3e4:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     3e4:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
      3e8:	2f e3       	ldi	r18, 0x3F	; 63
      3ea:	8d e0       	ldi	r24, 0x0D	; 13
      3ec:	93 e0       	ldi	r25, 0x03	; 3
@@ -596,16 +596,16 @@ static void Check_Password()
 			_delay_ms(1000); // to make user see the message
 			SYSTEM_OPTIONS_flag = 1;
      3fa:	81 e0       	ldi	r24, 0x01	; 1
-     3fc:	80 93 b9 06 	sts	0x06B9, r24	; 0x8006b9 <SYSTEM_OPTIONS_flag>
+     3fc:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <SYSTEM_OPTIONS_flag>
 			System_logged=1;	// enter logged mode
-     400:	80 93 ba 06 	sts	0x06BA, r24	; 0x8006ba <System_logged>
+     400:	80 93 a6 06 	sts	0x06A6, r24	; 0x8006a6 <System_logged>
 			Keypad_semphore = 0; //free keypad
-     404:	10 92 bb 06 	sts	0x06BB, r1	; 0x8006bb <Keypad_semphore>
+     404:	10 92 a7 06 	sts	0x06A7, r1	; 0x8006a7 <Keypad_semphore>
 			EEPROM_write(WRONG_TRIALS_LOCATION,0); // zero the counter of wrong times of password
      408:	60 e0       	ldi	r22, 0x00	; 0
      40a:	80 e1       	ldi	r24, 0x10	; 16
      40c:	90 e0       	ldi	r25, 0x00	; 0
-     40e:	0e 94 e9 06 	call	0xdd2	; 0xdd2 <EEPROM_write>
+     40e:	0e 94 11 07 	call	0xe22	; 0xe22 <EEPROM_write>
 			break;
      412:	a1 c0       	rjmp	.+322    	; 0x556 <__LOCK_REGION_LENGTH__+0x156>
 }
@@ -616,7 +616,7 @@ static uint8 check_WrongTrials()
 	temp = EEPROM_read(WRONG_TRIALS_LOCATION); // read the current number of trial
      414:	80 e1       	ldi	r24, 0x10	; 16
      416:	90 e0       	ldi	r25, 0x00	; 0
-     418:	0e 94 e2 06 	call	0xdc4	; 0xdc4 <EEPROM_read>
+     418:	0e 94 0a 07 	call	0xe14	; 0xe14 <EEPROM_read>
 	if (temp < THREESHOLD_TRIALS)// check numbers of trials wrong_password
      41c:	83 30       	cpi	r24, 0x03	; 3
      41e:	28 f4       	brcc	.+10     	; 0x42a <__LOCK_REGION_LENGTH__+0x2a>
@@ -638,11 +638,11 @@ static uint8 check_WrongTrials()
 			else
 			{
 				Keypad_semphore = 0; //free keypad
-     42a:	10 92 bb 06 	sts	0x06BB, r1	; 0x8006bb <Keypad_semphore>
+     42a:	10 92 a7 06 	sts	0x06A7, r1	; 0x8006a7 <Keypad_semphore>
 				lcd_clear(&mylcd);	// clear lcd
      42e:	8d e6       	ldi	r24, 0x6D	; 109
      430:	90 e0       	ldi	r25, 0x00	; 0
-     432:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     432:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 				lcd_str(&mylcd,0,0,"you exceeded*limit of Trials*wait a minute"); // write massage
      436:	27 ef       	ldi	r18, 0xF7	; 247
      438:	30 e0       	ldi	r19, 0x00	; 0
@@ -650,7 +650,7 @@ static uint8 check_WrongTrials()
      43c:	60 e0       	ldi	r22, 0x00	; 0
      43e:	8d e6       	ldi	r24, 0x6D	; 109
      440:	90 e0       	ldi	r25, 0x00	; 0
-     442:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     442:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 	}
 }
 
@@ -669,20 +669,20 @@ static void Set_TimerOneMinute()
 	TMU_init(TMR0,_1MS);
      458:	60 e0       	ldi	r22, 0x00	; 0
      45a:	80 e0       	ldi	r24, 0x00	; 0
-     45c:	0e 94 3b 07 	call	0xe76	; 0xe76 <TMU_init>
+     45c:	0e 94 63 07 	call	0xec6	; 0xec6 <TMU_init>
 	Creat_NewEvent(&Authentication_Event,&handler);
-     460:	64 e8       	ldi	r22, 0x84	; 132
+     460:	60 e7       	ldi	r22, 0x70	; 112
      462:	72 e0       	ldi	r23, 0x02	; 2
      464:	ce 01       	movw	r24, r28
      466:	01 96       	adiw	r24, 0x01	; 1
-     468:	0e 94 47 07 	call	0xe8e	; 0xe8e <Creat_NewEvent>
+     468:	0e 94 6f 07 	call	0xede	; 0xede <Creat_NewEvent>
 	TMU_semphore=1;
      46c:	81 e0       	ldi	r24, 0x01	; 1
-     46e:	80 93 b8 06 	sts	0x06B8, r24	; 0x8006b8 <TMU_semphore>
+     46e:	80 93 a4 06 	sts	0x06A4, r24	; 0x8006a4 <TMU_semphore>
 	num_S1=0;  // set to 00
-     472:	10 92 86 02 	sts	0x0286, r1	; 0x800286 <num_S1>
+     472:	10 92 72 02 	sts	0x0272, r1	; 0x800272 <num_S1>
 	num_S2=0;
-     476:	10 92 85 02 	sts	0x0285, r1	; 0x800285 <num_S2>
+     476:	10 92 71 02 	sts	0x0271, r1	; 0x800271 <num_S2>
      47a:	6d c0       	rjmp	.+218    	; 0x556 <__LOCK_REGION_LENGTH__+0x156>
 			}
 			break;
@@ -690,30 +690,30 @@ static void Set_TimerOneMinute()
 		case _CONFRIM_PASSWORD:
 		{
 			confirm_passwordCs = Input_PasswordCs;
-     47c:	80 91 8b 02 	lds	r24, 0x028B	; 0x80028b <Input_PasswordCs>
-     480:	90 91 8c 02 	lds	r25, 0x028C	; 0x80028c <Input_PasswordCs+0x1>
-     484:	a0 91 8d 02 	lds	r26, 0x028D	; 0x80028d <Input_PasswordCs+0x2>
-     488:	b0 91 8e 02 	lds	r27, 0x028E	; 0x80028e <Input_PasswordCs+0x3>
-     48c:	80 93 87 02 	sts	0x0287, r24	; 0x800287 <confirm_passwordCs>
-     490:	90 93 88 02 	sts	0x0288, r25	; 0x800288 <confirm_passwordCs+0x1>
-     494:	a0 93 89 02 	sts	0x0289, r26	; 0x800289 <confirm_passwordCs+0x2>
-     498:	b0 93 8a 02 	sts	0x028A, r27	; 0x80028a <confirm_passwordCs+0x3>
+     47c:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <Input_PasswordCs>
+     480:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <Input_PasswordCs+0x1>
+     484:	a0 91 79 02 	lds	r26, 0x0279	; 0x800279 <Input_PasswordCs+0x2>
+     488:	b0 91 7a 02 	lds	r27, 0x027A	; 0x80027a <Input_PasswordCs+0x3>
+     48c:	80 93 73 02 	sts	0x0273, r24	; 0x800273 <confirm_passwordCs>
+     490:	90 93 74 02 	sts	0x0274, r25	; 0x800274 <confirm_passwordCs+0x1>
+     494:	a0 93 75 02 	sts	0x0275, r26	; 0x800275 <confirm_passwordCs+0x2>
+     498:	b0 93 76 02 	sts	0x0276, r27	; 0x800276 <confirm_passwordCs+0x3>
 			Input_PasswordCs=0;
-     49c:	10 92 8b 02 	sts	0x028B, r1	; 0x80028b <Input_PasswordCs>
-     4a0:	10 92 8c 02 	sts	0x028C, r1	; 0x80028c <Input_PasswordCs+0x1>
-     4a4:	10 92 8d 02 	sts	0x028D, r1	; 0x80028d <Input_PasswordCs+0x2>
-     4a8:	10 92 8e 02 	sts	0x028E, r1	; 0x80028e <Input_PasswordCs+0x3>
+     49c:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <Input_PasswordCs>
+     4a0:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <Input_PasswordCs+0x1>
+     4a4:	10 92 79 02 	sts	0x0279, r1	; 0x800279 <Input_PasswordCs+0x2>
+     4a8:	10 92 7a 02 	sts	0x027A, r1	; 0x80027a <Input_PasswordCs+0x3>
 			buffer_index=0;
-     4ac:	10 92 8f 02 	sts	0x028F, r1	; 0x80028f <buffer_index>
+     4ac:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <buffer_index>
 			lcd_goto(&mylcd,3,0);
      4b0:	40 e0       	ldi	r20, 0x00	; 0
      4b2:	63 e0       	ldi	r22, 0x03	; 3
      4b4:	8d e6       	ldi	r24, 0x6D	; 109
      4b6:	90 e0       	ldi	r25, 0x00	; 0
-     4b8:	0e 94 94 09 	call	0x1328	; 0x1328 <lcd_goto>
+     4b8:	0e 94 bc 09 	call	0x1378	; 0x1378 <lcd_goto>
 			Keypad_semphore=1;
      4bc:	81 e0       	ldi	r24, 0x01	; 1
-     4be:	80 93 bb 06 	sts	0x06BB, r24	; 0x8006bb <Keypad_semphore>
+     4be:	80 93 a7 06 	sts	0x06A7, r24	; 0x8006a7 <Keypad_semphore>
 			break;
      4c2:	49 c0       	rjmp	.+146    	; 0x556 <__LOCK_REGION_LENGTH__+0x156>
 		}
@@ -721,18 +721,18 @@ static void Set_TimerOneMinute()
 		{
 			SYSTEM_OPTIONS_flag=1;
      4c4:	81 e0       	ldi	r24, 0x01	; 1
-     4c6:	80 93 b9 06 	sts	0x06B9, r24	; 0x8006b9 <SYSTEM_OPTIONS_flag>
+     4c6:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <SYSTEM_OPTIONS_flag>
 			Change_PasswordSemphore=0;
-     4ca:	10 92 83 02 	sts	0x0283, r1	; 0x800283 <Change_PasswordSemphore>
+     4ca:	10 92 6f 02 	sts	0x026F, r1	; 0x80026f <Change_PasswordSemphore>
 			if (confirm_passwordCs==Input_PasswordCs)
-     4ce:	40 91 87 02 	lds	r20, 0x0287	; 0x800287 <confirm_passwordCs>
-     4d2:	50 91 88 02 	lds	r21, 0x0288	; 0x800288 <confirm_passwordCs+0x1>
-     4d6:	60 91 89 02 	lds	r22, 0x0289	; 0x800289 <confirm_passwordCs+0x2>
-     4da:	70 91 8a 02 	lds	r23, 0x028A	; 0x80028a <confirm_passwordCs+0x3>
-     4de:	80 91 8b 02 	lds	r24, 0x028B	; 0x80028b <Input_PasswordCs>
-     4e2:	90 91 8c 02 	lds	r25, 0x028C	; 0x80028c <Input_PasswordCs+0x1>
-     4e6:	a0 91 8d 02 	lds	r26, 0x028D	; 0x80028d <Input_PasswordCs+0x2>
-     4ea:	b0 91 8e 02 	lds	r27, 0x028E	; 0x80028e <Input_PasswordCs+0x3>
+     4ce:	40 91 73 02 	lds	r20, 0x0273	; 0x800273 <confirm_passwordCs>
+     4d2:	50 91 74 02 	lds	r21, 0x0274	; 0x800274 <confirm_passwordCs+0x1>
+     4d6:	60 91 75 02 	lds	r22, 0x0275	; 0x800275 <confirm_passwordCs+0x2>
+     4da:	70 91 76 02 	lds	r23, 0x0276	; 0x800276 <confirm_passwordCs+0x3>
+     4de:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <Input_PasswordCs>
+     4e2:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <Input_PasswordCs+0x1>
+     4e6:	a0 91 79 02 	lds	r26, 0x0279	; 0x800279 <Input_PasswordCs+0x2>
+     4ea:	b0 91 7a 02 	lds	r27, 0x027A	; 0x80027a <Input_PasswordCs+0x3>
      4ee:	48 17       	cp	r20, r24
      4f0:	59 07       	cpc	r21, r25
      4f2:	6a 07       	cpc	r22, r26
@@ -740,11 +740,11 @@ static void Set_TimerOneMinute()
      4f6:	d1 f4       	brne	.+52     	; 0x52c <__LOCK_REGION_LENGTH__+0x12c>
 			{
 				System_logged=0;
-     4f8:	10 92 ba 06 	sts	0x06BA, r1	; 0x8006ba <System_logged>
+     4f8:	10 92 a6 06 	sts	0x06A6, r1	; 0x8006a6 <System_logged>
 				lcd_clear(&mylcd);
      4fc:	8d e6       	ldi	r24, 0x6D	; 109
      4fe:	90 e0       	ldi	r25, 0x00	; 0
-     500:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     500:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 				Change_PasswordCs();
      504:	0e 94 0c 01 	call	0x218	; 0x218 <Change_PasswordCs>
 				lcd_str(&mylcd,0,0,"password*change*successfully");
@@ -754,7 +754,7 @@ static void Set_TimerOneMinute()
      50e:	60 e0       	ldi	r22, 0x00	; 0
      510:	8d e6       	ldi	r24, 0x6D	; 109
      512:	90 e0       	ldi	r25, 0x00	; 0
-     514:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     514:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
      518:	2f e3       	ldi	r18, 0x3F	; 63
      51a:	8d e0       	ldi	r24, 0x0D	; 13
      51c:	93 e0       	ldi	r25, 0x03	; 3
@@ -772,7 +772,7 @@ static void Set_TimerOneMinute()
 				lcd_clear(&mylcd);
      52c:	8d e6       	ldi	r24, 0x6D	; 109
      52e:	90 e0       	ldi	r25, 0x00	; 0
-     530:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     530:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 				lcd_str(&mylcd,0,0,"password*Don't match*please Try*again");
      534:	2f e3       	ldi	r18, 0x3F	; 63
      536:	31 e0       	ldi	r19, 0x01	; 1
@@ -780,7 +780,7 @@ static void Set_TimerOneMinute()
      53a:	60 e0       	ldi	r22, 0x00	; 0
      53c:	8d e6       	ldi	r24, 0x6D	; 109
      53e:	90 e0       	ldi	r25, 0x00	; 0
-     540:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     540:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
      544:	2f e3       	ldi	r18, 0x3F	; 63
      546:	8d e0       	ldi	r24, 0x0D	; 13
      548:	93 e0       	ldi	r25, 0x03	; 3
@@ -817,14 +817,14 @@ static void Set_TimerOneMinute()
 void System_LogIn()
 {
 	if (System_logged!=1) // system not logged
-     574:	80 91 ba 06 	lds	r24, 0x06BA	; 0x8006ba <System_logged>
+     574:	80 91 a6 06 	lds	r24, 0x06A6	; 0x8006a6 <System_logged>
      578:	81 30       	cpi	r24, 0x01	; 1
      57a:	91 f0       	breq	.+36     	; 0x5a0 <System_LogIn+0x2c>
 	{
 		lcd_clear(&mylcd);
      57c:	8d e6       	ldi	r24, 0x6D	; 109
      57e:	90 e0       	ldi	r25, 0x00	; 0
-     580:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     580:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 		lcd_str(&mylcd,0,0,"enter password*press'#'to*end-password*");
      584:	25 e6       	ldi	r18, 0x65	; 101
      586:	31 e0       	ldi	r19, 0x01	; 1
@@ -832,12 +832,12 @@ void System_LogIn()
      58a:	60 e0       	ldi	r22, 0x00	; 0
      58c:	8d e6       	ldi	r24, 0x6D	; 109
      58e:	90 e0       	ldi	r25, 0x00	; 0
-     590:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     590:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 		Au_status = _BUFFER_PASSWORD;
-     594:	10 92 82 02 	sts	0x0282, r1	; 0x800282 <__data_end>
+     594:	10 92 6e 02 	sts	0x026E, r1	; 0x80026e <__data_end>
 		authentication_DispatcherSemphore=1;
      598:	81 e0       	ldi	r24, 0x01	; 1
-     59a:	80 93 b7 06 	sts	0x06B7, r24	; 0x8006b7 <authentication_DispatcherSemphore>
+     59a:	80 93 a3 06 	sts	0x06A3, r24	; 0x8006a3 <authentication_DispatcherSemphore>
      59e:	08 95       	ret
 	}
 	else
@@ -845,7 +845,7 @@ void System_LogIn()
 		lcd_clear(&mylcd);
      5a0:	8d e6       	ldi	r24, 0x6D	; 109
      5a2:	90 e0       	ldi	r25, 0x00	; 0
-     5a4:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     5a4:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 		lcd_str(&mylcd,0,0,"system is logged");
      5a8:	2d e8       	ldi	r18, 0x8D	; 141
      5aa:	31 e0       	ldi	r19, 0x01	; 1
@@ -853,7 +853,7 @@ void System_LogIn()
      5ae:	60 e0       	ldi	r22, 0x00	; 0
      5b0:	8d e6       	ldi	r24, 0x6D	; 109
      5b2:	90 e0       	ldi	r25, 0x00	; 0
-     5b4:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     5b4:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
      5b8:	2f e9       	ldi	r18, 0x9F	; 159
      5ba:	86 e8       	ldi	r24, 0x86	; 134
      5bc:	91 e0       	ldi	r25, 0x01	; 1
@@ -866,7 +866,7 @@ void System_LogIn()
 		_delay_ms(500);
 		SYSTEM_OPTIONS_flag=1; // to open options one more time
      5ca:	81 e0       	ldi	r24, 0x01	; 1
-     5cc:	80 93 b9 06 	sts	0x06B9, r24	; 0x8006b9 <SYSTEM_OPTIONS_flag>
+     5cc:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <SYSTEM_OPTIONS_flag>
      5d0:	08 95       	ret
 
 000005d2 <spi_init>:
@@ -1482,8 +1482,8 @@ void Uart_TxInterruptEnable(void (*ptr)())
      91e:	bf 93       	push	r27
      920:	ef 93       	push	r30
      922:	ff 93       	push	r31
-     924:	e0 91 92 02 	lds	r30, 0x0292	; 0x800292 <ptr_CallBackfnUartTx>
-     928:	f0 91 93 02 	lds	r31, 0x0293	; 0x800293 <ptr_CallBackfnUartTx+0x1>
+     924:	e0 91 7e 02 	lds	r30, 0x027E	; 0x80027e <ptr_CallBackfnUartTx>
+     928:	f0 91 7f 02 	lds	r31, 0x027F	; 0x80027f <ptr_CallBackfnUartTx+0x1>
      92c:	09 95       	icall
      92e:	ff 91       	pop	r31
      930:	ef 91       	pop	r30
@@ -1522,8 +1522,8 @@ void Uart_TxInterruptEnable(void (*ptr)())
      96e:	ef 93       	push	r30
      970:	ff 93       	push	r31
      972:	8c b1       	in	r24, 0x0c	; 12
-     974:	e0 91 90 02 	lds	r30, 0x0290	; 0x800290 <ptr_CallBackfnUartRx>
-     978:	f0 91 91 02 	lds	r31, 0x0291	; 0x800291 <ptr_CallBackfnUartRx+0x1>
+     974:	e0 91 7c 02 	lds	r30, 0x027C	; 0x80027c <ptr_CallBackfnUartRx>
+     978:	f0 91 7d 02 	lds	r31, 0x027D	; 0x80027d <ptr_CallBackfnUartRx+0x1>
      97c:	09 95       	icall
      97e:	ff 91       	pop	r31
      980:	ef 91       	pop	r30
@@ -1560,8 +1560,8 @@ void Uart_TxInterruptEnable(void (*ptr)())
 void  Uart_RxInterruptEnable(void (*ptr)(uint8))
 {
 	ptr_CallBackfnUartRx = ptr;         // assign ptr to call back fun
-     9b2:	90 93 91 02 	sts	0x0291, r25	; 0x800291 <ptr_CallBackfnUartRx+0x1>
-     9b6:	80 93 90 02 	sts	0x0290, r24	; 0x800290 <ptr_CallBackfnUartRx>
+     9b2:	90 93 7d 02 	sts	0x027D, r25	; 0x80027d <ptr_CallBackfnUartRx+0x1>
+     9b6:	80 93 7c 02 	sts	0x027C, r24	; 0x80027c <ptr_CallBackfnUartRx>
 	ACCESS_REG_8BIT((UARTCONTROLB+UART_BASE)) |= 1<<RXCIE;                  // enable interrupt when data recieved 
      9ba:	57 9a       	sbi	0x0a, 7	; 10
      9bc:	08 95       	ret
@@ -1574,17 +1574,17 @@ void  Uart_RxInterruptEnable(void (*ptr)(uint8))
 	
 	RX_FlageDataReciving  = 1;					//set flage to make dispatcher look at the new data
      9be:	91 e0       	ldi	r25, 0x01	; 1
-     9c0:	90 93 98 02 	sts	0x0298, r25	; 0x800298 <RX_FlageDataReciving>
+     9c0:	90 93 84 02 	sts	0x0284, r25	; 0x800284 <RX_FlageDataReciving>
 	Rx_Buffer[RX_Buffer_Index++] = data;		//store in buffer and increament the index
-     9c4:	20 91 99 02 	lds	r18, 0x0299	; 0x800299 <RX_Buffer_Index>
-     9c8:	30 91 9a 02 	lds	r19, 0x029A	; 0x80029a <RX_Buffer_Index+0x1>
+     9c4:	20 91 85 02 	lds	r18, 0x0285	; 0x800285 <RX_Buffer_Index>
+     9c8:	30 91 86 02 	lds	r19, 0x0286	; 0x800286 <RX_Buffer_Index+0x1>
      9cc:	a9 01       	movw	r20, r18
      9ce:	4f 5f       	subi	r20, 0xFF	; 255
      9d0:	5f 4f       	sbci	r21, 0xFF	; 255
-     9d2:	50 93 9a 02 	sts	0x029A, r21	; 0x80029a <RX_Buffer_Index+0x1>
-     9d6:	40 93 99 02 	sts	0x0299, r20	; 0x800299 <RX_Buffer_Index>
+     9d2:	50 93 86 02 	sts	0x0286, r21	; 0x800286 <RX_Buffer_Index+0x1>
+     9d6:	40 93 85 02 	sts	0x0285, r20	; 0x800285 <RX_Buffer_Index>
      9da:	f9 01       	movw	r30, r18
-     9dc:	e5 56       	subi	r30, 0x65	; 101
+     9dc:	e9 57       	subi	r30, 0x79	; 121
      9de:	fd 4f       	sbci	r31, 0xFD	; 253
      9e0:	80 83       	st	Z, r24
      9e2:	08 95       	ret
@@ -1596,10 +1596,10 @@ void  Uart_RxInterruptEnable(void (*ptr)(uint8))
 	* Free buffer from locking to start save data
 	*/
 	RX_Buffer_Index = 0;   
-     9e4:	10 92 9a 02 	sts	0x029A, r1	; 0x80029a <RX_Buffer_Index+0x1>
-     9e8:	10 92 99 02 	sts	0x0299, r1	; 0x800299 <RX_Buffer_Index>
+     9e4:	10 92 86 02 	sts	0x0286, r1	; 0x800286 <RX_Buffer_Index+0x1>
+     9e8:	10 92 85 02 	sts	0x0285, r1	; 0x800285 <RX_Buffer_Index>
 	RX_FlageDataReciving =0; 
-     9ec:	10 92 98 02 	sts	0x0298, r1	; 0x800298 <RX_FlageDataReciving>
+     9ec:	10 92 84 02 	sts	0x0284, r1	; 0x800284 <RX_FlageDataReciving>
      9f0:	08 95       	ret
 
 000009f2 <Comm_RxInit>:
@@ -1620,7 +1620,7 @@ void Comm_RxInit(RX_cfg_t* ptr_cfg_str)
 	RX_CommFree(); // make sure the buffer ready to start RX_in
      9f8:	0e 94 f2 04 	call	0x9e4	; 0x9e4 <RX_CommFree>
 	static_RX_cnfg.ptr_user_fun = ptr_cfg_str->ptr_user_fun;	// call user funcation
-     9fc:	e4 e9       	ldi	r30, 0x94	; 148
+     9fc:	e0 e8       	ldi	r30, 0x80	; 128
      9fe:	f2 e0       	ldi	r31, 0x02	; 2
      a00:	88 81       	ld	r24, Y
      a02:	99 81       	ldd	r25, Y+1	; 0x01
@@ -1663,60 +1663,60 @@ void Comm_RxInit(RX_cfg_t* ptr_cfg_str)
 	* do algorthim of checking the confirmation letter
 	*/
 	if (RX_FlageDataReciving)			// check the flage 
-     a26:	80 91 98 02 	lds	r24, 0x0298	; 0x800298 <RX_FlageDataReciving>
+     a26:	80 91 84 02 	lds	r24, 0x0284	; 0x800284 <RX_FlageDataReciving>
      a2a:	88 23       	and	r24, r24
      a2c:	a9 f0       	breq	.+42     	; 0xa58 <RX_com_dispatch+0x32>
 	{
 
 		 RX_FlageDataReciving=0;				// clear the flage to stop checking till next byte 
-     a2e:	10 92 98 02 	sts	0x0298, r1	; 0x800298 <RX_FlageDataReciving>
+     a2e:	10 92 84 02 	sts	0x0284, r1	; 0x800284 <RX_FlageDataReciving>
 		 if (Rx_Buffer[RX_Buffer_Index-1] == static_RX_cnfg.cofm_letter)  // check the confirmation letter
-     a32:	60 91 99 02 	lds	r22, 0x0299	; 0x800299 <RX_Buffer_Index>
-     a36:	70 91 9a 02 	lds	r23, 0x029A	; 0x80029a <RX_Buffer_Index+0x1>
+     a32:	60 91 85 02 	lds	r22, 0x0285	; 0x800285 <RX_Buffer_Index>
+     a36:	70 91 86 02 	lds	r23, 0x0286	; 0x800286 <RX_Buffer_Index+0x1>
      a3a:	fb 01       	movw	r30, r22
-     a3c:	e6 56       	subi	r30, 0x66	; 102
+     a3c:	ea 57       	subi	r30, 0x7A	; 122
      a3e:	fd 4f       	sbci	r31, 0xFD	; 253
      a40:	90 81       	ld	r25, Z
-     a42:	80 91 97 02 	lds	r24, 0x0297	; 0x800297 <static_RX_cnfg+0x3>
+     a42:	80 91 83 02 	lds	r24, 0x0283	; 0x800283 <static_RX_cnfg+0x3>
      a46:	98 13       	cpse	r25, r24
      a48:	07 c0       	rjmp	.+14     	; 0xa58 <RX_com_dispatch+0x32>
 		 {
 			 Rx_Buffer[RX_Buffer_Index-1] = static_RX_cnfg.cofm_letter; // not needed 
 			static_RX_cnfg.ptr_user_fun(Rx_Buffer,RX_Buffer_Index);	 // call application funcation to indicate the receiving finished
-     a4a:	e0 91 94 02 	lds	r30, 0x0294	; 0x800294 <static_RX_cnfg>
-     a4e:	f0 91 95 02 	lds	r31, 0x0295	; 0x800295 <static_RX_cnfg+0x1>
-     a52:	8b e9       	ldi	r24, 0x9B	; 155
+     a4a:	e0 91 80 02 	lds	r30, 0x0280	; 0x800280 <static_RX_cnfg>
+     a4e:	f0 91 81 02 	lds	r31, 0x0281	; 0x800281 <static_RX_cnfg+0x1>
+     a52:	87 e8       	ldi	r24, 0x87	; 135
      a54:	92 e0       	ldi	r25, 0x02	; 2
      a56:	09 95       	icall
      a58:	08 95       	ret
 
 00000a5a <new_DataRx>:
-static uint8 First_digit,Second_digit;
-volatile static uint8 time_Seconds; // 0>>99
+
+
 
 static void new_DataRx(uint8 data) // from controller
 {
 	if(counter) // counter==1 that mean it rx the key"W S D A"
-     a5a:	90 91 8a 06 	lds	r25, 0x068A	; 0x80068a <counter>
+     a5a:	90 91 76 06 	lds	r25, 0x0676	; 0x800676 <counter>
      a5e:	99 23       	and	r25, r25
      a60:	41 f0       	breq	.+16     	; 0xa72 <new_DataRx+0x18>
 	{
 		counter=0;
-     a62:	10 92 8a 06 	sts	0x068A, r1	; 0x80068a <counter>
+     a62:	10 92 76 06 	sts	0x0676, r1	; 0x800676 <counter>
 		data_rx.power_level=data;
-     a66:	80 93 8c 06 	sts	0x068C, r24	; 0x80068c <data_rx+0x1>
+     a66:	80 93 78 06 	sts	0x0678, r24	; 0x800678 <data_rx+0x1>
 		Remote_ControlSemphore=1;
      a6a:	81 e0       	ldi	r24, 0x01	; 1
-     a6c:	80 93 b6 06 	sts	0x06B6, r24	; 0x8006b6 <Remote_ControlSemphore>
+     a6c:	80 93 a2 06 	sts	0x06A2, r24	; 0x8006a2 <Remote_ControlSemphore>
      a70:	08 95       	ret
 	}
 	else
 	{
 		data_rx.key=data;
-     a72:	80 93 8b 06 	sts	0x068B, r24	; 0x80068b <data_rx>
+     a72:	80 93 77 06 	sts	0x0677, r24	; 0x800677 <data_rx>
 		counter++;
      a76:	81 e0       	ldi	r24, 0x01	; 1
-     a78:	80 93 8a 06 	sts	0x068A, r24	; 0x80068a <counter>
+     a78:	80 93 76 06 	sts	0x0676, r24	; 0x800676 <counter>
      a7c:	08 95       	ret
 
 00000a7e <Command_TimerFinish>:
@@ -1726,15 +1726,15 @@ static void new_DataRx(uint8 data) // from controller
 static void Command_TimerFinish()
 {
 	if (Auto_BufferIndex < Auto_BufferSize )
-     a7e:	80 91 88 06 	lds	r24, 0x0688	; 0x800688 <Auto_BufferIndex>
-     a82:	90 91 89 06 	lds	r25, 0x0689	; 0x800689 <Auto_BufferSize>
+     a7e:	80 91 74 06 	lds	r24, 0x0674	; 0x800674 <Auto_BufferIndex>
+     a82:	90 91 75 06 	lds	r25, 0x0675	; 0x800675 <Auto_BufferSize>
      a86:	89 17       	cp	r24, r25
      a88:	d8 f5       	brcc	.+118    	; 0xb00 <Command_TimerFinish+0x82>
 	{ // the form of command i suppose will be [Dirction_8bit,Power_8bit,Time_16bit]
 		data_rx.key= ptr_AutoBufferCommands[Auto_BufferIndex++]; // take the first mean dirction and increament
-     a8a:	20 91 86 06 	lds	r18, 0x0686	; 0x800686 <ptr_AutoBufferCommands>
-     a8e:	30 91 87 06 	lds	r19, 0x0687	; 0x800687 <ptr_AutoBufferCommands+0x1>
-     a92:	eb e8       	ldi	r30, 0x8B	; 139
+     a8a:	20 91 72 06 	lds	r18, 0x0672	; 0x800672 <ptr_AutoBufferCommands>
+     a8e:	30 91 73 06 	lds	r19, 0x0673	; 0x800673 <ptr_AutoBufferCommands+0x1>
+     a92:	e7 e7       	ldi	r30, 0x77	; 119
      a94:	f6 e0       	ldi	r31, 0x06	; 6
      a96:	d9 01       	movw	r26, r18
      a98:	a8 0f       	add	r26, r24
@@ -1750,7 +1750,7 @@ static void Command_TimerFinish()
      aaa:	9c 91       	ld	r25, X
      aac:	91 83       	std	Z+1, r25	; 0x01
 		time_Seconds  = 0;
-     aae:	10 92 83 06 	sts	0x0683, r1	; 0x800683 <time_Seconds>
+     aae:	10 92 6f 06 	sts	0x066F, r1	; 0x80066f <time_Seconds>
 		time_Seconds  = (ptr_AutoBufferCommands[Auto_BufferIndex++]-48)*10; // the second digit
      ab2:	92 e0       	ldi	r25, 0x02	; 2
      ab4:	98 0f       	add	r25, r24
@@ -1764,12 +1764,12 @@ static void Command_TimerFinish()
      ac4:	44 0f       	add	r20, r20
      ac6:	44 0f       	add	r20, r20
      ac8:	94 0f       	add	r25, r20
-     aca:	90 93 83 06 	sts	0x0683, r25	; 0x800683 <time_Seconds>
+     aca:	90 93 6f 06 	sts	0x066F, r25	; 0x80066f <time_Seconds>
 		time_Seconds += (ptr_AutoBufferCommands[Auto_BufferIndex++]-48); // the first digit
      ace:	94 e0       	ldi	r25, 0x04	; 4
      ad0:	98 0f       	add	r25, r24
-     ad2:	90 93 88 06 	sts	0x0688, r25	; 0x800688 <Auto_BufferIndex>
-     ad6:	90 91 83 06 	lds	r25, 0x0683	; 0x800683 <time_Seconds>
+     ad2:	90 93 74 06 	sts	0x0674, r25	; 0x800674 <Auto_BufferIndex>
+     ad6:	90 91 6f 06 	lds	r25, 0x066F	; 0x80066f <time_Seconds>
      ada:	8d 5f       	subi	r24, 0xFD	; 253
      adc:	f9 01       	movw	r30, r18
      ade:	e8 0f       	add	r30, r24
@@ -1777,16 +1777,16 @@ static void Command_TimerFinish()
      ae2:	80 81       	ld	r24, Z
      ae4:	89 0f       	add	r24, r25
      ae6:	80 53       	subi	r24, 0x30	; 48
-     ae8:	80 93 83 06 	sts	0x0683, r24	; 0x800683 <time_Seconds>
+     ae8:	80 93 6f 06 	sts	0x066F, r24	; 0x80066f <time_Seconds>
 		First_digit=0;
-     aec:	10 92 85 06 	sts	0x0685, r1	; 0x800685 <First_digit>
+     aec:	10 92 71 06 	sts	0x0671, r1	; 0x800671 <First_digit>
 		Second_digit=0;
-     af0:	10 92 84 06 	sts	0x0684, r1	; 0x800684 <Second_digit>
+     af0:	10 92 70 06 	sts	0x0670, r1	; 0x800670 <Second_digit>
 		Remote_ControlSemphore=1;
      af4:	81 e0       	ldi	r24, 0x01	; 1
-     af6:	80 93 b6 06 	sts	0x06B6, r24	; 0x8006b6 <Remote_ControlSemphore>
+     af6:	80 93 a2 06 	sts	0x06A2, r24	; 0x8006a2 <Remote_ControlSemphore>
 		TMU_semphore=1;
-     afa:	80 93 b8 06 	sts	0x06B8, r24	; 0x8006b8 <TMU_semphore>
+     afa:	80 93 a4 06 	sts	0x06A4, r24	; 0x8006a4 <TMU_semphore>
      afe:	08 95       	ret
 	}
 	else
@@ -1794,13 +1794,13 @@ static void Command_TimerFinish()
 		// Commands finished
 		end_event(0);
      b00:	80 e0       	ldi	r24, 0x00	; 0
-     b02:	0e 94 a4 07 	call	0xf48	; 0xf48 <end_event>
+     b02:	0e 94 cc 07 	call	0xf98	; 0xf98 <end_event>
 		TMU_semphore=0;
-     b06:	10 92 b8 06 	sts	0x06B8, r1	; 0x8006b8 <TMU_semphore>
+     b06:	10 92 a4 06 	sts	0x06A4, r1	; 0x8006a4 <TMU_semphore>
 		lcd_clear(&mylcd);
      b0a:	8d e6       	ldi	r24, 0x6D	; 109
      b0c:	90 e0       	ldi	r25, 0x00	; 0
-     b0e:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     b0e:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 		lcd_str(&mylcd,0,0,"Commands Finish");
      b12:	2e e9       	ldi	r18, 0x9E	; 158
      b14:	31 e0       	ldi	r19, 0x01	; 1
@@ -1808,7 +1808,7 @@ static void Command_TimerFinish()
      b18:	60 e0       	ldi	r22, 0x00	; 0
      b1a:	8d e6       	ldi	r24, 0x6D	; 109
      b1c:	90 e0       	ldi	r25, 0x00	; 0
-     b1e:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     b1e:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
      b22:	08 95       	ret
 
 00000b24 <OneSecondFinish>:
@@ -1817,39 +1817,39 @@ static void Command_TimerFinish()
 
 static void OneSecondFinish()
 {
-	if ((--time_Seconds)) // decreament the seconds 
-     b24:	80 91 83 06 	lds	r24, 0x0683	; 0x800683 <time_Seconds>
+	if ((--time_Seconds)) // decreament the seconds
+     b24:	80 91 6f 06 	lds	r24, 0x066F	; 0x80066f <time_Seconds>
      b28:	81 50       	subi	r24, 0x01	; 1
-     b2a:	80 93 83 06 	sts	0x0683, r24	; 0x800683 <time_Seconds>
+     b2a:	80 93 6f 06 	sts	0x066F, r24	; 0x80066f <time_Seconds>
      b2e:	88 23       	and	r24, r24
      b30:	91 f0       	breq	.+36     	; 0xb56 <OneSecondFinish+0x32>
 	{
 		Remote_ControlSemphore=1;
      b32:	81 e0       	ldi	r24, 0x01	; 1
-     b34:	80 93 b6 06 	sts	0x06B6, r24	; 0x8006b6 <Remote_ControlSemphore>
+     b34:	80 93 a2 06 	sts	0x06A2, r24	; 0x8006a2 <Remote_ControlSemphore>
 		First_digit++;
-     b38:	80 91 85 06 	lds	r24, 0x0685	; 0x800685 <First_digit>
+     b38:	80 91 71 06 	lds	r24, 0x0671	; 0x800671 <First_digit>
      b3c:	8f 5f       	subi	r24, 0xFF	; 255
-     b3e:	80 93 85 06 	sts	0x0685, r24	; 0x800685 <First_digit>
+     b3e:	80 93 71 06 	sts	0x0671, r24	; 0x800671 <First_digit>
 		if (First_digit>9)
      b42:	8a 30       	cpi	r24, 0x0A	; 10
      b44:	78 f0       	brcs	.+30     	; 0xb64 <OneSecondFinish+0x40>
 		{
 			Second_digit++;
-     b46:	80 91 84 06 	lds	r24, 0x0684	; 0x800684 <Second_digit>
+     b46:	80 91 70 06 	lds	r24, 0x0670	; 0x800670 <Second_digit>
      b4a:	8f 5f       	subi	r24, 0xFF	; 255
-     b4c:	80 93 84 06 	sts	0x0684, r24	; 0x800684 <Second_digit>
+     b4c:	80 93 70 06 	sts	0x0670, r24	; 0x800670 <Second_digit>
 			First_digit=0;
-     b50:	10 92 85 06 	sts	0x0685, r1	; 0x800685 <First_digit>
+     b50:	10 92 71 06 	sts	0x0671, r1	; 0x800671 <First_digit>
      b54:	08 95       	ret
 		}
 	}
 	else
 	{
 		Auto_BufferIndex++;
-     b56:	80 91 88 06 	lds	r24, 0x0688	; 0x800688 <Auto_BufferIndex>
+     b56:	80 91 74 06 	lds	r24, 0x0674	; 0x800674 <Auto_BufferIndex>
      b5a:	8f 5f       	subi	r24, 0xFF	; 255
-     b5c:	80 93 88 06 	sts	0x0688, r24	; 0x800688 <Auto_BufferIndex>
+     b5c:	80 93 74 06 	sts	0x0674, r24	; 0x800674 <Auto_BufferIndex>
 		Command_TimerFinish();
      b60:	0e 94 3f 05 	call	0xa7e	; 0xa7e <Command_TimerFinish>
      b64:	08 95       	ret
@@ -1861,1784 +1861,1821 @@ static void OneSecondFinish()
 static void Commands_AutoBufferArrive(uint8* ptr_Data,uint16 Size)
 {
 	CommRX_DisspatcherSemphore=0; // Close the Disspatcher of work Becuase i received what i need
-     b66:	10 92 b5 06 	sts	0x06B5, r1	; 0x8006b5 <CommRX_DisspatcherSemphore>
+     b66:	10 92 a1 06 	sts	0x06A1, r1	; 0x8006a1 <CommRX_DisspatcherSemphore>
 	Remote_ControlSemphore=1; // work the controller motor
      b6a:	21 e0       	ldi	r18, 0x01	; 1
-     b6c:	20 93 b6 06 	sts	0x06B6, r18	; 0x8006b6 <Remote_ControlSemphore>
+     b6c:	20 93 a2 06 	sts	0x06A2, r18	; 0x8006a2 <Remote_ControlSemphore>
 	Auto_BufferSize=Size-1;
      b70:	61 50       	subi	r22, 0x01	; 1
-     b72:	60 93 89 06 	sts	0x0689, r22	; 0x800689 <Auto_BufferSize>
+     b72:	60 93 75 06 	sts	0x0675, r22	; 0x800675 <Auto_BufferSize>
 	ptr_AutoBufferCommands=ptr_Data;
-     b76:	90 93 87 06 	sts	0x0687, r25	; 0x800687 <ptr_AutoBufferCommands+0x1>
-     b7a:	80 93 86 06 	sts	0x0686, r24	; 0x800686 <ptr_AutoBufferCommands>
+     b76:	90 93 73 06 	sts	0x0673, r25	; 0x800673 <ptr_AutoBufferCommands+0x1>
+     b7a:	80 93 72 06 	sts	0x0672, r24	; 0x800672 <ptr_AutoBufferCommands>
 	Command_TimerFinish();
      b7e:	0e 94 3f 05 	call	0xa7e	; 0xa7e <Command_TimerFinish>
+	lcd_clear(&mylcd);
+     b82:	8d e6       	ldi	r24, 0x6D	; 109
+     b84:	90 e0       	ldi	r25, 0x00	; 0
+     b86:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
+	lcd_str(&mylcd,0,0,"State:");
+     b8a:	2e ea       	ldi	r18, 0xAE	; 174
+     b8c:	31 e0       	ldi	r19, 0x01	; 1
+     b8e:	40 e0       	ldi	r20, 0x00	; 0
+     b90:	60 e0       	ldi	r22, 0x00	; 0
+     b92:	8d e6       	ldi	r24, 0x6D	; 109
+     b94:	90 e0       	ldi	r25, 0x00	; 0
+     b96:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
+	lcd_str(&mylcd,1,0,"Power:");
+     b9a:	25 eb       	ldi	r18, 0xB5	; 181
+     b9c:	31 e0       	ldi	r19, 0x01	; 1
+     b9e:	40 e0       	ldi	r20, 0x00	; 0
+     ba0:	61 e0       	ldi	r22, 0x01	; 1
+     ba2:	8d e6       	ldi	r24, 0x6D	; 109
+     ba4:	90 e0       	ldi	r25, 0x00	; 0
+     ba6:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
+	lcd_str(&mylcd,2,0,"Time:");
+     baa:	2c eb       	ldi	r18, 0xBC	; 188
+     bac:	31 e0       	ldi	r19, 0x01	; 1
+     bae:	40 e0       	ldi	r20, 0x00	; 0
+     bb0:	62 e0       	ldi	r22, 0x02	; 2
+     bb2:	8d e6       	ldi	r24, 0x6D	; 109
+     bb4:	90 e0       	ldi	r25, 0x00	; 0
+     bb6:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
+	
 	TMU_init(TMR0,_1MS); // set timer to start working
-     b82:	60 e0       	ldi	r22, 0x00	; 0
-     b84:	80 e0       	ldi	r24, 0x00	; 0
-     b86:	0e 94 3b 07 	call	0xe76	; 0xe76 <TMU_init>
-     b8a:	08 95       	ret
+     bba:	60 e0       	ldi	r22, 0x00	; 0
+     bbc:	80 e0       	ldi	r24, 0x00	; 0
+     bbe:	0e 94 63 07 	call	0xec6	; 0xec6 <TMU_init>
+     bc2:	08 95       	ret
 
-00000b8c <get_mode>:
+00000bc4 <get_mode>:
 
 }
 
 static void get_mode(uint8 key)
 {
-     b8c:	1f 93       	push	r17
-     b8e:	cf 93       	push	r28
-     b90:	df 93       	push	r29
-     b92:	cd b7       	in	r28, 0x3d	; 61
-     b94:	de b7       	in	r29, 0x3e	; 62
-     b96:	2c 97       	sbiw	r28, 0x0c	; 12
-     b98:	0f b6       	in	r0, 0x3f	; 63
-     b9a:	f8 94       	cli
-     b9c:	de bf       	out	0x3e, r29	; 62
-     b9e:	0f be       	out	0x3f, r0	; 63
-     ba0:	cd bf       	out	0x3d, r28	; 61
-     ba2:	18 2f       	mov	r17, r24
+     bc4:	1f 93       	push	r17
+     bc6:	cf 93       	push	r28
+     bc8:	df 93       	push	r29
+     bca:	cd b7       	in	r28, 0x3d	; 61
+     bcc:	de b7       	in	r29, 0x3e	; 62
+     bce:	2c 97       	sbiw	r28, 0x0c	; 12
+     bd0:	0f b6       	in	r0, 0x3f	; 63
+     bd2:	f8 94       	cli
+     bd4:	de bf       	out	0x3e, r29	; 62
+     bd6:	0f be       	out	0x3f, r0	; 63
+     bd8:	cd bf       	out	0x3d, r28	; 61
+     bda:	18 2f       	mov	r17, r24
 	Keypad_semphore=0; // to lock keypad
-     ba4:	10 92 bb 06 	sts	0x06BB, r1	; 0x8006bb <Keypad_semphore>
+     bdc:	10 92 a7 06 	sts	0x06A7, r1	; 0x8006a7 <Keypad_semphore>
 	spi_init(&my_spi);
-     ba8:	80 e6       	ldi	r24, 0x60	; 96
-     baa:	90 e0       	ldi	r25, 0x00	; 0
-     bac:	0e 94 e9 02 	call	0x5d2	; 0x5d2 <spi_init>
+     be0:	80 e6       	ldi	r24, 0x60	; 96
+     be2:	90 e0       	ldi	r25, 0x00	; 0
+     be4:	0e 94 e9 02 	call	0x5d2	; 0x5d2 <spi_init>
 	if (key == '1')
-     bb0:	11 33       	cpi	r17, 0x31	; 49
-     bb2:	69 f4       	brne	.+26     	; 0xbce <get_mode+0x42>
-	{
-		Rov_ControlStatus = LIVE_CONTROL;
-     bb4:	10 92 8d 06 	sts	0x068D, r1	; 0x80068d <Rov_ControlStatus>
-		Uart_init();   //channel used for live control it can be configured
-     bb8:	0e 94 d0 04 	call	0x9a0	; 0x9a0 <Uart_init>
-		Uart_RxInterruptEnable(new_DataRx);
-     bbc:	8d e2       	ldi	r24, 0x2D	; 45
-     bbe:	95 e0       	ldi	r25, 0x05	; 5
-     bc0:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <Uart_RxInterruptEnable>
-		digitalWrite(12,SET_VALUE_LOW);
-     bc4:	60 e0       	ldi	r22, 0x00	; 0
-     bc6:	8c e0       	ldi	r24, 0x0C	; 12
-     bc8:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
-     bcc:	44 c0       	rjmp	.+136    	; 0xc56 <get_mode+0xca>
-	}
-	else if(key == '2')
-     bce:	12 33       	cpi	r17, 0x32	; 50
-     bd0:	51 f5       	brne	.+84     	; 0xc26 <get_mode+0x9a>
+     be8:	11 33       	cpi	r17, 0x31	; 49
+     bea:	09 f5       	brne	.+66     	; 0xc2e <get_mode+0x6a>
 	{
 		lcd_clear(&mylcd);
-     bd2:	8d e6       	ldi	r24, 0x6D	; 109
-     bd4:	90 e0       	ldi	r25, 0x00	; 0
-     bd6:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     bec:	8d e6       	ldi	r24, 0x6D	; 109
+     bee:	90 e0       	ldi	r25, 0x00	; 0
+     bf0:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
+		lcd_str(&mylcd,0,0,"State:");
+     bf4:	2e ea       	ldi	r18, 0xAE	; 174
+     bf6:	31 e0       	ldi	r19, 0x01	; 1
+     bf8:	40 e0       	ldi	r20, 0x00	; 0
+     bfa:	60 e0       	ldi	r22, 0x00	; 0
+     bfc:	8d e6       	ldi	r24, 0x6D	; 109
+     bfe:	90 e0       	ldi	r25, 0x00	; 0
+     c00:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
+		lcd_str(&mylcd,1,0,"Power:");
+     c04:	25 eb       	ldi	r18, 0xB5	; 181
+     c06:	31 e0       	ldi	r19, 0x01	; 1
+     c08:	40 e0       	ldi	r20, 0x00	; 0
+     c0a:	61 e0       	ldi	r22, 0x01	; 1
+     c0c:	8d e6       	ldi	r24, 0x6D	; 109
+     c0e:	90 e0       	ldi	r25, 0x00	; 0
+     c10:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
+		Rov_ControlStatus = LIVE_CONTROL;
+     c14:	10 92 79 06 	sts	0x0679, r1	; 0x800679 <Rov_ControlStatus>
+		Uart_init();   //channel used for live control it can be configured
+     c18:	0e 94 d0 04 	call	0x9a0	; 0x9a0 <Uart_init>
+		Uart_RxInterruptEnable(new_DataRx);
+     c1c:	8d e2       	ldi	r24, 0x2D	; 45
+     c1e:	95 e0       	ldi	r25, 0x05	; 5
+     c20:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <Uart_RxInterruptEnable>
+		digitalWrite(12,SET_VALUE_LOW);
+     c24:	60 e0       	ldi	r22, 0x00	; 0
+     c26:	8c e0       	ldi	r24, 0x0C	; 12
+     c28:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
+     c2c:	44 c0       	rjmp	.+136    	; 0xcb6 <get_mode+0xf2>
+	}
+	else if(key == '2')
+     c2e:	12 33       	cpi	r17, 0x32	; 50
+     c30:	51 f5       	brne	.+84     	; 0xc86 <get_mode+0xc2>
+	{
+		lcd_clear(&mylcd);
+     c32:	8d e6       	ldi	r24, 0x6D	; 109
+     c34:	90 e0       	ldi	r25, 0x00	; 0
+     c36:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 		lcd_str(&mylcd,0,0,"Wait Commands");
-     bda:	2e ea       	ldi	r18, 0xAE	; 174
-     bdc:	31 e0       	ldi	r19, 0x01	; 1
-     bde:	40 e0       	ldi	r20, 0x00	; 0
-     be0:	60 e0       	ldi	r22, 0x00	; 0
-     be2:	8d e6       	ldi	r24, 0x6D	; 109
-     be4:	90 e0       	ldi	r25, 0x00	; 0
-     be6:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     c3a:	22 ec       	ldi	r18, 0xC2	; 194
+     c3c:	31 e0       	ldi	r19, 0x01	; 1
+     c3e:	40 e0       	ldi	r20, 0x00	; 0
+     c40:	60 e0       	ldi	r22, 0x00	; 0
+     c42:	8d e6       	ldi	r24, 0x6D	; 109
+     c44:	90 e0       	ldi	r25, 0x00	; 0
+     c46:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 		Rov_ControlStatus = AUTTO_BUFFER_CONTROL;
-     bea:	11 e0       	ldi	r17, 0x01	; 1
-     bec:	10 93 8d 06 	sts	0x068D, r17	; 0x80068d <Rov_ControlStatus>
+     c4a:	11 e0       	ldi	r17, 0x01	; 1
+     c4c:	10 93 79 06 	sts	0x0679, r17	; 0x800679 <Rov_ControlStatus>
 		RX_cfg_t Buffer_CommandsConfg={Commands_AutoBufferArrive,UART0,'*'}; // no need for static because it's already saved in static variable in the CommRx.c
-     bf0:	83 eb       	ldi	r24, 0xB3	; 179
-     bf2:	95 e0       	ldi	r25, 0x05	; 5
-     bf4:	9a 87       	std	Y+10, r25	; 0x0a
-     bf6:	89 87       	std	Y+9, r24	; 0x09
-     bf8:	1b 86       	std	Y+11, r1	; 0x0b
-     bfa:	8a e2       	ldi	r24, 0x2A	; 42
-     bfc:	8c 87       	std	Y+12, r24	; 0x0c
+     c50:	83 eb       	ldi	r24, 0xB3	; 179
+     c52:	95 e0       	ldi	r25, 0x05	; 5
+     c54:	9a 87       	std	Y+10, r25	; 0x0a
+     c56:	89 87       	std	Y+9, r24	; 0x09
+     c58:	1b 86       	std	Y+11, r1	; 0x0b
+     c5a:	8a e2       	ldi	r24, 0x2A	; 42
+     c5c:	8c 87       	std	Y+12, r24	; 0x0c
 		Comm_RxInit(&Buffer_CommandsConfg);
-     bfe:	ce 01       	movw	r24, r28
-     c00:	09 96       	adiw	r24, 0x09	; 9
-     c02:	0e 94 f9 04 	call	0x9f2	; 0x9f2 <Comm_RxInit>
+     c5e:	ce 01       	movw	r24, r28
+     c60:	09 96       	adiw	r24, 0x09	; 9
+     c62:	0e 94 f9 04 	call	0x9f2	; 0x9f2 <Comm_RxInit>
 		CommRX_DisspatcherSemphore=1;
-     c06:	10 93 b5 06 	sts	0x06B5, r17	; 0x8006b5 <CommRX_DisspatcherSemphore>
+     c66:	10 93 a1 06 	sts	0x06A1, r17	; 0x8006a1 <CommRX_DisspatcherSemphore>
 		Struct_EventConfg_t NewCommand_Event ={1000,PEROIDEC,1,OneSecondFinish}; // new_event confg  after 1 second will call OneSecondFinish
-     c0a:	88 e0       	ldi	r24, 0x08	; 8
-     c0c:	eb e7       	ldi	r30, 0x7B	; 123
-     c0e:	f0 e0       	ldi	r31, 0x00	; 0
-     c10:	de 01       	movw	r26, r28
-     c12:	11 96       	adiw	r26, 0x01	; 1
-     c14:	01 90       	ld	r0, Z+
-     c16:	0d 92       	st	X+, r0
-     c18:	8a 95       	dec	r24
-     c1a:	e1 f7       	brne	.-8      	; 0xc14 <get_mode+0x88>
+     c6a:	88 e0       	ldi	r24, 0x08	; 8
+     c6c:	eb e7       	ldi	r30, 0x7B	; 123
+     c6e:	f0 e0       	ldi	r31, 0x00	; 0
+     c70:	de 01       	movw	r26, r28
+     c72:	11 96       	adiw	r26, 0x01	; 1
+     c74:	01 90       	ld	r0, Z+
+     c76:	0d 92       	st	X+, r0
+     c78:	8a 95       	dec	r24
+     c7a:	e1 f7       	brne	.-8      	; 0xc74 <get_mode+0xb0>
 		creat_oneHandlerEvent(&NewCommand_Event);
-     c1c:	ce 01       	movw	r24, r28
-     c1e:	01 96       	adiw	r24, 0x01	; 1
-     c20:	0e 94 81 07 	call	0xf02	; 0xf02 <creat_oneHandlerEvent>
-     c24:	18 c0       	rjmp	.+48     	; 0xc56 <get_mode+0xca>
+     c7c:	ce 01       	movw	r24, r28
+     c7e:	01 96       	adiw	r24, 0x01	; 1
+     c80:	0e 94 a9 07 	call	0xf52	; 0xf52 <creat_oneHandlerEvent>
+     c84:	18 c0       	rjmp	.+48     	; 0xcb6 <get_mode+0xf2>
 	}
 	else
 	{
 		lcd_clear(&mylcd);
-     c26:	8d e6       	ldi	r24, 0x6D	; 109
-     c28:	90 e0       	ldi	r25, 0x00	; 0
-     c2a:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     c86:	8d e6       	ldi	r24, 0x6D	; 109
+     c88:	90 e0       	ldi	r25, 0x00	; 0
+     c8a:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 		lcd_str(&mylcd,0,0,"wrong choice");
-     c2e:	2c eb       	ldi	r18, 0xBC	; 188
-     c30:	31 e0       	ldi	r19, 0x01	; 1
-     c32:	40 e0       	ldi	r20, 0x00	; 0
-     c34:	60 e0       	ldi	r22, 0x00	; 0
-     c36:	8d e6       	ldi	r24, 0x6D	; 109
-     c38:	90 e0       	ldi	r25, 0x00	; 0
-     c3a:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
-     c3e:	2f ed       	ldi	r18, 0xDF	; 223
-     c40:	82 e2       	ldi	r24, 0x22	; 34
-     c42:	92 e0       	ldi	r25, 0x02	; 2
-     c44:	21 50       	subi	r18, 0x01	; 1
-     c46:	80 40       	sbci	r24, 0x00	; 0
-     c48:	90 40       	sbci	r25, 0x00	; 0
-     c4a:	e1 f7       	brne	.-8      	; 0xc44 <get_mode+0xb8>
-     c4c:	00 c0       	rjmp	.+0      	; 0xc4e <get_mode+0xc2>
-     c4e:	00 00       	nop
+     c8e:	20 ed       	ldi	r18, 0xD0	; 208
+     c90:	31 e0       	ldi	r19, 0x01	; 1
+     c92:	40 e0       	ldi	r20, 0x00	; 0
+     c94:	60 e0       	ldi	r22, 0x00	; 0
+     c96:	8d e6       	ldi	r24, 0x6D	; 109
+     c98:	90 e0       	ldi	r25, 0x00	; 0
+     c9a:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
+     c9e:	2f ed       	ldi	r18, 0xDF	; 223
+     ca0:	82 e2       	ldi	r24, 0x22	; 34
+     ca2:	92 e0       	ldi	r25, 0x02	; 2
+     ca4:	21 50       	subi	r18, 0x01	; 1
+     ca6:	80 40       	sbci	r24, 0x00	; 0
+     ca8:	90 40       	sbci	r25, 0x00	; 0
+     caa:	e1 f7       	brne	.-8      	; 0xca4 <get_mode+0xe0>
+     cac:	00 c0       	rjmp	.+0      	; 0xcae <get_mode+0xea>
+     cae:	00 00       	nop
 		_delay_ms(700);
 		SYSTEM_OPTIONS_flag=1;
-     c50:	81 e0       	ldi	r24, 0x01	; 1
-     c52:	80 93 b9 06 	sts	0x06B9, r24	; 0x8006b9 <SYSTEM_OPTIONS_flag>
+     cb0:	81 e0       	ldi	r24, 0x01	; 1
+     cb2:	80 93 a5 06 	sts	0x06A5, r24	; 0x8006a5 <SYSTEM_OPTIONS_flag>
 	}
 }
-     c56:	2c 96       	adiw	r28, 0x0c	; 12
-     c58:	0f b6       	in	r0, 0x3f	; 63
-     c5a:	f8 94       	cli
-     c5c:	de bf       	out	0x3e, r29	; 62
-     c5e:	0f be       	out	0x3f, r0	; 63
-     c60:	cd bf       	out	0x3d, r28	; 61
-     c62:	df 91       	pop	r29
-     c64:	cf 91       	pop	r28
-     c66:	1f 91       	pop	r17
-     c68:	08 95       	ret
+     cb6:	2c 96       	adiw	r28, 0x0c	; 12
+     cb8:	0f b6       	in	r0, 0x3f	; 63
+     cba:	f8 94       	cli
+     cbc:	de bf       	out	0x3e, r29	; 62
+     cbe:	0f be       	out	0x3f, r0	; 63
+     cc0:	cd bf       	out	0x3d, r28	; 61
+     cc2:	df 91       	pop	r29
+     cc4:	cf 91       	pop	r28
+     cc6:	1f 91       	pop	r17
+     cc8:	08 95       	ret
 
-00000c6a <Remot_controlMode>:
+00000cca <Remot_controlMode>:
 
 void Remot_controlMode()
 {
 	lcd_clear(&mylcd);
-     c6a:	8d e6       	ldi	r24, 0x6D	; 109
-     c6c:	90 e0       	ldi	r25, 0x00	; 0
-     c6e:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     cca:	8d e6       	ldi	r24, 0x6D	; 109
+     ccc:	90 e0       	ldi	r25, 0x00	; 0
+     cce:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 	if (System_logged)
-     c72:	80 91 ba 06 	lds	r24, 0x06BA	; 0x8006ba <System_logged>
-     c76:	88 23       	and	r24, r24
-     c78:	91 f0       	breq	.+36     	; 0xc9e <Remot_controlMode+0x34>
+     cd2:	80 91 a6 06 	lds	r24, 0x06A6	; 0x8006a6 <System_logged>
+     cd6:	88 23       	and	r24, r24
+     cd8:	91 f0       	breq	.+36     	; 0xcfe <Remot_controlMode+0x34>
 	{
 		lcd_str(&mylcd,0,0,"enter mode*1-live control*2-auto buffer*");
-     c7a:	29 ec       	ldi	r18, 0xC9	; 201
-     c7c:	31 e0       	ldi	r19, 0x01	; 1
-     c7e:	40 e0       	ldi	r20, 0x00	; 0
-     c80:	60 e0       	ldi	r22, 0x00	; 0
-     c82:	8d e6       	ldi	r24, 0x6D	; 109
-     c84:	90 e0       	ldi	r25, 0x00	; 0
-     c86:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     cda:	2d ed       	ldi	r18, 0xDD	; 221
+     cdc:	31 e0       	ldi	r19, 0x01	; 1
+     cde:	40 e0       	ldi	r20, 0x00	; 0
+     ce0:	60 e0       	ldi	r22, 0x00	; 0
+     ce2:	8d e6       	ldi	r24, 0x6D	; 109
+     ce4:	90 e0       	ldi	r25, 0x00	; 0
+     ce6:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 		kpad_init(&mykeypad,get_mode);
-     c8a:	66 ec       	ldi	r22, 0xC6	; 198
-     c8c:	75 e0       	ldi	r23, 0x05	; 5
-     c8e:	86 e6       	ldi	r24, 0x66	; 102
-     c90:	90 e0       	ldi	r25, 0x00	; 0
-     c92:	0e 94 f5 07 	call	0xfea	; 0xfea <kpad_init>
+     cea:	62 ee       	ldi	r22, 0xE2	; 226
+     cec:	75 e0       	ldi	r23, 0x05	; 5
+     cee:	86 e6       	ldi	r24, 0x66	; 102
+     cf0:	90 e0       	ldi	r25, 0x00	; 0
+     cf2:	0e 94 1d 08 	call	0x103a	; 0x103a <kpad_init>
 		Keypad_semphore=1;
-     c96:	81 e0       	ldi	r24, 0x01	; 1
-     c98:	80 93 bb 06 	sts	0x06BB, r24	; 0x8006bb <Keypad_semphore>
-     c9c:	08 95       	ret
+     cf6:	81 e0       	ldi	r24, 0x01	; 1
+     cf8:	80 93 a7 06 	sts	0x06A7, r24	; 0x8006a7 <Keypad_semphore>
+     cfc:	08 95       	ret
 	}
 	else
 	{
 		lcd_str(&mylcd,0,0,"enter system*first please*");
-     c9e:	2d ec       	ldi	r18, 0xCD	; 205
-     ca0:	30 e0       	ldi	r19, 0x00	; 0
-     ca2:	40 e0       	ldi	r20, 0x00	; 0
-     ca4:	60 e0       	ldi	r22, 0x00	; 0
-     ca6:	8d e6       	ldi	r24, 0x6D	; 109
-     ca8:	90 e0       	ldi	r25, 0x00	; 0
-     caa:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
-     cae:	08 95       	ret
+     cfe:	2d ec       	ldi	r18, 0xCD	; 205
+     d00:	30 e0       	ldi	r19, 0x00	; 0
+     d02:	40 e0       	ldi	r20, 0x00	; 0
+     d04:	60 e0       	ldi	r22, 0x00	; 0
+     d06:	8d e6       	ldi	r24, 0x6D	; 109
+     d08:	90 e0       	ldi	r25, 0x00	; 0
+     d0a:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
+     d0e:	08 95       	ret
 
-00000cb0 <Remot_controlDisspatcher>:
+00000d10 <Remot_controlDisspatcher>:
 	}
 }
 
 void Remot_controlDisspatcher()
 {
 	Remote_ControlSemphore=0;
-     cb0:	10 92 b6 06 	sts	0x06B6, r1	; 0x8006b6 <Remote_ControlSemphore>
-	lcd_clear(&mylcd);
-     cb4:	8d e6       	ldi	r24, 0x6D	; 109
-     cb6:	90 e0       	ldi	r25, 0x00	; 0
-     cb8:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+     d10:	10 92 a2 06 	sts	0x06A2, r1	; 0x8006a2 <Remote_ControlSemphore>
 	switch (data_rx.key)
-     cbc:	80 91 8b 06 	lds	r24, 0x068B	; 0x80068b <data_rx>
-     cc0:	84 36       	cpi	r24, 0x64	; 100
-     cc2:	49 f1       	breq	.+82     	; 0xd16 <Remot_controlDisspatcher+0x66>
-     cc4:	18 f4       	brcc	.+6      	; 0xccc <Remot_controlDisspatcher+0x1c>
-     cc6:	81 36       	cpi	r24, 0x61	; 97
-     cc8:	b1 f1       	breq	.+108    	; 0xd36 <Remot_controlDisspatcher+0x86>
-     cca:	45 c0       	rjmp	.+138    	; 0xd56 <Remot_controlDisspatcher+0xa6>
-     ccc:	83 37       	cpi	r24, 0x73	; 115
-     cce:	99 f0       	breq	.+38     	; 0xcf6 <Remot_controlDisspatcher+0x46>
-     cd0:	87 37       	cpi	r24, 0x77	; 119
-     cd2:	09 f0       	breq	.+2      	; 0xcd6 <Remot_controlDisspatcher+0x26>
-     cd4:	40 c0       	rjmp	.+128    	; 0xd56 <Remot_controlDisspatcher+0xa6>
+     d14:	80 91 77 06 	lds	r24, 0x0677	; 0x800677 <data_rx>
+     d18:	84 36       	cpi	r24, 0x64	; 100
+     d1a:	49 f1       	breq	.+82     	; 0xd6e <Remot_controlDisspatcher+0x5e>
+     d1c:	18 f4       	brcc	.+6      	; 0xd24 <Remot_controlDisspatcher+0x14>
+     d1e:	81 36       	cpi	r24, 0x61	; 97
+     d20:	b1 f1       	breq	.+108    	; 0xd8e <Remot_controlDisspatcher+0x7e>
+     d22:	45 c0       	rjmp	.+138    	; 0xdae <Remot_controlDisspatcher+0x9e>
+     d24:	83 37       	cpi	r24, 0x73	; 115
+     d26:	99 f0       	breq	.+38     	; 0xd4e <Remot_controlDisspatcher+0x3e>
+     d28:	87 37       	cpi	r24, 0x77	; 119
+     d2a:	09 f0       	breq	.+2      	; 0xd2e <Remot_controlDisspatcher+0x1e>
+     d2c:	40 c0       	rjmp	.+128    	; 0xdae <Remot_controlDisspatcher+0x9e>
 	{
 		case 'w':// forward
 		{
-			lcd_str(&mylcd,0,0,"Rov Go forward*");
-     cd6:	22 ef       	ldi	r18, 0xF2	; 242
-     cd8:	31 e0       	ldi	r19, 0x01	; 1
-     cda:	40 e0       	ldi	r20, 0x00	; 0
-     cdc:	60 e0       	ldi	r22, 0x00	; 0
-     cde:	8d e6       	ldi	r24, 0x6D	; 109
-     ce0:	90 e0       	ldi	r25, 0x00	; 0
-     ce2:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+			lcd_str(&mylcd,0,6,"forward ");
+     d2e:	26 e0       	ldi	r18, 0x06	; 6
+     d30:	32 e0       	ldi	r19, 0x02	; 2
+     d32:	46 e0       	ldi	r20, 0x06	; 6
+     d34:	60 e0       	ldi	r22, 0x00	; 0
+     d36:	8d e6       	ldi	r24, 0x6D	; 109
+     d38:	90 e0       	ldi	r25, 0x00	; 0
+     d3a:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 			spi_master_tx('w');
-     ce6:	87 e7       	ldi	r24, 0x77	; 119
-     ce8:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
-			/*_delay_ms(1);*/
+     d3e:	87 e7       	ldi	r24, 0x77	; 119
+     d40:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			spi_master_tx(data_rx.power_level);
-     cec:	80 91 8c 06 	lds	r24, 0x068C	; 0x80068c <data_rx+0x1>
-     cf0:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
+     d44:	80 91 78 06 	lds	r24, 0x0678	; 0x800678 <data_rx+0x1>
+     d48:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			break;
-     cf4:	3e c0       	rjmp	.+124    	; 0xd72 <Remot_controlDisspatcher+0xc2>
+     d4c:	3e c0       	rjmp	.+124    	; 0xdca <Remot_controlDisspatcher+0xba>
 		}
 		case 's'://backward
 		{
-			lcd_str(&mylcd,0,0,"Rov Go backword*");
-     cf6:	22 e0       	ldi	r18, 0x02	; 2
-     cf8:	32 e0       	ldi	r19, 0x02	; 2
-     cfa:	40 e0       	ldi	r20, 0x00	; 0
-     cfc:	60 e0       	ldi	r22, 0x00	; 0
-     cfe:	8d e6       	ldi	r24, 0x6D	; 109
-     d00:	90 e0       	ldi	r25, 0x00	; 0
-     d02:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+			lcd_str(&mylcd,0,6,"backword");
+     d4e:	2f e0       	ldi	r18, 0x0F	; 15
+     d50:	32 e0       	ldi	r19, 0x02	; 2
+     d52:	46 e0       	ldi	r20, 0x06	; 6
+     d54:	60 e0       	ldi	r22, 0x00	; 0
+     d56:	8d e6       	ldi	r24, 0x6D	; 109
+     d58:	90 e0       	ldi	r25, 0x00	; 0
+     d5a:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 			spi_master_tx('s');
-     d06:	83 e7       	ldi	r24, 0x73	; 115
-     d08:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
-			/*_delay_ms(1);*/
+     d5e:	83 e7       	ldi	r24, 0x73	; 115
+     d60:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			spi_master_tx(data_rx.power_level);
-     d0c:	80 91 8c 06 	lds	r24, 0x068C	; 0x80068c <data_rx+0x1>
-     d10:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
+     d64:	80 91 78 06 	lds	r24, 0x0678	; 0x800678 <data_rx+0x1>
+     d68:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			break;
-     d14:	2e c0       	rjmp	.+92     	; 0xd72 <Remot_controlDisspatcher+0xc2>
+     d6c:	2e c0       	rjmp	.+92     	; 0xdca <Remot_controlDisspatcher+0xba>
 		}
 		case 'd'://right
 		{
-			lcd_str(&mylcd,0,0,"Rov Go right*");
-     d16:	23 e1       	ldi	r18, 0x13	; 19
-     d18:	32 e0       	ldi	r19, 0x02	; 2
-     d1a:	40 e0       	ldi	r20, 0x00	; 0
-     d1c:	60 e0       	ldi	r22, 0x00	; 0
-     d1e:	8d e6       	ldi	r24, 0x6D	; 109
-     d20:	90 e0       	ldi	r25, 0x00	; 0
-     d22:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+			lcd_str(&mylcd,0,6,"right   ");
+     d6e:	28 e1       	ldi	r18, 0x18	; 24
+     d70:	32 e0       	ldi	r19, 0x02	; 2
+     d72:	46 e0       	ldi	r20, 0x06	; 6
+     d74:	60 e0       	ldi	r22, 0x00	; 0
+     d76:	8d e6       	ldi	r24, 0x6D	; 109
+     d78:	90 e0       	ldi	r25, 0x00	; 0
+     d7a:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 			spi_master_tx('d');
-     d26:	84 e6       	ldi	r24, 0x64	; 100
-     d28:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
-			/*_delay_ms(1);*/
+     d7e:	84 e6       	ldi	r24, 0x64	; 100
+     d80:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			spi_master_tx(data_rx.power_level);
-     d2c:	80 91 8c 06 	lds	r24, 0x068C	; 0x80068c <data_rx+0x1>
-     d30:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
+     d84:	80 91 78 06 	lds	r24, 0x0678	; 0x800678 <data_rx+0x1>
+     d88:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			break;
-     d34:	1e c0       	rjmp	.+60     	; 0xd72 <Remot_controlDisspatcher+0xc2>
+     d8c:	1e c0       	rjmp	.+60     	; 0xdca <Remot_controlDisspatcher+0xba>
 		}
 		case 'a'://left
 		{
-			lcd_str(&mylcd,0,0,"Rov Go left*");
-     d36:	21 e2       	ldi	r18, 0x21	; 33
-     d38:	32 e0       	ldi	r19, 0x02	; 2
-     d3a:	40 e0       	ldi	r20, 0x00	; 0
-     d3c:	60 e0       	ldi	r22, 0x00	; 0
-     d3e:	8d e6       	ldi	r24, 0x6D	; 109
-     d40:	90 e0       	ldi	r25, 0x00	; 0
-     d42:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+			lcd_str(&mylcd,0,6,"left    ");
+     d8e:	21 e2       	ldi	r18, 0x21	; 33
+     d90:	32 e0       	ldi	r19, 0x02	; 2
+     d92:	46 e0       	ldi	r20, 0x06	; 6
+     d94:	60 e0       	ldi	r22, 0x00	; 0
+     d96:	8d e6       	ldi	r24, 0x6D	; 109
+     d98:	90 e0       	ldi	r25, 0x00	; 0
+     d9a:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 			spi_master_tx('a');
-     d46:	81 e6       	ldi	r24, 0x61	; 97
-     d48:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
-			/*_delay_ms(1);*/
+     d9e:	81 e6       	ldi	r24, 0x61	; 97
+     da0:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			spi_master_tx(data_rx.power_level);
-     d4c:	80 91 8c 06 	lds	r24, 0x068C	; 0x80068c <data_rx+0x1>
-     d50:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
+     da4:	80 91 78 06 	lds	r24, 0x0678	; 0x800678 <data_rx+0x1>
+     da8:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			break;
-     d54:	0e c0       	rjmp	.+28     	; 0xd72 <Remot_controlDisspatcher+0xc2>
+     dac:	0e c0       	rjmp	.+28     	; 0xdca <Remot_controlDisspatcher+0xba>
 		}
 		default:
 		{
 			spi_master_tx(0);
-     d56:	80 e0       	ldi	r24, 0x00	; 0
-     d58:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
+     dae:	80 e0       	ldi	r24, 0x00	; 0
+     db0:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
 			spi_master_tx(0);
-     d5c:	80 e0       	ldi	r24, 0x00	; 0
-     d5e:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
-			lcd_str(&mylcd,0,0,"Rov stable*");
-     d62:	2e e2       	ldi	r18, 0x2E	; 46
-     d64:	32 e0       	ldi	r19, 0x02	; 2
-     d66:	40 e0       	ldi	r20, 0x00	; 0
-     d68:	60 e0       	ldi	r22, 0x00	; 0
-     d6a:	8d e6       	ldi	r24, 0x6D	; 109
-     d6c:	90 e0       	ldi	r25, 0x00	; 0
-     d6e:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+     db4:	80 e0       	ldi	r24, 0x00	; 0
+     db6:	0e 94 0d 03 	call	0x61a	; 0x61a <spi_master_tx>
+			lcd_str(&mylcd,0,6,"stable  ");
+     dba:	2a e2       	ldi	r18, 0x2A	; 42
+     dbc:	32 e0       	ldi	r19, 0x02	; 2
+     dbe:	46 e0       	ldi	r20, 0x06	; 6
+     dc0:	60 e0       	ldi	r22, 0x00	; 0
+     dc2:	8d e6       	ldi	r24, 0x6D	; 109
+     dc4:	90 e0       	ldi	r25, 0x00	; 0
+     dc6:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 		}
 	}
-	lcd_str(&mylcd,1,0,"Power:");
-     d72:	2a e3       	ldi	r18, 0x3A	; 58
-     d74:	32 e0       	ldi	r19, 0x02	; 2
-     d76:	40 e0       	ldi	r20, 0x00	; 0
-     d78:	61 e0       	ldi	r22, 0x01	; 1
-     d7a:	8d e6       	ldi	r24, 0x6D	; 109
-     d7c:	90 e0       	ldi	r25, 0x00	; 0
-     d7e:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+	lcd_goto(&mylcd,1,6);
+     dca:	46 e0       	ldi	r20, 0x06	; 6
+     dcc:	61 e0       	ldi	r22, 0x01	; 1
+     dce:	8d e6       	ldi	r24, 0x6D	; 109
+     dd0:	90 e0       	ldi	r25, 0x00	; 0
+     dd2:	0e 94 bc 09 	call	0x1378	; 0x1378 <lcd_goto>
 	lcd_chr(&mylcd,data_rx.power_level);
-     d82:	60 91 8c 06 	lds	r22, 0x068C	; 0x80068c <data_rx+0x1>
-     d86:	8d e6       	ldi	r24, 0x6D	; 109
-     d88:	90 e0       	ldi	r25, 0x00	; 0
-     d8a:	0e 94 73 09 	call	0x12e6	; 0x12e6 <lcd_chr>
-	if (Rov_ControlStatus==AUTTO_BUFFER_CONTROL)
-     d8e:	80 91 8d 06 	lds	r24, 0x068D	; 0x80068d <Rov_ControlStatus>
-     d92:	81 30       	cpi	r24, 0x01	; 1
-     d94:	b1 f4       	brne	.+44     	; 0xdc2 <Remot_controlDisspatcher+0x112>
+     dd6:	60 91 78 06 	lds	r22, 0x0678	; 0x800678 <data_rx+0x1>
+     dda:	8d e6       	ldi	r24, 0x6D	; 109
+     ddc:	90 e0       	ldi	r25, 0x00	; 0
+     dde:	0e 94 9b 09 	call	0x1336	; 0x1336 <lcd_chr>
+	if (Rov_ControlStatus==AUTTO_BUFFER_CONTROL) // time needed for auto buffer control mode
+     de2:	80 91 79 06 	lds	r24, 0x0679	; 0x800679 <Rov_ControlStatus>
+     de6:	81 30       	cpi	r24, 0x01	; 1
+     de8:	a1 f4       	brne	.+40     	; 0xe12 <Remot_controlDisspatcher+0x102>
 	{
-		lcd_str(&mylcd,2,0,"Time:");
-     d96:	21 e4       	ldi	r18, 0x41	; 65
-     d98:	32 e0       	ldi	r19, 0x02	; 2
-     d9a:	40 e0       	ldi	r20, 0x00	; 0
-     d9c:	62 e0       	ldi	r22, 0x02	; 2
-     d9e:	8d e6       	ldi	r24, 0x6D	; 109
-     da0:	90 e0       	ldi	r25, 0x00	; 0
-     da2:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+		lcd_goto(&mylcd,2,5);
+     dea:	45 e0       	ldi	r20, 0x05	; 5
+     dec:	62 e0       	ldi	r22, 0x02	; 2
+     dee:	8d e6       	ldi	r24, 0x6D	; 109
+     df0:	90 e0       	ldi	r25, 0x00	; 0
+     df2:	0e 94 bc 09 	call	0x1378	; 0x1378 <lcd_goto>
 		lcd_chr(&mylcd,Second_digit+48);
-     da6:	60 91 84 06 	lds	r22, 0x0684	; 0x800684 <Second_digit>
-     daa:	60 5d       	subi	r22, 0xD0	; 208
-     dac:	8d e6       	ldi	r24, 0x6D	; 109
-     dae:	90 e0       	ldi	r25, 0x00	; 0
-     db0:	0e 94 73 09 	call	0x12e6	; 0x12e6 <lcd_chr>
+     df6:	60 91 70 06 	lds	r22, 0x0670	; 0x800670 <Second_digit>
+     dfa:	60 5d       	subi	r22, 0xD0	; 208
+     dfc:	8d e6       	ldi	r24, 0x6D	; 109
+     dfe:	90 e0       	ldi	r25, 0x00	; 0
+     e00:	0e 94 9b 09 	call	0x1336	; 0x1336 <lcd_chr>
 		lcd_chr(&mylcd,First_digit+48);
-     db4:	60 91 85 06 	lds	r22, 0x0685	; 0x800685 <First_digit>
-     db8:	60 5d       	subi	r22, 0xD0	; 208
-     dba:	8d e6       	ldi	r24, 0x6D	; 109
-     dbc:	90 e0       	ldi	r25, 0x00	; 0
-     dbe:	0e 94 73 09 	call	0x12e6	; 0x12e6 <lcd_chr>
-     dc2:	08 95       	ret
+     e04:	60 91 71 06 	lds	r22, 0x0671	; 0x800671 <First_digit>
+     e08:	60 5d       	subi	r22, 0xD0	; 208
+     e0a:	8d e6       	ldi	r24, 0x6D	; 109
+     e0c:	90 e0       	ldi	r25, 0x00	; 0
+     e0e:	0e 94 9b 09 	call	0x1336	; 0x1336 <lcd_chr>
+     e12:	08 95       	ret
 
-00000dc4 <EEPROM_read>:
+00000e14 <EEPROM_read>:
 
 
 unsigned char EEPROM_read(unsigned int uiAddress)
 {
 	/* Wait for completion of previous write */
 	while(EECR & (1<<EEWE));
-     dc4:	e1 99       	sbic	0x1c, 1	; 28
-     dc6:	fe cf       	rjmp	.-4      	; 0xdc4 <EEPROM_read>
+     e14:	e1 99       	sbic	0x1c, 1	; 28
+     e16:	fe cf       	rjmp	.-4      	; 0xe14 <EEPROM_read>
 	/* Set up address register */
 	EEAR = uiAddress;
-     dc8:	9f bb       	out	0x1f, r25	; 31
-     dca:	8e bb       	out	0x1e, r24	; 30
+     e18:	9f bb       	out	0x1f, r25	; 31
+     e1a:	8e bb       	out	0x1e, r24	; 30
 	/* Start eeprom read by writing EERE */
 	EECR |= (1<<EERE);
-     dcc:	e0 9a       	sbi	0x1c, 0	; 28
+     e1c:	e0 9a       	sbi	0x1c, 0	; 28
 	/* Return data from data register */
 	return EEDR;
-     dce:	8d b3       	in	r24, 0x1d	; 29
+     e1e:	8d b3       	in	r24, 0x1d	; 29
 }
-     dd0:	08 95       	ret
+     e20:	08 95       	ret
 
-00000dd2 <EEPROM_write>:
+00000e22 <EEPROM_write>:
 
 
 void EEPROM_write(unsigned int uiAddress, unsigned char ucData)
 {
 	/* Wait for completion of previous write */
 	while(EECR & (1<<EEWE))
-     dd2:	e1 99       	sbic	0x1c, 1	; 28
-     dd4:	fe cf       	rjmp	.-4      	; 0xdd2 <EEPROM_write>
+     e22:	e1 99       	sbic	0x1c, 1	; 28
+     e24:	fe cf       	rjmp	.-4      	; 0xe22 <EEPROM_write>
 	;
 	/* Set up address and data registers */
 	EEAR = uiAddress;
-     dd6:	9f bb       	out	0x1f, r25	; 31
-     dd8:	8e bb       	out	0x1e, r24	; 30
+     e26:	9f bb       	out	0x1f, r25	; 31
+     e28:	8e bb       	out	0x1e, r24	; 30
 	EEDR = ucData;
-     dda:	6d bb       	out	0x1d, r22	; 29
+     e2a:	6d bb       	out	0x1d, r22	; 29
 	/* Write logical one to EEMWE */
 	EECR |= (1<<EEMWE);
-     ddc:	e2 9a       	sbi	0x1c, 2	; 28
+     e2c:	e2 9a       	sbi	0x1c, 2	; 28
 	/* Start eeprom write by setting EEWE */
 	EECR |= (1<<EEWE);
-     dde:	e1 9a       	sbi	0x1c, 1	; 28
-     de0:	08 95       	ret
+     e2e:	e1 9a       	sbi	0x1c, 1	; 28
+     e30:	08 95       	ret
 
-00000de2 <__vector_11>:
+00000e32 <__vector_11>:
 static Struct_EventConfg_t Event_ConfgBuffer[MAX_EVENTS] ;
 static uint32 Event_Remainder[MAX_EVENTS];
 static uint8 S_handler=0;
 
 ISR(TIMER0_OVF_vect)
 {
-     de2:	1f 92       	push	r1
-     de4:	0f 92       	push	r0
-     de6:	0f b6       	in	r0, 0x3f	; 63
-     de8:	0f 92       	push	r0
-     dea:	11 24       	eor	r1, r1
-     dec:	8f 93       	push	r24
-     dee:	9f 93       	push	r25
-     df0:	af 93       	push	r26
-     df2:	bf 93       	push	r27
-     df4:	ef 93       	push	r30
-     df6:	ff 93       	push	r31
-     df8:	cf 93       	push	r28
-     dfa:	df 93       	push	r29
-     dfc:	1f 92       	push	r1
-     dfe:	cd b7       	in	r28, 0x3d	; 61
-     e00:	de b7       	in	r29, 0x3e	; 62
+     e32:	1f 92       	push	r1
+     e34:	0f 92       	push	r0
+     e36:	0f b6       	in	r0, 0x3f	; 63
+     e38:	0f 92       	push	r0
+     e3a:	11 24       	eor	r1, r1
+     e3c:	8f 93       	push	r24
+     e3e:	9f 93       	push	r25
+     e40:	af 93       	push	r26
+     e42:	bf 93       	push	r27
+     e44:	ef 93       	push	r30
+     e46:	ff 93       	push	r31
+     e48:	cf 93       	push	r28
+     e4a:	df 93       	push	r29
+     e4c:	1f 92       	push	r1
+     e4e:	cd b7       	in	r28, 0x3d	; 61
+     e50:	de b7       	in	r29, 0x3e	; 62
 	volatile uint8 i;
 	
 	for(i=0;i<MAX_EVENTS;i++)
-     e02:	19 82       	std	Y+1, r1	; 0x01
-     e04:	89 81       	ldd	r24, Y+1	; 0x01
-     e06:	83 30       	cpi	r24, 0x03	; 3
-     e08:	30 f5       	brcc	.+76     	; 0xe56 <__vector_11+0x74>
+     e52:	19 82       	std	Y+1, r1	; 0x01
+     e54:	89 81       	ldd	r24, Y+1	; 0x01
+     e56:	83 30       	cpi	r24, 0x03	; 3
+     e58:	30 f5       	brcc	.+76     	; 0xea6 <__vector_11+0x74>
 	{
 		if (Event_ConfgBuffer[i].Event_Stutes)
-     e0a:	e9 81       	ldd	r30, Y+1	; 0x01
-     e0c:	f0 e0       	ldi	r31, 0x00	; 0
-     e0e:	ee 0f       	add	r30, r30
-     e10:	ff 1f       	adc	r31, r31
-     e12:	ee 0f       	add	r30, r30
-     e14:	ff 1f       	adc	r31, r31
-     e16:	ee 0f       	add	r30, r30
-     e18:	ff 1f       	adc	r31, r31
-     e1a:	e5 56       	subi	r30, 0x65	; 101
-     e1c:	f9 4f       	sbci	r31, 0xF9	; 249
-     e1e:	85 81       	ldd	r24, Z+5	; 0x05
-     e20:	88 23       	and	r24, r24
-     e22:	99 f0       	breq	.+38     	; 0xe4a <__vector_11+0x68>
+     e5a:	e9 81       	ldd	r30, Y+1	; 0x01
+     e5c:	f0 e0       	ldi	r31, 0x00	; 0
+     e5e:	ee 0f       	add	r30, r30
+     e60:	ff 1f       	adc	r31, r31
+     e62:	ee 0f       	add	r30, r30
+     e64:	ff 1f       	adc	r31, r31
+     e66:	ee 0f       	add	r30, r30
+     e68:	ff 1f       	adc	r31, r31
+     e6a:	e9 57       	subi	r30, 0x79	; 121
+     e6c:	f9 4f       	sbci	r31, 0xF9	; 249
+     e6e:	85 81       	ldd	r24, Z+5	; 0x05
+     e70:	88 23       	and	r24, r24
+     e72:	99 f0       	breq	.+38     	; 0xe9a <__vector_11+0x68>
 		{
 			(Event_Remainder[i])--;
-     e24:	e9 81       	ldd	r30, Y+1	; 0x01
-     e26:	f0 e0       	ldi	r31, 0x00	; 0
-     e28:	ee 0f       	add	r30, r30
-     e2a:	ff 1f       	adc	r31, r31
-     e2c:	ee 0f       	add	r30, r30
-     e2e:	ff 1f       	adc	r31, r31
-     e30:	e1 57       	subi	r30, 0x71	; 113
-     e32:	f9 4f       	sbci	r31, 0xF9	; 249
-     e34:	80 81       	ld	r24, Z
-     e36:	91 81       	ldd	r25, Z+1	; 0x01
-     e38:	a2 81       	ldd	r26, Z+2	; 0x02
-     e3a:	b3 81       	ldd	r27, Z+3	; 0x03
-     e3c:	01 97       	sbiw	r24, 0x01	; 1
-     e3e:	a1 09       	sbc	r26, r1
-     e40:	b1 09       	sbc	r27, r1
-     e42:	80 83       	st	Z, r24
-     e44:	91 83       	std	Z+1, r25	; 0x01
-     e46:	a2 83       	std	Z+2, r26	; 0x02
-     e48:	b3 83       	std	Z+3, r27	; 0x03
+     e74:	e9 81       	ldd	r30, Y+1	; 0x01
+     e76:	f0 e0       	ldi	r31, 0x00	; 0
+     e78:	ee 0f       	add	r30, r30
+     e7a:	ff 1f       	adc	r31, r31
+     e7c:	ee 0f       	add	r30, r30
+     e7e:	ff 1f       	adc	r31, r31
+     e80:	e5 58       	subi	r30, 0x85	; 133
+     e82:	f9 4f       	sbci	r31, 0xF9	; 249
+     e84:	80 81       	ld	r24, Z
+     e86:	91 81       	ldd	r25, Z+1	; 0x01
+     e88:	a2 81       	ldd	r26, Z+2	; 0x02
+     e8a:	b3 81       	ldd	r27, Z+3	; 0x03
+     e8c:	01 97       	sbiw	r24, 0x01	; 1
+     e8e:	a1 09       	sbc	r26, r1
+     e90:	b1 09       	sbc	r27, r1
+     e92:	80 83       	st	Z, r24
+     e94:	91 83       	std	Z+1, r25	; 0x01
+     e96:	a2 83       	std	Z+2, r26	; 0x02
+     e98:	b3 83       	std	Z+3, r27	; 0x03
 
 ISR(TIMER0_OVF_vect)
 {
 	volatile uint8 i;
 	
 	for(i=0;i<MAX_EVENTS;i++)
-     e4a:	89 81       	ldd	r24, Y+1	; 0x01
-     e4c:	8f 5f       	subi	r24, 0xFF	; 255
-     e4e:	89 83       	std	Y+1, r24	; 0x01
-     e50:	89 81       	ldd	r24, Y+1	; 0x01
-     e52:	83 30       	cpi	r24, 0x03	; 3
-     e54:	d0 f2       	brcs	.-76     	; 0xe0a <__vector_11+0x28>
+     e9a:	89 81       	ldd	r24, Y+1	; 0x01
+     e9c:	8f 5f       	subi	r24, 0xFF	; 255
+     e9e:	89 83       	std	Y+1, r24	; 0x01
+     ea0:	89 81       	ldd	r24, Y+1	; 0x01
+     ea2:	83 30       	cpi	r24, 0x03	; 3
+     ea4:	d0 f2       	brcs	.-76     	; 0xe5a <__vector_11+0x28>
 		if (Event_ConfgBuffer[i].Event_Stutes)
 		{
 			(Event_Remainder[i])--;
 		}
 	}
 	TCNT0=249;
-     e56:	89 ef       	ldi	r24, 0xF9	; 249
-     e58:	82 bf       	out	0x32, r24	; 50
+     ea6:	89 ef       	ldi	r24, 0xF9	; 249
+     ea8:	82 bf       	out	0x32, r24	; 50
 }
-     e5a:	0f 90       	pop	r0
-     e5c:	df 91       	pop	r29
-     e5e:	cf 91       	pop	r28
-     e60:	ff 91       	pop	r31
-     e62:	ef 91       	pop	r30
-     e64:	bf 91       	pop	r27
-     e66:	af 91       	pop	r26
-     e68:	9f 91       	pop	r25
-     e6a:	8f 91       	pop	r24
-     e6c:	0f 90       	pop	r0
-     e6e:	0f be       	out	0x3f, r0	; 63
-     e70:	0f 90       	pop	r0
-     e72:	1f 90       	pop	r1
-     e74:	18 95       	reti
+     eaa:	0f 90       	pop	r0
+     eac:	df 91       	pop	r29
+     eae:	cf 91       	pop	r28
+     eb0:	ff 91       	pop	r31
+     eb2:	ef 91       	pop	r30
+     eb4:	bf 91       	pop	r27
+     eb6:	af 91       	pop	r26
+     eb8:	9f 91       	pop	r25
+     eba:	8f 91       	pop	r24
+     ebc:	0f 90       	pop	r0
+     ebe:	0f be       	out	0x3f, r0	; 63
+     ec0:	0f 90       	pop	r0
+     ec2:	1f 90       	pop	r1
+     ec4:	18 95       	reti
 
-00000e76 <TMU_init>:
+00000ec6 <TMU_init>:
 
 void TMU_init(Enum_TimrNum_t timr_x ,Enum_EventResloution_t resolution)
 {
 	// i will work with only this confg
 	// to do switch for timer and resolution
 	TIMSK |= 1<<0;	//enable interrupt for timer
-     e76:	89 b7       	in	r24, 0x39	; 57
-     e78:	81 60       	ori	r24, 0x01	; 1
-     e7a:	89 bf       	out	0x39, r24	; 57
+     ec6:	89 b7       	in	r24, 0x39	; 57
+     ec8:	81 60       	ori	r24, 0x01	; 1
+     eca:	89 bf       	out	0x39, r24	; 57
 	TCCR0 |= 3<<0;	// TCCR0 for edjust the resolution
-     e7c:	83 b7       	in	r24, 0x33	; 51
-     e7e:	83 60       	ori	r24, 0x03	; 3
-     e80:	83 bf       	out	0x33, r24	; 51
+     ecc:	83 b7       	in	r24, 0x33	; 51
+     ece:	83 60       	ori	r24, 0x03	; 3
+     ed0:	83 bf       	out	0x33, r24	; 51
 	TCNT0 =249;
-     e82:	89 ef       	ldi	r24, 0xF9	; 249
-     e84:	82 bf       	out	0x32, r24	; 50
+     ed2:	89 ef       	ldi	r24, 0xF9	; 249
+     ed4:	82 bf       	out	0x32, r24	; 50
 	S_handler=1;
-     e86:	81 e0       	ldi	r24, 0x01	; 1
-     e88:	80 93 8e 06 	sts	0x068E, r24	; 0x80068e <S_handler>
-     e8c:	08 95       	ret
+     ed6:	81 e0       	ldi	r24, 0x01	; 1
+     ed8:	80 93 7a 06 	sts	0x067A, r24	; 0x80067a <S_handler>
+     edc:	08 95       	ret
 
-00000e8e <Creat_NewEvent>:
+00000ede <Creat_NewEvent>:
 }
 
 void Creat_NewEvent(Struct_EventConfg_t* P_Event,uint8* P_Userhandler) // ptr _confg of TMU to store confg
 {
-     e8e:	0f 93       	push	r16
-     e90:	1f 93       	push	r17
-     e92:	cf 93       	push	r28
-     e94:	df 93       	push	r29
-     e96:	ec 01       	movw	r28, r24
-     e98:	8b 01       	movw	r16, r22
+     ede:	0f 93       	push	r16
+     ee0:	1f 93       	push	r17
+     ee2:	cf 93       	push	r28
+     ee4:	df 93       	push	r29
+     ee6:	ec 01       	movw	r28, r24
+     ee8:	8b 01       	movw	r16, r22
 	Event_ConfgBuffer[S_handler].peroid				   = P_Event->peroid;
-     e9a:	80 91 8e 06 	lds	r24, 0x068E	; 0x80068e <S_handler>
-     e9e:	28 2f       	mov	r18, r24
-     ea0:	30 e0       	ldi	r19, 0x00	; 0
-     ea2:	48 81       	ld	r20, Y
-     ea4:	59 81       	ldd	r21, Y+1	; 0x01
-     ea6:	6a 81       	ldd	r22, Y+2	; 0x02
-     ea8:	7b 81       	ldd	r23, Y+3	; 0x03
-     eaa:	f9 01       	movw	r30, r18
-     eac:	ee 0f       	add	r30, r30
-     eae:	ff 1f       	adc	r31, r31
-     eb0:	ee 0f       	add	r30, r30
-     eb2:	ff 1f       	adc	r31, r31
-     eb4:	ee 0f       	add	r30, r30
-     eb6:	ff 1f       	adc	r31, r31
-     eb8:	e5 56       	subi	r30, 0x65	; 101
-     eba:	f9 4f       	sbci	r31, 0xF9	; 249
-     ebc:	40 83       	st	Z, r20
-     ebe:	51 83       	std	Z+1, r21	; 0x01
-     ec0:	62 83       	std	Z+2, r22	; 0x02
-     ec2:	73 83       	std	Z+3, r23	; 0x03
+     eea:	80 91 7a 06 	lds	r24, 0x067A	; 0x80067a <S_handler>
+     eee:	28 2f       	mov	r18, r24
+     ef0:	30 e0       	ldi	r19, 0x00	; 0
+     ef2:	48 81       	ld	r20, Y
+     ef4:	59 81       	ldd	r21, Y+1	; 0x01
+     ef6:	6a 81       	ldd	r22, Y+2	; 0x02
+     ef8:	7b 81       	ldd	r23, Y+3	; 0x03
+     efa:	f9 01       	movw	r30, r18
+     efc:	ee 0f       	add	r30, r30
+     efe:	ff 1f       	adc	r31, r31
+     f00:	ee 0f       	add	r30, r30
+     f02:	ff 1f       	adc	r31, r31
+     f04:	ee 0f       	add	r30, r30
+     f06:	ff 1f       	adc	r31, r31
+     f08:	e9 57       	subi	r30, 0x79	; 121
+     f0a:	f9 4f       	sbci	r31, 0xF9	; 249
+     f0c:	40 83       	st	Z, r20
+     f0e:	51 83       	std	Z+1, r21	; 0x01
+     f10:	62 83       	std	Z+2, r22	; 0x02
+     f12:	73 83       	std	Z+3, r23	; 0x03
 	Event_ConfgBuffer[S_handler].Event_Stutes		   = P_Event->Event_Stutes;										    // to store period to be reloaded into event_remainder
-     ec4:	9d 81       	ldd	r25, Y+5	; 0x05
-     ec6:	95 83       	std	Z+5, r25	; 0x05
+     f14:	9d 81       	ldd	r25, Y+5	; 0x05
+     f16:	95 83       	std	Z+5, r25	; 0x05
 	Event_Remainder[S_handler]						   = P_Event->peroid;											// initalize remainder with period
-     ec8:	22 0f       	add	r18, r18
-     eca:	33 1f       	adc	r19, r19
-     ecc:	22 0f       	add	r18, r18
-     ece:	33 1f       	adc	r19, r19
-     ed0:	d9 01       	movw	r26, r18
-     ed2:	a1 57       	subi	r26, 0x71	; 113
-     ed4:	b9 4f       	sbci	r27, 0xF9	; 249
-     ed6:	4d 93       	st	X+, r20
-     ed8:	5d 93       	st	X+, r21
-     eda:	6d 93       	st	X+, r22
-     edc:	7c 93       	st	X, r23
-     ede:	13 97       	sbiw	r26, 0x03	; 3
+     f18:	22 0f       	add	r18, r18
+     f1a:	33 1f       	adc	r19, r19
+     f1c:	22 0f       	add	r18, r18
+     f1e:	33 1f       	adc	r19, r19
+     f20:	d9 01       	movw	r26, r18
+     f22:	a5 58       	subi	r26, 0x85	; 133
+     f24:	b9 4f       	sbci	r27, 0xF9	; 249
+     f26:	4d 93       	st	X+, r20
+     f28:	5d 93       	st	X+, r21
+     f2a:	6d 93       	st	X+, r22
+     f2c:	7c 93       	st	X, r23
+     f2e:	13 97       	sbiw	r26, 0x03	; 3
 	Event_ConfgBuffer[S_handler].event_type            = P_Event->event_type;						    // store event type
-     ee0:	9c 81       	ldd	r25, Y+4	; 0x04
-     ee2:	94 83       	std	Z+4, r25	; 0x04
+     f30:	9c 81       	ldd	r25, Y+4	; 0x04
+     f32:	94 83       	std	Z+4, r25	; 0x04
 	Event_ConfgBuffer[S_handler].Event_TriggerFunction =P_Event->Event_TriggerFunction;   	//store call back fun to trigger user_event
-     ee4:	2e 81       	ldd	r18, Y+6	; 0x06
-     ee6:	3f 81       	ldd	r19, Y+7	; 0x07
-     ee8:	37 83       	std	Z+7, r19	; 0x07
-     eea:	26 83       	std	Z+6, r18	; 0x06
+     f34:	2e 81       	ldd	r18, Y+6	; 0x06
+     f36:	3f 81       	ldd	r19, Y+7	; 0x07
+     f38:	37 83       	std	Z+7, r19	; 0x07
+     f3a:	26 83       	std	Z+6, r18	; 0x06
 	*P_Userhandler = S_handler++;															// increament handler and change user handler with pervious value
-     eec:	91 e0       	ldi	r25, 0x01	; 1
-     eee:	98 0f       	add	r25, r24
-     ef0:	90 93 8e 06 	sts	0x068E, r25	; 0x80068e <S_handler>
-     ef4:	f8 01       	movw	r30, r16
-     ef6:	80 83       	st	Z, r24
+     f3c:	91 e0       	ldi	r25, 0x01	; 1
+     f3e:	98 0f       	add	r25, r24
+     f40:	90 93 7a 06 	sts	0x067A, r25	; 0x80067a <S_handler>
+     f44:	f8 01       	movw	r30, r16
+     f46:	80 83       	st	Z, r24
 }
-     ef8:	df 91       	pop	r29
-     efa:	cf 91       	pop	r28
-     efc:	1f 91       	pop	r17
-     efe:	0f 91       	pop	r16
-     f00:	08 95       	ret
+     f48:	df 91       	pop	r29
+     f4a:	cf 91       	pop	r28
+     f4c:	1f 91       	pop	r17
+     f4e:	0f 91       	pop	r16
+     f50:	08 95       	ret
 
-00000f02 <creat_oneHandlerEvent>:
+00000f52 <creat_oneHandlerEvent>:
 
 void creat_oneHandlerEvent(Struct_EventConfg_t* P_Event)
 {
-     f02:	dc 01       	movw	r26, r24
+     f52:	dc 01       	movw	r26, r24
 	Event_ConfgBuffer[0].peroid				   = P_Event->peroid;
-     f04:	4d 91       	ld	r20, X+
-     f06:	5d 91       	ld	r21, X+
-     f08:	6d 91       	ld	r22, X+
-     f0a:	7c 91       	ld	r23, X
-     f0c:	13 97       	sbiw	r26, 0x03	; 3
-     f0e:	eb e9       	ldi	r30, 0x9B	; 155
-     f10:	f6 e0       	ldi	r31, 0x06	; 6
-     f12:	40 83       	st	Z, r20
-     f14:	51 83       	std	Z+1, r21	; 0x01
-     f16:	62 83       	std	Z+2, r22	; 0x02
-     f18:	73 83       	std	Z+3, r23	; 0x03
+     f54:	4d 91       	ld	r20, X+
+     f56:	5d 91       	ld	r21, X+
+     f58:	6d 91       	ld	r22, X+
+     f5a:	7c 91       	ld	r23, X
+     f5c:	13 97       	sbiw	r26, 0x03	; 3
+     f5e:	e7 e8       	ldi	r30, 0x87	; 135
+     f60:	f6 e0       	ldi	r31, 0x06	; 6
+     f62:	40 83       	st	Z, r20
+     f64:	51 83       	std	Z+1, r21	; 0x01
+     f66:	62 83       	std	Z+2, r22	; 0x02
+     f68:	73 83       	std	Z+3, r23	; 0x03
 	Event_ConfgBuffer[0].Event_Stutes		   = P_Event->Event_Stutes;			    // to store period to be reloaded into event_remainder
-     f1a:	15 96       	adiw	r26, 0x05	; 5
-     f1c:	8c 91       	ld	r24, X
-     f1e:	15 97       	sbiw	r26, 0x05	; 5
-     f20:	85 83       	std	Z+5, r24	; 0x05
+     f6a:	15 96       	adiw	r26, 0x05	; 5
+     f6c:	8c 91       	ld	r24, X
+     f6e:	15 97       	sbiw	r26, 0x05	; 5
+     f70:	85 83       	std	Z+5, r24	; 0x05
 	Event_Remainder[0]						   = P_Event->peroid;				    // initalize remainder with period
-     f22:	40 93 8f 06 	sts	0x068F, r20	; 0x80068f <Event_Remainder>
-     f26:	50 93 90 06 	sts	0x0690, r21	; 0x800690 <Event_Remainder+0x1>
-     f2a:	60 93 91 06 	sts	0x0691, r22	; 0x800691 <Event_Remainder+0x2>
-     f2e:	70 93 92 06 	sts	0x0692, r23	; 0x800692 <Event_Remainder+0x3>
+     f72:	40 93 7b 06 	sts	0x067B, r20	; 0x80067b <Event_Remainder>
+     f76:	50 93 7c 06 	sts	0x067C, r21	; 0x80067c <Event_Remainder+0x1>
+     f7a:	60 93 7d 06 	sts	0x067D, r22	; 0x80067d <Event_Remainder+0x2>
+     f7e:	70 93 7e 06 	sts	0x067E, r23	; 0x80067e <Event_Remainder+0x3>
 	Event_ConfgBuffer[0].event_type            = P_Event->event_type;				// store event type
-     f32:	14 96       	adiw	r26, 0x04	; 4
-     f34:	8c 91       	ld	r24, X
-     f36:	14 97       	sbiw	r26, 0x04	; 4
-     f38:	84 83       	std	Z+4, r24	; 0x04
+     f82:	14 96       	adiw	r26, 0x04	; 4
+     f84:	8c 91       	ld	r24, X
+     f86:	14 97       	sbiw	r26, 0x04	; 4
+     f88:	84 83       	std	Z+4, r24	; 0x04
 	Event_ConfgBuffer[0].Event_TriggerFunction =P_Event->Event_TriggerFunction;   	//store call back fun to trigger user_event
-     f3a:	16 96       	adiw	r26, 0x06	; 6
-     f3c:	8d 91       	ld	r24, X+
-     f3e:	9c 91       	ld	r25, X
-     f40:	17 97       	sbiw	r26, 0x07	; 7
-     f42:	97 83       	std	Z+7, r25	; 0x07
-     f44:	86 83       	std	Z+6, r24	; 0x06
-     f46:	08 95       	ret
+     f8a:	16 96       	adiw	r26, 0x06	; 6
+     f8c:	8d 91       	ld	r24, X+
+     f8e:	9c 91       	ld	r25, X
+     f90:	17 97       	sbiw	r26, 0x07	; 7
+     f92:	97 83       	std	Z+7, r25	; 0x07
+     f94:	86 83       	std	Z+6, r24	; 0x06
+     f96:	08 95       	ret
 
-00000f48 <end_event>:
+00000f98 <end_event>:
 }
 void end_event(uint8 handler)
 {
 	Event_ConfgBuffer[handler].Event_Stutes = 0 ;
-     f48:	28 e0       	ldi	r18, 0x08	; 8
-     f4a:	82 9f       	mul	r24, r18
-     f4c:	c0 01       	movw	r24, r0
-     f4e:	11 24       	eor	r1, r1
-     f50:	fc 01       	movw	r30, r24
-     f52:	e5 56       	subi	r30, 0x65	; 101
-     f54:	f9 4f       	sbci	r31, 0xF9	; 249
-     f56:	15 82       	std	Z+5, r1	; 0x05
-     f58:	08 95       	ret
+     f98:	28 e0       	ldi	r18, 0x08	; 8
+     f9a:	82 9f       	mul	r24, r18
+     f9c:	c0 01       	movw	r24, r0
+     f9e:	11 24       	eor	r1, r1
+     fa0:	fc 01       	movw	r30, r24
+     fa2:	e9 57       	subi	r30, 0x79	; 121
+     fa4:	f9 4f       	sbci	r31, 0xF9	; 249
+     fa6:	15 82       	std	Z+5, r1	; 0x05
+     fa8:	08 95       	ret
 
-00000f5a <TMU_DeInit>:
+00000faa <TMU_DeInit>:
 }
 
 void TMU_DeInit()
 {
 	TIMSK &= ~(1<<0);	//disable interrupt for timer
-     f5a:	89 b7       	in	r24, 0x39	; 57
-     f5c:	8e 7f       	andi	r24, 0xFE	; 254
-     f5e:	89 bf       	out	0x39, r24	; 57
-     f60:	08 95       	ret
+     faa:	89 b7       	in	r24, 0x39	; 57
+     fac:	8e 7f       	andi	r24, 0xFE	; 254
+     fae:	89 bf       	out	0x39, r24	; 57
+     fb0:	08 95       	ret
 
-00000f62 <TMU_Dispatcher>:
+00000fb2 <TMU_Dispatcher>:
 }
 
 void TMU_Dispatcher()
 {
-     f62:	af 92       	push	r10
-     f64:	bf 92       	push	r11
-     f66:	cf 92       	push	r12
-     f68:	df 92       	push	r13
-     f6a:	ef 92       	push	r14
-     f6c:	ff 92       	push	r15
-     f6e:	0f 93       	push	r16
-     f70:	1f 93       	push	r17
-     f72:	cf 93       	push	r28
-     f74:	df 93       	push	r29
-     f76:	cb e9       	ldi	r28, 0x9B	; 155
-     f78:	d6 e0       	ldi	r29, 0x06	; 6
-     f7a:	0f e8       	ldi	r16, 0x8F	; 143
-     f7c:	16 e0       	ldi	r17, 0x06	; 6
-     f7e:	0f 2e       	mov	r0, r31
-     f80:	f3 eb       	ldi	r31, 0xB3	; 179
-     f82:	ef 2e       	mov	r14, r31
-     f84:	f6 e0       	ldi	r31, 0x06	; 6
-     f86:	ff 2e       	mov	r15, r31
-     f88:	f0 2d       	mov	r31, r0
-     f8a:	6e 01       	movw	r12, r28
+     fb2:	af 92       	push	r10
+     fb4:	bf 92       	push	r11
+     fb6:	cf 92       	push	r12
+     fb8:	df 92       	push	r13
+     fba:	ef 92       	push	r14
+     fbc:	ff 92       	push	r15
+     fbe:	0f 93       	push	r16
+     fc0:	1f 93       	push	r17
+     fc2:	cf 93       	push	r28
+     fc4:	df 93       	push	r29
+     fc6:	c7 e8       	ldi	r28, 0x87	; 135
+     fc8:	d6 e0       	ldi	r29, 0x06	; 6
+     fca:	0b e7       	ldi	r16, 0x7B	; 123
+     fcc:	16 e0       	ldi	r17, 0x06	; 6
+     fce:	0f 2e       	mov	r0, r31
+     fd0:	ff e9       	ldi	r31, 0x9F	; 159
+     fd2:	ef 2e       	mov	r14, r31
+     fd4:	f6 e0       	ldi	r31, 0x06	; 6
+     fd6:	ff 2e       	mov	r15, r31
+     fd8:	f0 2d       	mov	r31, r0
+     fda:	6e 01       	movw	r12, r28
 	uint8 i;
 	for(i=0;i<MAX_EVENTS;i++) // loop for to check events time
 	{
 		if (Event_ConfgBuffer[i].Event_Stutes == 1) // check if event working or ended
-     f8c:	8d 81       	ldd	r24, Y+5	; 0x05
-     f8e:	81 30       	cpi	r24, 0x01	; 1
-     f90:	d9 f4       	brne	.+54     	; 0xfc8 <TMU_Dispatcher+0x66>
-     f92:	58 01       	movw	r10, r16
+     fdc:	8d 81       	ldd	r24, Y+5	; 0x05
+     fde:	81 30       	cpi	r24, 0x01	; 1
+     fe0:	d9 f4       	brne	.+54     	; 0x1018 <TMU_Dispatcher+0x66>
+     fe2:	58 01       	movw	r10, r16
 		{
 			if (Event_Remainder[i]== 0) // check the remainder if reach zero
-     f94:	f8 01       	movw	r30, r16
-     f96:	80 81       	ld	r24, Z
-     f98:	91 81       	ldd	r25, Z+1	; 0x01
-     f9a:	a2 81       	ldd	r26, Z+2	; 0x02
-     f9c:	b3 81       	ldd	r27, Z+3	; 0x03
-     f9e:	89 2b       	or	r24, r25
-     fa0:	8a 2b       	or	r24, r26
-     fa2:	8b 2b       	or	r24, r27
-     fa4:	89 f4       	brne	.+34     	; 0xfc8 <TMU_Dispatcher+0x66>
+     fe4:	f8 01       	movw	r30, r16
+     fe6:	80 81       	ld	r24, Z
+     fe8:	91 81       	ldd	r25, Z+1	; 0x01
+     fea:	a2 81       	ldd	r26, Z+2	; 0x02
+     fec:	b3 81       	ldd	r27, Z+3	; 0x03
+     fee:	89 2b       	or	r24, r25
+     ff0:	8a 2b       	or	r24, r26
+     ff2:	8b 2b       	or	r24, r27
+     ff4:	89 f4       	brne	.+34     	; 0x1018 <TMU_Dispatcher+0x66>
 			{
 				(Event_ConfgBuffer[i].Event_TriggerFunction)();
-     fa6:	ee 81       	ldd	r30, Y+6	; 0x06
-     fa8:	ff 81       	ldd	r31, Y+7	; 0x07
-     faa:	09 95       	icall
+     ff6:	ee 81       	ldd	r30, Y+6	; 0x06
+     ff8:	ff 81       	ldd	r31, Y+7	; 0x07
+     ffa:	09 95       	icall
 				if (Event_ConfgBuffer[i].event_type ==ONE_SHOOT)
-     fac:	8c 81       	ldd	r24, Y+4	; 0x04
-     fae:	81 11       	cpse	r24, r1
-     fb0:	01 c0       	rjmp	.+2      	; 0xfb4 <TMU_Dispatcher+0x52>
+     ffc:	8c 81       	ldd	r24, Y+4	; 0x04
+     ffe:	81 11       	cpse	r24, r1
+    1000:	01 c0       	rjmp	.+2      	; 0x1004 <TMU_Dispatcher+0x52>
 	Event_ConfgBuffer[0].event_type            = P_Event->event_type;				// store event type
 	Event_ConfgBuffer[0].Event_TriggerFunction =P_Event->Event_TriggerFunction;   	//store call back fun to trigger user_event
 }
 void end_event(uint8 handler)
 {
 	Event_ConfgBuffer[handler].Event_Stutes = 0 ;
-     fb2:	1d 82       	std	Y+5, r1	; 0x05
+    1002:	1d 82       	std	Y+5, r1	; 0x05
 				(Event_ConfgBuffer[i].Event_TriggerFunction)();
 				if (Event_ConfgBuffer[i].event_type ==ONE_SHOOT)
 				{
 					end_event(i);
 				}
 				Event_Remainder[i] = Event_ConfgBuffer[i].peroid; // reload the period in remainder again
-     fb4:	f6 01       	movw	r30, r12
-     fb6:	80 81       	ld	r24, Z
-     fb8:	91 81       	ldd	r25, Z+1	; 0x01
-     fba:	a2 81       	ldd	r26, Z+2	; 0x02
-     fbc:	b3 81       	ldd	r27, Z+3	; 0x03
-     fbe:	f5 01       	movw	r30, r10
-     fc0:	80 83       	st	Z, r24
-     fc2:	91 83       	std	Z+1, r25	; 0x01
-     fc4:	a2 83       	std	Z+2, r26	; 0x02
-     fc6:	b3 83       	std	Z+3, r27	; 0x03
-     fc8:	28 96       	adiw	r28, 0x08	; 8
-     fca:	0c 5f       	subi	r16, 0xFC	; 252
-     fcc:	1f 4f       	sbci	r17, 0xFF	; 255
+    1004:	f6 01       	movw	r30, r12
+    1006:	80 81       	ld	r24, Z
+    1008:	91 81       	ldd	r25, Z+1	; 0x01
+    100a:	a2 81       	ldd	r26, Z+2	; 0x02
+    100c:	b3 81       	ldd	r27, Z+3	; 0x03
+    100e:	f5 01       	movw	r30, r10
+    1010:	80 83       	st	Z, r24
+    1012:	91 83       	std	Z+1, r25	; 0x01
+    1014:	a2 83       	std	Z+2, r26	; 0x02
+    1016:	b3 83       	std	Z+3, r27	; 0x03
+    1018:	28 96       	adiw	r28, 0x08	; 8
+    101a:	0c 5f       	subi	r16, 0xFC	; 252
+    101c:	1f 4f       	sbci	r17, 0xFF	; 255
 }
 
 void TMU_Dispatcher()
 {
 	uint8 i;
 	for(i=0;i<MAX_EVENTS;i++) // loop for to check events time
-     fce:	ce 15       	cp	r28, r14
-     fd0:	df 05       	cpc	r29, r15
-     fd2:	d9 f6       	brne	.-74     	; 0xf8a <TMU_Dispatcher+0x28>
+    101e:	ce 15       	cp	r28, r14
+    1020:	df 05       	cpc	r29, r15
+    1022:	d9 f6       	brne	.-74     	; 0xfda <TMU_Dispatcher+0x28>
 				}
 				Event_Remainder[i] = Event_ConfgBuffer[i].peroid; // reload the period in remainder again
 			}
 		}
 	}
 }
-     fd4:	df 91       	pop	r29
-     fd6:	cf 91       	pop	r28
-     fd8:	1f 91       	pop	r17
-     fda:	0f 91       	pop	r16
-     fdc:	ff 90       	pop	r15
-     fde:	ef 90       	pop	r14
-     fe0:	df 90       	pop	r13
-     fe2:	cf 90       	pop	r12
-     fe4:	bf 90       	pop	r11
-     fe6:	af 90       	pop	r10
-     fe8:	08 95       	ret
+    1024:	df 91       	pop	r29
+    1026:	cf 91       	pop	r28
+    1028:	1f 91       	pop	r17
+    102a:	0f 91       	pop	r16
+    102c:	ff 90       	pop	r15
+    102e:	ef 90       	pop	r14
+    1030:	df 90       	pop	r13
+    1032:	cf 90       	pop	r12
+    1034:	bf 90       	pop	r11
+    1036:	af 90       	pop	r10
+    1038:	08 95       	ret
 
-00000fea <kpad_init>:
+0000103a <kpad_init>:
 #include "key_pad.h"
 
 static void (*ptr_CallBackFun)(uint8);  // for save the call back fun to call it in dispatcher 
 
 void kpad_init(KeyPad_PinCnfg_t* ptr,void (*ptr_Fu)(uint8))
 {
-     fea:	ef 92       	push	r14
-     fec:	ff 92       	push	r15
-     fee:	0f 93       	push	r16
-     ff0:	1f 93       	push	r17
-     ff2:	cf 93       	push	r28
-     ff4:	df 93       	push	r29
-     ff6:	7b 01       	movw	r14, r22
-     ff8:	ec 01       	movw	r28, r24
-     ffa:	8c 01       	movw	r16, r24
-     ffc:	0c 5f       	subi	r16, 0xFC	; 252
-     ffe:	1f 4f       	sbci	r17, 0xFF	; 255
+    103a:	ef 92       	push	r14
+    103c:	ff 92       	push	r15
+    103e:	0f 93       	push	r16
+    1040:	1f 93       	push	r17
+    1042:	cf 93       	push	r28
+    1044:	df 93       	push	r29
+    1046:	7b 01       	movw	r14, r22
+    1048:	ec 01       	movw	r28, r24
+    104a:	8c 01       	movw	r16, r24
+    104c:	0c 5f       	subi	r16, 0xFC	; 252
+    104e:	1f 4f       	sbci	r17, 0xFF	; 255
 	* assign call back funcation 
 	*/
 	uint8 i;
 	for (i=0;i<4;i++)
 	{
 		SetPinDirection(ptr->arr_KeyPadInputPins[i],SET_PIN_IN);
-    1000:	60 e0       	ldi	r22, 0x00	; 0
-    1002:	89 91       	ld	r24, Y+
-    1004:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
+    1050:	60 e0       	ldi	r22, 0x00	; 0
+    1052:	89 91       	ld	r24, Y+
+    1054:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
 		SetPinDirection(ptr->arr_KeyPadOutputPins[i],SET_PIN_OUT);
-    1008:	61 e0       	ldi	r22, 0x01	; 1
-    100a:	8b 81       	ldd	r24, Y+3	; 0x03
-    100c:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
+    1058:	61 e0       	ldi	r22, 0x01	; 1
+    105a:	8b 81       	ldd	r24, Y+3	; 0x03
+    105c:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
 	* make the rows IN put
 	* make the coloums OUT PUT
 	* assign call back funcation 
 	*/
 	uint8 i;
 	for (i=0;i<4;i++)
-    1010:	c0 17       	cp	r28, r16
-    1012:	d1 07       	cpc	r29, r17
-    1014:	a9 f7       	brne	.-22     	; 0x1000 <kpad_init+0x16>
+    1060:	c0 17       	cp	r28, r16
+    1062:	d1 07       	cpc	r29, r17
+    1064:	a9 f7       	brne	.-22     	; 0x1050 <kpad_init+0x16>
 	{
 		SetPinDirection(ptr->arr_KeyPadInputPins[i],SET_PIN_IN);
 		SetPinDirection(ptr->arr_KeyPadOutputPins[i],SET_PIN_OUT);
 	}
 	ptr_CallBackFun = ptr_Fu;
-    1016:	f0 92 b4 06 	sts	0x06B4, r15	; 0x8006b4 <ptr_CallBackFun+0x1>
-    101a:	e0 92 b3 06 	sts	0x06B3, r14	; 0x8006b3 <ptr_CallBackFun>
+    1066:	f0 92 a0 06 	sts	0x06A0, r15	; 0x8006a0 <ptr_CallBackFun+0x1>
+    106a:	e0 92 9f 06 	sts	0x069F, r14	; 0x80069f <ptr_CallBackFun>
 }
-    101e:	df 91       	pop	r29
-    1020:	cf 91       	pop	r28
-    1022:	1f 91       	pop	r17
-    1024:	0f 91       	pop	r16
-    1026:	ff 90       	pop	r15
-    1028:	ef 90       	pop	r14
-    102a:	08 95       	ret
+    106e:	df 91       	pop	r29
+    1070:	cf 91       	pop	r28
+    1072:	1f 91       	pop	r17
+    1074:	0f 91       	pop	r16
+    1076:	ff 90       	pop	r15
+    1078:	ef 90       	pop	r14
+    107a:	08 95       	ret
 
-0000102c <keyPad_dispatcher>:
+0000107c <keyPad_dispatcher>:
 	}
 	return key_ret_val;
 }
 
 void keyPad_dispatcher(KeyPad_PinCnfg_t* ptr)
 {
-    102c:	2f 92       	push	r2
-    102e:	3f 92       	push	r3
-    1030:	4f 92       	push	r4
-    1032:	5f 92       	push	r5
-    1034:	6f 92       	push	r6
-    1036:	7f 92       	push	r7
-    1038:	8f 92       	push	r8
-    103a:	9f 92       	push	r9
-    103c:	af 92       	push	r10
-    103e:	bf 92       	push	r11
-    1040:	cf 92       	push	r12
-    1042:	df 92       	push	r13
-    1044:	ef 92       	push	r14
-    1046:	ff 92       	push	r15
-    1048:	0f 93       	push	r16
-    104a:	1f 93       	push	r17
-    104c:	cf 93       	push	r28
-    104e:	df 93       	push	r29
-    1050:	00 d0       	rcall	.+0      	; 0x1052 <keyPad_dispatcher+0x26>
-    1052:	1f 92       	push	r1
-    1054:	cd b7       	in	r28, 0x3d	; 61
-    1056:	de b7       	in	r29, 0x3e	; 62
-    1058:	5c 01       	movw	r10, r24
+    107c:	2f 92       	push	r2
+    107e:	3f 92       	push	r3
+    1080:	4f 92       	push	r4
+    1082:	5f 92       	push	r5
+    1084:	6f 92       	push	r6
+    1086:	7f 92       	push	r7
+    1088:	8f 92       	push	r8
+    108a:	9f 92       	push	r9
+    108c:	af 92       	push	r10
+    108e:	bf 92       	push	r11
+    1090:	cf 92       	push	r12
+    1092:	df 92       	push	r13
+    1094:	ef 92       	push	r14
+    1096:	ff 92       	push	r15
+    1098:	0f 93       	push	r16
+    109a:	1f 93       	push	r17
+    109c:	cf 93       	push	r28
+    109e:	df 93       	push	r29
+    10a0:	00 d0       	rcall	.+0      	; 0x10a2 <keyPad_dispatcher+0x26>
+    10a2:	1f 92       	push	r1
+    10a4:	cd b7       	in	r28, 0x3d	; 61
+    10a6:	de b7       	in	r29, 0x3e	; 62
+    10a8:	5c 01       	movw	r10, r24
 	volatile uint8 i;
 	BunchPins_Write(ptr->arr_KeyPadOutputPins,COLUMS,SET_VALUE_LOW); // clear output pins
-    105a:	04 96       	adiw	r24, 0x04	; 4
-    105c:	9b 83       	std	Y+3, r25	; 0x03
-    105e:	8a 83       	std	Y+2, r24	; 0x02
-    1060:	40 e0       	ldi	r20, 0x00	; 0
-    1062:	63 e0       	ldi	r22, 0x03	; 3
-    1064:	0e 94 4a 04 	call	0x894	; 0x894 <BunchPins_Write>
+    10aa:	04 96       	adiw	r24, 0x04	; 4
+    10ac:	9b 83       	std	Y+3, r25	; 0x03
+    10ae:	8a 83       	std	Y+2, r24	; 0x02
+    10b0:	40 e0       	ldi	r20, 0x00	; 0
+    10b2:	63 e0       	ldi	r22, 0x03	; 3
+    10b4:	0e 94 4a 04 	call	0x894	; 0x894 <BunchPins_Write>
 	BunchPins_Write(ptr->arr_KeyPadInputPins,ROWS,SET_VALUE_HIGH); // set intput pins 
-    1068:	41 e0       	ldi	r20, 0x01	; 1
-    106a:	64 e0       	ldi	r22, 0x04	; 4
-    106c:	c5 01       	movw	r24, r10
-    106e:	0e 94 4a 04 	call	0x894	; 0x894 <BunchPins_Write>
+    10b8:	41 e0       	ldi	r20, 0x01	; 1
+    10ba:	64 e0       	ldi	r22, 0x04	; 4
+    10bc:	c5 01       	movw	r24, r10
+    10be:	0e 94 4a 04 	call	0x894	; 0x894 <BunchPins_Write>
 	for(i=0;i<ROWS;i++)
-    1072:	19 82       	std	Y+1, r1	; 0x01
-    1074:	89 81       	ldd	r24, Y+1	; 0x01
-    1076:	84 30       	cpi	r24, 0x04	; 4
-    1078:	08 f0       	brcs	.+2      	; 0x107c <keyPad_dispatcher+0x50>
-    107a:	bc c0       	rjmp	.+376    	; 0x11f4 <keyPad_dispatcher+0x1c8>
+    10c2:	19 82       	std	Y+1, r1	; 0x01
+    10c4:	89 81       	ldd	r24, Y+1	; 0x01
+    10c6:	84 30       	cpi	r24, 0x04	; 4
+    10c8:	08 f0       	brcs	.+2      	; 0x10cc <keyPad_dispatcher+0x50>
+    10ca:	bc c0       	rjmp	.+376    	; 0x1244 <keyPad_dispatcher+0x1c8>
 	* it's usage to know which key has been pressed
 	* it called when it found one or more input pin low 
 	* check which pin caused low by making one shifting colom low
 	*/
     uint8 i,j;	
     uint8 key_ret_val = '\0';
-    107c:	21 2c       	mov	r2, r1
+    10cc:	21 2c       	mov	r2, r1
 	volatile uint8 i;
 	BunchPins_Write(ptr->arr_KeyPadOutputPins,COLUMS,SET_VALUE_LOW); // clear output pins
 	BunchPins_Write(ptr->arr_KeyPadInputPins,ROWS,SET_VALUE_HIGH); // set intput pins 
 	for(i=0;i<ROWS;i++)
 	{
 		if (!(digitalRead(ptr->arr_KeyPadInputPins[i])))
-    107e:	89 81       	ldd	r24, Y+1	; 0x01
-    1080:	f5 01       	movw	r30, r10
-    1082:	e8 0f       	add	r30, r24
-    1084:	f1 1d       	adc	r31, r1
-    1086:	80 81       	ld	r24, Z
-    1088:	0e 94 13 04 	call	0x826	; 0x826 <digitalRead>
-    108c:	81 11       	cpse	r24, r1
-    108e:	81 c0       	rjmp	.+258    	; 0x1192 <keyPad_dispatcher+0x166>
+    10ce:	89 81       	ldd	r24, Y+1	; 0x01
+    10d0:	f5 01       	movw	r30, r10
+    10d2:	e8 0f       	add	r30, r24
+    10d4:	f1 1d       	adc	r31, r1
+    10d6:	80 81       	ld	r24, Z
+    10d8:	0e 94 13 04 	call	0x826	; 0x826 <digitalRead>
+    10dc:	81 11       	cpse	r24, r1
+    10de:	81 c0       	rjmp	.+258    	; 0x11e2 <keyPad_dispatcher+0x166>
 		{
 			ptr_CallBackFun(get_key(ptr));	//call back fun
-    1090:	60 90 b3 06 	lds	r6, 0x06B3	; 0x8006b3 <ptr_CallBackFun>
-    1094:	70 90 b4 06 	lds	r7, 0x06B4	; 0x8006b4 <ptr_CallBackFun+0x1>
-    1098:	45 01       	movw	r8, r10
-    109a:	94 e0       	ldi	r25, 0x04	; 4
-    109c:	89 0e       	add	r8, r25
-    109e:	91 1c       	adc	r9, r1
+    10e0:	60 90 9f 06 	lds	r6, 0x069F	; 0x80069f <ptr_CallBackFun>
+    10e4:	70 90 a0 06 	lds	r7, 0x06A0	; 0x8006a0 <ptr_CallBackFun+0x1>
+    10e8:	45 01       	movw	r8, r10
+    10ea:	94 e0       	ldi	r25, 0x04	; 4
+    10ec:	89 0e       	add	r8, r25
+    10ee:	91 1c       	adc	r9, r1
 	* it's usage to know which key has been pressed
 	* it called when it found one or more input pin low 
 	* check which pin caused low by making one shifting colom low
 	*/
     uint8 i,j;	
     uint8 key_ret_val = '\0';
-    10a0:	32 2c       	mov	r3, r2
+    10f0:	32 2c       	mov	r3, r2
 		
 	for (i = 0; i < COLUMS; i++)
-    10a2:	41 2c       	mov	r4, r1
+    10f2:	41 2c       	mov	r4, r1
 	{
 		BunchPins_Write(ptr->arr_KeyPadOutputPins,COLUMS,SET_VALUE_HIGH); // set all coloums high
-    10a4:	41 e0       	ldi	r20, 0x01	; 1
-    10a6:	63 e0       	ldi	r22, 0x03	; 3
-    10a8:	8a 81       	ldd	r24, Y+2	; 0x02
-    10aa:	9b 81       	ldd	r25, Y+3	; 0x03
-    10ac:	0e 94 4a 04 	call	0x894	; 0x894 <BunchPins_Write>
+    10f4:	41 e0       	ldi	r20, 0x01	; 1
+    10f6:	63 e0       	ldi	r22, 0x03	; 3
+    10f8:	8a 81       	ldd	r24, Y+2	; 0x02
+    10fa:	9b 81       	ldd	r25, Y+3	; 0x03
+    10fc:	0e 94 4a 04 	call	0x894	; 0x894 <BunchPins_Write>
 		// to stand out the pressed key i need to make all the other out to be high and one only low
 		digitalWrite(ptr->arr_KeyPadOutputPins[i],SET_VALUE_LOW);  // clear a single coloum
-    10b0:	62 2d       	mov	r22, r2
-    10b2:	f4 01       	movw	r30, r8
-    10b4:	81 91       	ld	r24, Z+
-    10b6:	4f 01       	movw	r8, r30
-    10b8:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
-    10bc:	65 01       	movw	r12, r10
-    10be:	e1 2c       	mov	r14, r1
-    10c0:	f1 2c       	mov	r15, r1
-    10c2:	5e 2c       	mov	r5, r14
-    10c4:	ff ef       	ldi	r31, 0xFF	; 255
-    10c6:	ef 1a       	sub	r14, r31
-    10c8:	ff 0a       	sbc	r15, r31
+    1100:	62 2d       	mov	r22, r2
+    1102:	f4 01       	movw	r30, r8
+    1104:	81 91       	ld	r24, Z+
+    1106:	4f 01       	movw	r8, r30
+    1108:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
+    110c:	65 01       	movw	r12, r10
+    110e:	e1 2c       	mov	r14, r1
+    1110:	f1 2c       	mov	r15, r1
+    1112:	5e 2c       	mov	r5, r14
+    1114:	ff ef       	ldi	r31, 0xFF	; 255
+    1116:	ef 1a       	sub	r14, r31
+    1118:	ff 0a       	sbc	r15, r31
 		for (j = 0; j < ROWS ; j++)
 		{
 			if (!(digitalRead(ptr->arr_KeyPadInputPins[j])))           // check if single input pin low 
-    10ca:	f6 01       	movw	r30, r12
-    10cc:	81 91       	ld	r24, Z+
-    10ce:	6f 01       	movw	r12, r30
-    10d0:	0e 94 13 04 	call	0x826	; 0x826 <digitalRead>
-    10d4:	81 11       	cpse	r24, r1
-    10d6:	4d c0       	rjmp	.+154    	; 0x1172 <keyPad_dispatcher+0x146>
+    111a:	f6 01       	movw	r30, r12
+    111c:	81 91       	ld	r24, Z+
+    111e:	6f 01       	movw	r12, r30
+    1120:	0e 94 13 04 	call	0x826	; 0x826 <digitalRead>
+    1124:	81 11       	cpse	r24, r1
+    1126:	4d c0       	rjmp	.+154    	; 0x11c2 <keyPad_dispatcher+0x146>
 			{
 				while (!(digitalRead(ptr->arr_KeyPadInputPins[j])));	// stay here while is pressed "low"
-    10d8:	86 01       	movw	r16, r12
-    10da:	01 50       	subi	r16, 0x01	; 1
-    10dc:	11 09       	sbc	r17, r1
-    10de:	f8 01       	movw	r30, r16
-    10e0:	80 81       	ld	r24, Z
-    10e2:	0e 94 13 04 	call	0x826	; 0x826 <digitalRead>
-    10e6:	88 23       	and	r24, r24
-    10e8:	d1 f3       	breq	.-12     	; 0x10de <keyPad_dispatcher+0xb2>
+    1128:	86 01       	movw	r16, r12
+    112a:	01 50       	subi	r16, 0x01	; 1
+    112c:	11 09       	sbc	r17, r1
+    112e:	f8 01       	movw	r30, r16
+    1130:	80 81       	ld	r24, Z
+    1132:	0e 94 13 04 	call	0x826	; 0x826 <digitalRead>
+    1136:	88 23       	and	r24, r24
+    1138:	d1 f3       	breq	.-12     	; 0x112e <keyPad_dispatcher+0xb2>
 				switch (j) 
-    10ea:	f1 e0       	ldi	r31, 0x01	; 1
-    10ec:	5f 16       	cp	r5, r31
-    10ee:	c1 f0       	breq	.+48     	; 0x1120 <keyPad_dispatcher+0xf4>
-    10f0:	5f 16       	cp	r5, r31
-    10f2:	38 f0       	brcs	.+14     	; 0x1102 <keyPad_dispatcher+0xd6>
-    10f4:	82 e0       	ldi	r24, 0x02	; 2
-    10f6:	58 16       	cp	r5, r24
-    10f8:	11 f1       	breq	.+68     	; 0x113e <keyPad_dispatcher+0x112>
-    10fa:	93 e0       	ldi	r25, 0x03	; 3
-    10fc:	59 16       	cp	r5, r25
-    10fe:	71 f1       	breq	.+92     	; 0x115c <keyPad_dispatcher+0x130>
-    1100:	38 c0       	rjmp	.+112    	; 0x1172 <keyPad_dispatcher+0x146>
+    113a:	f1 e0       	ldi	r31, 0x01	; 1
+    113c:	5f 16       	cp	r5, r31
+    113e:	c1 f0       	breq	.+48     	; 0x1170 <keyPad_dispatcher+0xf4>
+    1140:	5f 16       	cp	r5, r31
+    1142:	38 f0       	brcs	.+14     	; 0x1152 <keyPad_dispatcher+0xd6>
+    1144:	82 e0       	ldi	r24, 0x02	; 2
+    1146:	58 16       	cp	r5, r24
+    1148:	11 f1       	breq	.+68     	; 0x118e <keyPad_dispatcher+0x112>
+    114a:	93 e0       	ldi	r25, 0x03	; 3
+    114c:	59 16       	cp	r5, r25
+    114e:	71 f1       	breq	.+92     	; 0x11ac <keyPad_dispatcher+0x130>
+    1150:	38 c0       	rjmp	.+112    	; 0x11c2 <keyPad_dispatcher+0x146>
 				{
 					case (0):
 					{
 						if		(i == 0) key_ret_val = P_0_0; // j=0 , i=0
-    1102:	44 20       	and	r4, r4
-    1104:	09 f4       	brne	.+2      	; 0x1108 <keyPad_dispatcher+0xdc>
-    1106:	4d c0       	rjmp	.+154    	; 0x11a2 <keyPad_dispatcher+0x176>
+    1152:	44 20       	and	r4, r4
+    1154:	09 f4       	brne	.+2      	; 0x1158 <keyPad_dispatcher+0xdc>
+    1156:	4d c0       	rjmp	.+154    	; 0x11f2 <keyPad_dispatcher+0x176>
 						else if (i == 1) key_ret_val = P_0_1; // j=0 , i=1
-    1108:	e1 e0       	ldi	r30, 0x01	; 1
-    110a:	4e 16       	cp	r4, r30
-    110c:	09 f4       	brne	.+2      	; 0x1110 <keyPad_dispatcher+0xe4>
-    110e:	4e c0       	rjmp	.+156    	; 0x11ac <keyPad_dispatcher+0x180>
+    1158:	e1 e0       	ldi	r30, 0x01	; 1
+    115a:	4e 16       	cp	r4, r30
+    115c:	09 f4       	brne	.+2      	; 0x1160 <keyPad_dispatcher+0xe4>
+    115e:	4e c0       	rjmp	.+156    	; 0x11fc <keyPad_dispatcher+0x180>
 #ifdef _COLUM_3
 						else if (i == 2) key_ret_val = P_0_2; // j=0 , i=2
-    1110:	f2 e0       	ldi	r31, 0x02	; 2
-    1112:	4f 12       	cpse	r4, r31
-    1114:	d6 cf       	rjmp	.-84     	; 0x10c2 <keyPad_dispatcher+0x96>
-    1116:	0f 2e       	mov	r0, r31
-    1118:	f3 e3       	ldi	r31, 0x33	; 51
-    111a:	3f 2e       	mov	r3, r31
-    111c:	f0 2d       	mov	r31, r0
-    111e:	d1 cf       	rjmp	.-94     	; 0x10c2 <keyPad_dispatcher+0x96>
+    1160:	f2 e0       	ldi	r31, 0x02	; 2
+    1162:	4f 12       	cpse	r4, r31
+    1164:	d6 cf       	rjmp	.-84     	; 0x1112 <keyPad_dispatcher+0x96>
+    1166:	0f 2e       	mov	r0, r31
+    1168:	f3 e3       	ldi	r31, 0x33	; 51
+    116a:	3f 2e       	mov	r3, r31
+    116c:	f0 2d       	mov	r31, r0
+    116e:	d1 cf       	rjmp	.-94     	; 0x1112 <keyPad_dispatcher+0x96>
 						}
 						break;
 					}
 					case (1):
 					{
 						if		(i == 0) key_ret_val = P_1_0; // j=1 , i=0
-    1120:	44 20       	and	r4, r4
-    1122:	09 f4       	brne	.+2      	; 0x1126 <keyPad_dispatcher+0xfa>
-    1124:	48 c0       	rjmp	.+144    	; 0x11b6 <keyPad_dispatcher+0x18a>
+    1170:	44 20       	and	r4, r4
+    1172:	09 f4       	brne	.+2      	; 0x1176 <keyPad_dispatcher+0xfa>
+    1174:	48 c0       	rjmp	.+144    	; 0x1206 <keyPad_dispatcher+0x18a>
 						else if (i == 1) key_ret_val = P_1_1; // j=1 , i=1
-    1126:	81 e0       	ldi	r24, 0x01	; 1
-    1128:	48 16       	cp	r4, r24
-    112a:	09 f4       	brne	.+2      	; 0x112e <keyPad_dispatcher+0x102>
-    112c:	49 c0       	rjmp	.+146    	; 0x11c0 <keyPad_dispatcher+0x194>
+    1176:	81 e0       	ldi	r24, 0x01	; 1
+    1178:	48 16       	cp	r4, r24
+    117a:	09 f4       	brne	.+2      	; 0x117e <keyPad_dispatcher+0x102>
+    117c:	49 c0       	rjmp	.+146    	; 0x1210 <keyPad_dispatcher+0x194>
 #ifdef _COLUM_3
 						else if (i == 2) key_ret_val = P_1_2; // j=1 , i=2
-    112e:	92 e0       	ldi	r25, 0x02	; 2
-    1130:	49 12       	cpse	r4, r25
-    1132:	c7 cf       	rjmp	.-114    	; 0x10c2 <keyPad_dispatcher+0x96>
-    1134:	0f 2e       	mov	r0, r31
-    1136:	f6 e3       	ldi	r31, 0x36	; 54
-    1138:	3f 2e       	mov	r3, r31
-    113a:	f0 2d       	mov	r31, r0
-    113c:	c2 cf       	rjmp	.-124    	; 0x10c2 <keyPad_dispatcher+0x96>
+    117e:	92 e0       	ldi	r25, 0x02	; 2
+    1180:	49 12       	cpse	r4, r25
+    1182:	c7 cf       	rjmp	.-114    	; 0x1112 <keyPad_dispatcher+0x96>
+    1184:	0f 2e       	mov	r0, r31
+    1186:	f6 e3       	ldi	r31, 0x36	; 54
+    1188:	3f 2e       	mov	r3, r31
+    118a:	f0 2d       	mov	r31, r0
+    118c:	c2 cf       	rjmp	.-124    	; 0x1112 <keyPad_dispatcher+0x96>
 						break;
 					}
 #ifdef _ROW_3_
 					case (2):
 					{
 						if		(i == 0) key_ret_val = P_2_0; // j=2 , i=0
-    113e:	44 20       	and	r4, r4
-    1140:	09 f4       	brne	.+2      	; 0x1144 <keyPad_dispatcher+0x118>
-    1142:	43 c0       	rjmp	.+134    	; 0x11ca <keyPad_dispatcher+0x19e>
+    118e:	44 20       	and	r4, r4
+    1190:	09 f4       	brne	.+2      	; 0x1194 <keyPad_dispatcher+0x118>
+    1192:	43 c0       	rjmp	.+134    	; 0x121a <keyPad_dispatcher+0x19e>
 						else if (i == 1) key_ret_val = P_2_1; // j=2 , i=1
-    1144:	e1 e0       	ldi	r30, 0x01	; 1
-    1146:	4e 16       	cp	r4, r30
-    1148:	09 f4       	brne	.+2      	; 0x114c <keyPad_dispatcher+0x120>
-    114a:	44 c0       	rjmp	.+136    	; 0x11d4 <keyPad_dispatcher+0x1a8>
+    1194:	e1 e0       	ldi	r30, 0x01	; 1
+    1196:	4e 16       	cp	r4, r30
+    1198:	09 f4       	brne	.+2      	; 0x119c <keyPad_dispatcher+0x120>
+    119a:	44 c0       	rjmp	.+136    	; 0x1224 <keyPad_dispatcher+0x1a8>
 #ifdef _COLUM_3
 						else if (i == 2) key_ret_val = P_2_2; // j=2 , i=2
-    114c:	f2 e0       	ldi	r31, 0x02	; 2
-    114e:	4f 12       	cpse	r4, r31
-    1150:	b8 cf       	rjmp	.-144    	; 0x10c2 <keyPad_dispatcher+0x96>
-    1152:	0f 2e       	mov	r0, r31
-    1154:	f9 e3       	ldi	r31, 0x39	; 57
-    1156:	3f 2e       	mov	r3, r31
-    1158:	f0 2d       	mov	r31, r0
-    115a:	b3 cf       	rjmp	.-154    	; 0x10c2 <keyPad_dispatcher+0x96>
+    119c:	f2 e0       	ldi	r31, 0x02	; 2
+    119e:	4f 12       	cpse	r4, r31
+    11a0:	b8 cf       	rjmp	.-144    	; 0x1112 <keyPad_dispatcher+0x96>
+    11a2:	0f 2e       	mov	r0, r31
+    11a4:	f9 e3       	ldi	r31, 0x39	; 57
+    11a6:	3f 2e       	mov	r3, r31
+    11a8:	f0 2d       	mov	r31, r0
+    11aa:	b3 cf       	rjmp	.-154    	; 0x1112 <keyPad_dispatcher+0x96>
 #endif // _ROW_3_
 
 #ifdef _ROW_4_
 					case (3):
 					{
 						if		(i == 0) key_ret_val = P_3_0; // j=3 , i=0
-    115c:	44 20       	and	r4, r4
-    115e:	09 f4       	brne	.+2      	; 0x1162 <keyPad_dispatcher+0x136>
-    1160:	3e c0       	rjmp	.+124    	; 0x11de <keyPad_dispatcher+0x1b2>
+    11ac:	44 20       	and	r4, r4
+    11ae:	09 f4       	brne	.+2      	; 0x11b2 <keyPad_dispatcher+0x136>
+    11b0:	3e c0       	rjmp	.+124    	; 0x122e <keyPad_dispatcher+0x1b2>
 						else if (i == 1) key_ret_val = P_3_1; // j=3 , i=1
-    1162:	81 e0       	ldi	r24, 0x01	; 1
-    1164:	48 16       	cp	r4, r24
-    1166:	09 f4       	brne	.+2      	; 0x116a <keyPad_dispatcher+0x13e>
-    1168:	3f c0       	rjmp	.+126    	; 0x11e8 <keyPad_dispatcher+0x1bc>
+    11b2:	81 e0       	ldi	r24, 0x01	; 1
+    11b4:	48 16       	cp	r4, r24
+    11b6:	09 f4       	brne	.+2      	; 0x11ba <keyPad_dispatcher+0x13e>
+    11b8:	3f c0       	rjmp	.+126    	; 0x1238 <keyPad_dispatcher+0x1bc>
 #ifdef _COLUM_3
 						else if (i == 2) key_ret_val = P_3_2; // j=3 , i=2
-    116a:	92 e0       	ldi	r25, 0x02	; 2
-    116c:	49 12       	cpse	r4, r25
-    116e:	05 c0       	rjmp	.+10     	; 0x117a <keyPad_dispatcher+0x14e>
-    1170:	09 c0       	rjmp	.+18     	; 0x1184 <keyPad_dispatcher+0x158>
+    11ba:	92 e0       	ldi	r25, 0x02	; 2
+    11bc:	49 12       	cpse	r4, r25
+    11be:	05 c0       	rjmp	.+10     	; 0x11ca <keyPad_dispatcher+0x14e>
+    11c0:	09 c0       	rjmp	.+18     	; 0x11d4 <keyPad_dispatcher+0x158>
 	for (i = 0; i < COLUMS; i++)
 	{
 		BunchPins_Write(ptr->arr_KeyPadOutputPins,COLUMS,SET_VALUE_HIGH); // set all coloums high
 		// to stand out the pressed key i need to make all the other out to be high and one only low
 		digitalWrite(ptr->arr_KeyPadOutputPins[i],SET_VALUE_LOW);  // clear a single coloum
 		for (j = 0; j < ROWS ; j++)
-    1172:	e3 e0       	ldi	r30, 0x03	; 3
-    1174:	ee 15       	cp	r30, r14
-    1176:	08 f0       	brcs	.+2      	; 0x117a <keyPad_dispatcher+0x14e>
-    1178:	a4 cf       	rjmp	.-184    	; 0x10c2 <keyPad_dispatcher+0x96>
+    11c2:	e3 e0       	ldi	r30, 0x03	; 3
+    11c4:	ee 15       	cp	r30, r14
+    11c6:	08 f0       	brcs	.+2      	; 0x11ca <keyPad_dispatcher+0x14e>
+    11c8:	a4 cf       	rjmp	.-184    	; 0x1112 <keyPad_dispatcher+0x96>
 	* check which pin caused low by making one shifting colom low
 	*/
     uint8 i,j;	
     uint8 key_ret_val = '\0';
 		
 	for (i = 0; i < COLUMS; i++)
-    117a:	43 94       	inc	r4
-    117c:	f3 e0       	ldi	r31, 0x03	; 3
-    117e:	4f 12       	cpse	r4, r31
-    1180:	91 cf       	rjmp	.-222    	; 0x10a4 <keyPad_dispatcher+0x78>
-    1182:	04 c0       	rjmp	.+8      	; 0x118c <keyPad_dispatcher+0x160>
+    11ca:	43 94       	inc	r4
+    11cc:	f3 e0       	ldi	r31, 0x03	; 3
+    11ce:	4f 12       	cpse	r4, r31
+    11d0:	91 cf       	rjmp	.-222    	; 0x10f4 <keyPad_dispatcher+0x78>
+    11d2:	04 c0       	rjmp	.+8      	; 0x11dc <keyPad_dispatcher+0x160>
 					case (3):
 					{
 						if		(i == 0) key_ret_val = P_3_0; // j=3 , i=0
 						else if (i == 1) key_ret_val = P_3_1; // j=3 , i=1
 #ifdef _COLUM_3
 						else if (i == 2) key_ret_val = P_3_2; // j=3 , i=2
-    1184:	0f 2e       	mov	r0, r31
-    1186:	f3 e2       	ldi	r31, 0x23	; 35
-    1188:	3f 2e       	mov	r3, r31
-    118a:	f0 2d       	mov	r31, r0
+    11d4:	0f 2e       	mov	r0, r31
+    11d6:	f3 e2       	ldi	r31, 0x23	; 35
+    11d8:	3f 2e       	mov	r3, r31
+    11da:	f0 2d       	mov	r31, r0
 	BunchPins_Write(ptr->arr_KeyPadInputPins,ROWS,SET_VALUE_HIGH); // set intput pins 
 	for(i=0;i<ROWS;i++)
 	{
 		if (!(digitalRead(ptr->arr_KeyPadInputPins[i])))
 		{
 			ptr_CallBackFun(get_key(ptr));	//call back fun
-    118c:	83 2d       	mov	r24, r3
-    118e:	f3 01       	movw	r30, r6
-    1190:	09 95       	icall
+    11dc:	83 2d       	mov	r24, r3
+    11de:	f3 01       	movw	r30, r6
+    11e0:	09 95       	icall
 void keyPad_dispatcher(KeyPad_PinCnfg_t* ptr)
 {
 	volatile uint8 i;
 	BunchPins_Write(ptr->arr_KeyPadOutputPins,COLUMS,SET_VALUE_LOW); // clear output pins
 	BunchPins_Write(ptr->arr_KeyPadInputPins,ROWS,SET_VALUE_HIGH); // set intput pins 
 	for(i=0;i<ROWS;i++)
-    1192:	89 81       	ldd	r24, Y+1	; 0x01
-    1194:	8f 5f       	subi	r24, 0xFF	; 255
-    1196:	89 83       	std	Y+1, r24	; 0x01
-    1198:	89 81       	ldd	r24, Y+1	; 0x01
-    119a:	84 30       	cpi	r24, 0x04	; 4
-    119c:	08 f4       	brcc	.+2      	; 0x11a0 <keyPad_dispatcher+0x174>
-    119e:	6f cf       	rjmp	.-290    	; 0x107e <keyPad_dispatcher+0x52>
-    11a0:	29 c0       	rjmp	.+82     	; 0x11f4 <keyPad_dispatcher+0x1c8>
+    11e2:	89 81       	ldd	r24, Y+1	; 0x01
+    11e4:	8f 5f       	subi	r24, 0xFF	; 255
+    11e6:	89 83       	std	Y+1, r24	; 0x01
+    11e8:	89 81       	ldd	r24, Y+1	; 0x01
+    11ea:	84 30       	cpi	r24, 0x04	; 4
+    11ec:	08 f4       	brcc	.+2      	; 0x11f0 <keyPad_dispatcher+0x174>
+    11ee:	6f cf       	rjmp	.-290    	; 0x10ce <keyPad_dispatcher+0x52>
+    11f0:	29 c0       	rjmp	.+82     	; 0x1244 <keyPad_dispatcher+0x1c8>
 				while (!(digitalRead(ptr->arr_KeyPadInputPins[j])));	// stay here while is pressed "low"
 				switch (j) 
 				{
 					case (0):
 					{
 						if		(i == 0) key_ret_val = P_0_0; // j=0 , i=0
-    11a2:	0f 2e       	mov	r0, r31
-    11a4:	f1 e3       	ldi	r31, 0x31	; 49
-    11a6:	3f 2e       	mov	r3, r31
-    11a8:	f0 2d       	mov	r31, r0
-    11aa:	8b cf       	rjmp	.-234    	; 0x10c2 <keyPad_dispatcher+0x96>
+    11f2:	0f 2e       	mov	r0, r31
+    11f4:	f1 e3       	ldi	r31, 0x31	; 49
+    11f6:	3f 2e       	mov	r3, r31
+    11f8:	f0 2d       	mov	r31, r0
+    11fa:	8b cf       	rjmp	.-234    	; 0x1112 <keyPad_dispatcher+0x96>
 						else if (i == 1) key_ret_val = P_0_1; // j=0 , i=1
-    11ac:	0f 2e       	mov	r0, r31
-    11ae:	f2 e3       	ldi	r31, 0x32	; 50
-    11b0:	3f 2e       	mov	r3, r31
-    11b2:	f0 2d       	mov	r31, r0
-    11b4:	86 cf       	rjmp	.-244    	; 0x10c2 <keyPad_dispatcher+0x96>
+    11fc:	0f 2e       	mov	r0, r31
+    11fe:	f2 e3       	ldi	r31, 0x32	; 50
+    1200:	3f 2e       	mov	r3, r31
+    1202:	f0 2d       	mov	r31, r0
+    1204:	86 cf       	rjmp	.-244    	; 0x1112 <keyPad_dispatcher+0x96>
 						}
 						break;
 					}
 					case (1):
 					{
 						if		(i == 0) key_ret_val = P_1_0; // j=1 , i=0
-    11b6:	0f 2e       	mov	r0, r31
-    11b8:	f4 e3       	ldi	r31, 0x34	; 52
-    11ba:	3f 2e       	mov	r3, r31
-    11bc:	f0 2d       	mov	r31, r0
-    11be:	81 cf       	rjmp	.-254    	; 0x10c2 <keyPad_dispatcher+0x96>
+    1206:	0f 2e       	mov	r0, r31
+    1208:	f4 e3       	ldi	r31, 0x34	; 52
+    120a:	3f 2e       	mov	r3, r31
+    120c:	f0 2d       	mov	r31, r0
+    120e:	81 cf       	rjmp	.-254    	; 0x1112 <keyPad_dispatcher+0x96>
 						else if (i == 1) key_ret_val = P_1_1; // j=1 , i=1
-    11c0:	0f 2e       	mov	r0, r31
-    11c2:	f5 e3       	ldi	r31, 0x35	; 53
-    11c4:	3f 2e       	mov	r3, r31
-    11c6:	f0 2d       	mov	r31, r0
-    11c8:	7c cf       	rjmp	.-264    	; 0x10c2 <keyPad_dispatcher+0x96>
+    1210:	0f 2e       	mov	r0, r31
+    1212:	f5 e3       	ldi	r31, 0x35	; 53
+    1214:	3f 2e       	mov	r3, r31
+    1216:	f0 2d       	mov	r31, r0
+    1218:	7c cf       	rjmp	.-264    	; 0x1112 <keyPad_dispatcher+0x96>
 						break;
 					}
 #ifdef _ROW_3_
 					case (2):
 					{
 						if		(i == 0) key_ret_val = P_2_0; // j=2 , i=0
-    11ca:	0f 2e       	mov	r0, r31
-    11cc:	f7 e3       	ldi	r31, 0x37	; 55
-    11ce:	3f 2e       	mov	r3, r31
-    11d0:	f0 2d       	mov	r31, r0
-    11d2:	77 cf       	rjmp	.-274    	; 0x10c2 <keyPad_dispatcher+0x96>
+    121a:	0f 2e       	mov	r0, r31
+    121c:	f7 e3       	ldi	r31, 0x37	; 55
+    121e:	3f 2e       	mov	r3, r31
+    1220:	f0 2d       	mov	r31, r0
+    1222:	77 cf       	rjmp	.-274    	; 0x1112 <keyPad_dispatcher+0x96>
 						else if (i == 1) key_ret_val = P_2_1; // j=2 , i=1
-    11d4:	0f 2e       	mov	r0, r31
-    11d6:	f8 e3       	ldi	r31, 0x38	; 56
-    11d8:	3f 2e       	mov	r3, r31
-    11da:	f0 2d       	mov	r31, r0
-    11dc:	72 cf       	rjmp	.-284    	; 0x10c2 <keyPad_dispatcher+0x96>
+    1224:	0f 2e       	mov	r0, r31
+    1226:	f8 e3       	ldi	r31, 0x38	; 56
+    1228:	3f 2e       	mov	r3, r31
+    122a:	f0 2d       	mov	r31, r0
+    122c:	72 cf       	rjmp	.-284    	; 0x1112 <keyPad_dispatcher+0x96>
 #endif // _ROW_3_
 
 #ifdef _ROW_4_
 					case (3):
 					{
 						if		(i == 0) key_ret_val = P_3_0; // j=3 , i=0
-    11de:	0f 2e       	mov	r0, r31
-    11e0:	fa e2       	ldi	r31, 0x2A	; 42
-    11e2:	3f 2e       	mov	r3, r31
-    11e4:	f0 2d       	mov	r31, r0
-    11e6:	04 c0       	rjmp	.+8      	; 0x11f0 <keyPad_dispatcher+0x1c4>
+    122e:	0f 2e       	mov	r0, r31
+    1230:	fa e2       	ldi	r31, 0x2A	; 42
+    1232:	3f 2e       	mov	r3, r31
+    1234:	f0 2d       	mov	r31, r0
+    1236:	04 c0       	rjmp	.+8      	; 0x1240 <keyPad_dispatcher+0x1c4>
 						else if (i == 1) key_ret_val = P_3_1; // j=3 , i=1
-    11e8:	0f 2e       	mov	r0, r31
-    11ea:	f0 e3       	ldi	r31, 0x30	; 48
-    11ec:	3f 2e       	mov	r3, r31
-    11ee:	f0 2d       	mov	r31, r0
+    1238:	0f 2e       	mov	r0, r31
+    123a:	f0 e3       	ldi	r31, 0x30	; 48
+    123c:	3f 2e       	mov	r3, r31
+    123e:	f0 2d       	mov	r31, r0
 	* check which pin caused low by making one shifting colom low
 	*/
     uint8 i,j;	
     uint8 key_ret_val = '\0';
 		
 	for (i = 0; i < COLUMS; i++)
-    11f0:	43 94       	inc	r4
-    11f2:	58 cf       	rjmp	.-336    	; 0x10a4 <keyPad_dispatcher+0x78>
+    1240:	43 94       	inc	r4
+    1242:	58 cf       	rjmp	.-336    	; 0x10f4 <keyPad_dispatcher+0x78>
 		{
 			ptr_CallBackFun(get_key(ptr));	//call back fun
 			// when come back again it should be breaked;
 		}
 	}
 }
-    11f4:	0f 90       	pop	r0
-    11f6:	0f 90       	pop	r0
-    11f8:	0f 90       	pop	r0
-    11fa:	df 91       	pop	r29
-    11fc:	cf 91       	pop	r28
-    11fe:	1f 91       	pop	r17
-    1200:	0f 91       	pop	r16
-    1202:	ff 90       	pop	r15
-    1204:	ef 90       	pop	r14
-    1206:	df 90       	pop	r13
-    1208:	cf 90       	pop	r12
-    120a:	bf 90       	pop	r11
-    120c:	af 90       	pop	r10
-    120e:	9f 90       	pop	r9
-    1210:	8f 90       	pop	r8
-    1212:	7f 90       	pop	r7
-    1214:	6f 90       	pop	r6
-    1216:	5f 90       	pop	r5
-    1218:	4f 90       	pop	r4
-    121a:	3f 90       	pop	r3
-    121c:	2f 90       	pop	r2
-    121e:	08 95       	ret
+    1244:	0f 90       	pop	r0
+    1246:	0f 90       	pop	r0
+    1248:	0f 90       	pop	r0
+    124a:	df 91       	pop	r29
+    124c:	cf 91       	pop	r28
+    124e:	1f 91       	pop	r17
+    1250:	0f 91       	pop	r16
+    1252:	ff 90       	pop	r15
+    1254:	ef 90       	pop	r14
+    1256:	df 90       	pop	r13
+    1258:	cf 90       	pop	r12
+    125a:	bf 90       	pop	r11
+    125c:	af 90       	pop	r10
+    125e:	9f 90       	pop	r9
+    1260:	8f 90       	pop	r8
+    1262:	7f 90       	pop	r7
+    1264:	6f 90       	pop	r6
+    1266:	5f 90       	pop	r5
+    1268:	4f 90       	pop	r4
+    126a:	3f 90       	pop	r3
+    126c:	2f 90       	pop	r2
+    126e:	08 95       	ret
 
-00001220 <Change_CallBackfunction>:
+00001270 <Change_CallBackfunction>:
 
 void Change_CallBackfunction(void (*ptr_Fu)(uint8 ))
 {
 	ptr_CallBackFun=ptr_Fu;
-    1220:	90 93 b4 06 	sts	0x06B4, r25	; 0x8006b4 <ptr_CallBackFun+0x1>
-    1224:	80 93 b3 06 	sts	0x06B3, r24	; 0x8006b3 <ptr_CallBackFun>
-    1228:	08 95       	ret
+    1270:	90 93 a0 06 	sts	0x06A0, r25	; 0x8006a0 <ptr_CallBackFun+0x1>
+    1274:	80 93 9f 06 	sts	0x069F, r24	; 0x80069f <ptr_CallBackFun>
+    1278:	08 95       	ret
 
-0000122a <kick>:
+0000127a <kick>:
 
 #define EN        ptr->Enable_pin
 #define RS        ptr->Reg_Select
 
 static void kick(const struct_PinsCnfg_t* ptr,uint8 chr)
 {
-    122a:	cf 92       	push	r12
-    122c:	df 92       	push	r13
-    122e:	ef 92       	push	r14
-    1230:	ff 92       	push	r15
-    1232:	0f 93       	push	r16
-    1234:	1f 93       	push	r17
-    1236:	cf 93       	push	r28
-    1238:	df 93       	push	r29
-    123a:	6c 01       	movw	r12, r24
-    123c:	8c 01       	movw	r16, r24
-    123e:	c0 e0       	ldi	r28, 0x00	; 0
-    1240:	d0 e0       	ldi	r29, 0x00	; 0
+    127a:	cf 92       	push	r12
+    127c:	df 92       	push	r13
+    127e:	ef 92       	push	r14
+    1280:	ff 92       	push	r15
+    1282:	0f 93       	push	r16
+    1284:	1f 93       	push	r17
+    1286:	cf 93       	push	r28
+    1288:	df 93       	push	r29
+    128a:	6c 01       	movw	r12, r24
+    128c:	8c 01       	movw	r16, r24
+    128e:	c0 e0       	ldi	r28, 0x00	; 0
+    1290:	d0 e0       	ldi	r29, 0x00	; 0
 	* make pulse to make lcd work
 	*/
 	uint8 i;
 	for (i=0;i<DATA_PINS;i++)
 	{
 		if (chr & (1<<i))
-    1242:	e6 2e       	mov	r14, r22
-    1244:	f1 2c       	mov	r15, r1
-    1246:	c7 01       	movw	r24, r14
-    1248:	0c 2e       	mov	r0, r28
-    124a:	02 c0       	rjmp	.+4      	; 0x1250 <kick+0x26>
-    124c:	95 95       	asr	r25
-    124e:	87 95       	ror	r24
-    1250:	0a 94       	dec	r0
-    1252:	e2 f7       	brpl	.-8      	; 0x124c <kick+0x22>
-    1254:	80 ff       	sbrs	r24, 0
-    1256:	06 c0       	rjmp	.+12     	; 0x1264 <kick+0x3a>
+    1292:	e6 2e       	mov	r14, r22
+    1294:	f1 2c       	mov	r15, r1
+    1296:	c7 01       	movw	r24, r14
+    1298:	0c 2e       	mov	r0, r28
+    129a:	02 c0       	rjmp	.+4      	; 0x12a0 <kick+0x26>
+    129c:	95 95       	asr	r25
+    129e:	87 95       	ror	r24
+    12a0:	0a 94       	dec	r0
+    12a2:	e2 f7       	brpl	.-8      	; 0x129c <kick+0x22>
+    12a4:	80 ff       	sbrs	r24, 0
+    12a6:	06 c0       	rjmp	.+12     	; 0x12b4 <kick+0x3a>
 		{
 			digitalWrite(ptr->arr_DataPins[i],SET_VALUE_HIGH);
-    1258:	61 e0       	ldi	r22, 0x01	; 1
-    125a:	f8 01       	movw	r30, r16
-    125c:	80 81       	ld	r24, Z
-    125e:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
-    1262:	05 c0       	rjmp	.+10     	; 0x126e <kick+0x44>
+    12a8:	61 e0       	ldi	r22, 0x01	; 1
+    12aa:	f8 01       	movw	r30, r16
+    12ac:	80 81       	ld	r24, Z
+    12ae:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
+    12b2:	05 c0       	rjmp	.+10     	; 0x12be <kick+0x44>
 		}
 		else
 		{
 			digitalWrite(ptr->arr_DataPins[i],SET_VALUE_LOW);
-    1264:	60 e0       	ldi	r22, 0x00	; 0
-    1266:	f8 01       	movw	r30, r16
-    1268:	80 81       	ld	r24, Z
-    126a:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
-    126e:	21 96       	adiw	r28, 0x01	; 1
-    1270:	0f 5f       	subi	r16, 0xFF	; 255
-    1272:	1f 4f       	sbci	r17, 0xFF	; 255
+    12b4:	60 e0       	ldi	r22, 0x00	; 0
+    12b6:	f8 01       	movw	r30, r16
+    12b8:	80 81       	ld	r24, Z
+    12ba:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
+    12be:	21 96       	adiw	r28, 0x01	; 1
+    12c0:	0f 5f       	subi	r16, 0xFF	; 255
+    12c2:	1f 4f       	sbci	r17, 0xFF	; 255
 	/*
 	* assign data in the pins of the confg
 	* make pulse to make lcd work
 	*/
 	uint8 i;
 	for (i=0;i<DATA_PINS;i++)
-    1274:	c4 30       	cpi	r28, 0x04	; 4
-    1276:	d1 05       	cpc	r29, r1
-    1278:	31 f7       	brne	.-52     	; 0x1246 <kick+0x1c>
+    12c4:	c4 30       	cpi	r28, 0x04	; 4
+    12c6:	d1 05       	cpc	r29, r1
+    12c8:	31 f7       	brne	.-52     	; 0x1296 <kick+0x1c>
 		{
 			digitalWrite(ptr->arr_DataPins[i],SET_VALUE_LOW);
 		}
 	}
 	
 	digitalWrite(EN,SET_VALUE_LOW);
-    127a:	60 e0       	ldi	r22, 0x00	; 0
-    127c:	f6 01       	movw	r30, r12
-    127e:	84 81       	ldd	r24, Z+4	; 0x04
-    1280:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
-    1284:	89 ef       	ldi	r24, 0xF9	; 249
-    1286:	90 e0       	ldi	r25, 0x00	; 0
-    1288:	01 97       	sbiw	r24, 0x01	; 1
-    128a:	f1 f7       	brne	.-4      	; 0x1288 <kick+0x5e>
-    128c:	00 c0       	rjmp	.+0      	; 0x128e <kick+0x64>
-    128e:	00 00       	nop
+    12ca:	60 e0       	ldi	r22, 0x00	; 0
+    12cc:	f6 01       	movw	r30, r12
+    12ce:	84 81       	ldd	r24, Z+4	; 0x04
+    12d0:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
+    12d4:	89 ef       	ldi	r24, 0xF9	; 249
+    12d6:	90 e0       	ldi	r25, 0x00	; 0
+    12d8:	01 97       	sbiw	r24, 0x01	; 1
+    12da:	f1 f7       	brne	.-4      	; 0x12d8 <kick+0x5e>
+    12dc:	00 c0       	rjmp	.+0      	; 0x12de <kick+0x64>
+    12de:	00 00       	nop
 	_delay_ms(1);
 	digitalWrite(EN,SET_VALUE_HIGH);
-    1290:	61 e0       	ldi	r22, 0x01	; 1
-    1292:	f6 01       	movw	r30, r12
-    1294:	84 81       	ldd	r24, Z+4	; 0x04
-    1296:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
+    12e0:	61 e0       	ldi	r22, 0x01	; 1
+    12e2:	f6 01       	movw	r30, r12
+    12e4:	84 81       	ldd	r24, Z+4	; 0x04
+    12e6:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
 }
-    129a:	df 91       	pop	r29
-    129c:	cf 91       	pop	r28
-    129e:	1f 91       	pop	r17
-    12a0:	0f 91       	pop	r16
-    12a2:	ff 90       	pop	r15
-    12a4:	ef 90       	pop	r14
-    12a6:	df 90       	pop	r13
-    12a8:	cf 90       	pop	r12
-    12aa:	08 95       	ret
+    12ea:	df 91       	pop	r29
+    12ec:	cf 91       	pop	r28
+    12ee:	1f 91       	pop	r17
+    12f0:	0f 91       	pop	r16
+    12f2:	ff 90       	pop	r15
+    12f4:	ef 90       	pop	r14
+    12f6:	df 90       	pop	r13
+    12f8:	cf 90       	pop	r12
+    12fa:	08 95       	ret
 
-000012ac <lcd_cmd>:
+000012fc <lcd_cmd>:
 	lcd_cmd(ptr,CURSOR_OFF);
 	lcd_clear(ptr);
 }
 
 void lcd_cmd(const struct_PinsCnfg_t* ptr,uint8 cmd)
 {
-    12ac:	1f 93       	push	r17
-    12ae:	cf 93       	push	r28
-    12b0:	df 93       	push	r29
-    12b2:	ec 01       	movw	r28, r24
-    12b4:	16 2f       	mov	r17, r22
+    12fc:	1f 93       	push	r17
+    12fe:	cf 93       	push	r28
+    1300:	df 93       	push	r29
+    1302:	ec 01       	movw	r28, r24
+    1304:	16 2f       	mov	r17, r22
 	/*
 	* select the register "command || data " in this case command
 	* sent the command
 	*/
 	digitalWrite(RS,SET_VALUE_LOW);    // register select command
-    12b6:	60 e0       	ldi	r22, 0x00	; 0
-    12b8:	8d 81       	ldd	r24, Y+5	; 0x05
-    12ba:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
+    1306:	60 e0       	ldi	r22, 0x00	; 0
+    1308:	8d 81       	ldd	r24, Y+5	; 0x05
+    130a:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
 	#ifdef _8BIT_MODE
 	kick(ptr,cmd);
 	#endif
 
 	#ifdef _4BIT_MODE
 	kick(ptr,cmd>>4);
-    12be:	61 2f       	mov	r22, r17
-    12c0:	62 95       	swap	r22
-    12c2:	6f 70       	andi	r22, 0x0F	; 15
-    12c4:	ce 01       	movw	r24, r28
-    12c6:	0e 94 15 09 	call	0x122a	; 0x122a <kick>
+    130e:	61 2f       	mov	r22, r17
+    1310:	62 95       	swap	r22
+    1312:	6f 70       	andi	r22, 0x0F	; 15
+    1314:	ce 01       	movw	r24, r28
+    1316:	0e 94 3d 09 	call	0x127a	; 0x127a <kick>
 	kick(ptr,(cmd));
-    12ca:	61 2f       	mov	r22, r17
-    12cc:	ce 01       	movw	r24, r28
-    12ce:	0e 94 15 09 	call	0x122a	; 0x122a <kick>
-    12d2:	83 ef       	ldi	r24, 0xF3	; 243
-    12d4:	91 e0       	ldi	r25, 0x01	; 1
-    12d6:	01 97       	sbiw	r24, 0x01	; 1
-    12d8:	f1 f7       	brne	.-4      	; 0x12d6 <lcd_cmd+0x2a>
-    12da:	00 c0       	rjmp	.+0      	; 0x12dc <lcd_cmd+0x30>
-    12dc:	00 00       	nop
+    131a:	61 2f       	mov	r22, r17
+    131c:	ce 01       	movw	r24, r28
+    131e:	0e 94 3d 09 	call	0x127a	; 0x127a <kick>
+    1322:	83 ef       	ldi	r24, 0xF3	; 243
+    1324:	91 e0       	ldi	r25, 0x01	; 1
+    1326:	01 97       	sbiw	r24, 0x01	; 1
+    1328:	f1 f7       	brne	.-4      	; 0x1326 <lcd_cmd+0x2a>
+    132a:	00 c0       	rjmp	.+0      	; 0x132c <lcd_cmd+0x30>
+    132c:	00 00       	nop
 	#endif
 	_delay_ms(2);
 }
-    12de:	df 91       	pop	r29
-    12e0:	cf 91       	pop	r28
-    12e2:	1f 91       	pop	r17
-    12e4:	08 95       	ret
+    132e:	df 91       	pop	r29
+    1330:	cf 91       	pop	r28
+    1332:	1f 91       	pop	r17
+    1334:	08 95       	ret
 
-000012e6 <lcd_chr>:
+00001336 <lcd_chr>:
 
 void lcd_chr(const struct_PinsCnfg_t* ptr,uint8 chr)
 {
-    12e6:	1f 93       	push	r17
-    12e8:	cf 93       	push	r28
-    12ea:	df 93       	push	r29
-    12ec:	ec 01       	movw	r28, r24
-    12ee:	16 2f       	mov	r17, r22
+    1336:	1f 93       	push	r17
+    1338:	cf 93       	push	r28
+    133a:	df 93       	push	r29
+    133c:	ec 01       	movw	r28, r24
+    133e:	16 2f       	mov	r17, r22
 	/*
 	* select the register "command || data " in this case data
 	* sent the data
 	*/
 	digitalWrite(RS,SET_VALUE_HIGH);              // register select data
-    12f0:	61 e0       	ldi	r22, 0x01	; 1
-    12f2:	8d 81       	ldd	r24, Y+5	; 0x05
-    12f4:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
+    1340:	61 e0       	ldi	r22, 0x01	; 1
+    1342:	8d 81       	ldd	r24, Y+5	; 0x05
+    1344:	0e 94 92 03 	call	0x724	; 0x724 <digitalWrite>
 	#ifdef _8BIT_MODE
 	kick(ptr,chr);
 	#endif
 
 	#ifdef _4BIT_MODE
 	kick(ptr,chr>>4);
-    12f8:	61 2f       	mov	r22, r17
-    12fa:	62 95       	swap	r22
-    12fc:	6f 70       	andi	r22, 0x0F	; 15
-    12fe:	ce 01       	movw	r24, r28
-    1300:	0e 94 15 09 	call	0x122a	; 0x122a <kick>
+    1348:	61 2f       	mov	r22, r17
+    134a:	62 95       	swap	r22
+    134c:	6f 70       	andi	r22, 0x0F	; 15
+    134e:	ce 01       	movw	r24, r28
+    1350:	0e 94 3d 09 	call	0x127a	; 0x127a <kick>
 	kick(ptr,(chr));
-    1304:	61 2f       	mov	r22, r17
-    1306:	ce 01       	movw	r24, r28
-    1308:	0e 94 15 09 	call	0x122a	; 0x122a <kick>
-    130c:	89 ef       	ldi	r24, 0xF9	; 249
-    130e:	90 e0       	ldi	r25, 0x00	; 0
-    1310:	01 97       	sbiw	r24, 0x01	; 1
-    1312:	f1 f7       	brne	.-4      	; 0x1310 <lcd_chr+0x2a>
-    1314:	00 c0       	rjmp	.+0      	; 0x1316 <lcd_chr+0x30>
-    1316:	00 00       	nop
+    1354:	61 2f       	mov	r22, r17
+    1356:	ce 01       	movw	r24, r28
+    1358:	0e 94 3d 09 	call	0x127a	; 0x127a <kick>
+    135c:	89 ef       	ldi	r24, 0xF9	; 249
+    135e:	90 e0       	ldi	r25, 0x00	; 0
+    1360:	01 97       	sbiw	r24, 0x01	; 1
+    1362:	f1 f7       	brne	.-4      	; 0x1360 <lcd_chr+0x2a>
+    1364:	00 c0       	rjmp	.+0      	; 0x1366 <lcd_chr+0x30>
+    1366:	00 00       	nop
 	#endif
 	_delay_ms(1);
 }
-    1318:	df 91       	pop	r29
-    131a:	cf 91       	pop	r28
-    131c:	1f 91       	pop	r17
-    131e:	08 95       	ret
+    1368:	df 91       	pop	r29
+    136a:	cf 91       	pop	r28
+    136c:	1f 91       	pop	r17
+    136e:	08 95       	ret
 
-00001320 <lcd_clear>:
+00001370 <lcd_clear>:
 
 void lcd_clear(const struct_PinsCnfg_t* ptr)
 {
 	lcd_cmd(ptr,CLEAR_SCREEN); // do the same as a command
-    1320:	61 e0       	ldi	r22, 0x01	; 1
-    1322:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
-    1326:	08 95       	ret
+    1370:	61 e0       	ldi	r22, 0x01	; 1
+    1372:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
+    1376:	08 95       	ret
 
-00001328 <lcd_goto>:
+00001378 <lcd_goto>:
 }
 
 void lcd_goto(const struct_PinsCnfg_t* ptr,uint8 row, uint8 col)
 {
 	if (row == 0)
-    1328:	61 11       	cpse	r22, r1
-    132a:	05 c0       	rjmp	.+10     	; 0x1336 <lcd_goto+0xe>
+    1378:	61 11       	cpse	r22, r1
+    137a:	05 c0       	rjmp	.+10     	; 0x1386 <lcd_goto+0xe>
 	{
 		lcd_cmd(ptr,(unsigned) 0x80 | col);
-    132c:	64 2f       	mov	r22, r20
-    132e:	60 68       	ori	r22, 0x80	; 128
-    1330:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
-    1334:	08 95       	ret
+    137c:	64 2f       	mov	r22, r20
+    137e:	60 68       	ori	r22, 0x80	; 128
+    1380:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
+    1384:	08 95       	ret
 	}
 	else if (row == 1)
-    1336:	61 30       	cpi	r22, 0x01	; 1
-    1338:	29 f4       	brne	.+10     	; 0x1344 <lcd_goto+0x1c>
+    1386:	61 30       	cpi	r22, 0x01	; 1
+    1388:	29 f4       	brne	.+10     	; 0x1394 <lcd_goto+0x1c>
 	{
 		lcd_cmd(ptr,(unsigned) 0xc0 | col);
-    133a:	64 2f       	mov	r22, r20
-    133c:	60 6c       	ori	r22, 0xC0	; 192
-    133e:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
-    1342:	08 95       	ret
+    138a:	64 2f       	mov	r22, r20
+    138c:	60 6c       	ori	r22, 0xC0	; 192
+    138e:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
+    1392:	08 95       	ret
 	}
 	#ifdef _LCD_16_4_
 	else if (row==2)
-    1344:	62 30       	cpi	r22, 0x02	; 2
-    1346:	29 f4       	brne	.+10     	; 0x1352 <lcd_goto+0x2a>
+    1394:	62 30       	cpi	r22, 0x02	; 2
+    1396:	29 f4       	brne	.+10     	; 0x13a2 <lcd_goto+0x2a>
 	{
 		lcd_cmd(ptr,(unsigned) 0x90  | col);
-    1348:	64 2f       	mov	r22, r20
-    134a:	60 69       	ori	r22, 0x90	; 144
-    134c:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
-    1350:	08 95       	ret
+    1398:	64 2f       	mov	r22, r20
+    139a:	60 69       	ori	r22, 0x90	; 144
+    139c:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
+    13a0:	08 95       	ret
 	}
 	else if (row==3)
-    1352:	63 30       	cpi	r22, 0x03	; 3
-    1354:	21 f4       	brne	.+8      	; 0x135e <lcd_goto+0x36>
+    13a2:	63 30       	cpi	r22, 0x03	; 3
+    13a4:	21 f4       	brne	.+8      	; 0x13ae <lcd_goto+0x36>
 	{
 		lcd_cmd(ptr,(unsigned) 0xD0 | col);
-    1356:	64 2f       	mov	r22, r20
-    1358:	60 6d       	ori	r22, 0xD0	; 208
-    135a:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
-    135e:	08 95       	ret
+    13a6:	64 2f       	mov	r22, r20
+    13a8:	60 6d       	ori	r22, 0xD0	; 208
+    13aa:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
+    13ae:	08 95       	ret
 
-00001360 <lcd_init>:
+000013b0 <lcd_init>:
 	_delay_ms(1);
 	digitalWrite(EN,SET_VALUE_HIGH);
 }
 
 void lcd_init(const struct_PinsCnfg_t* ptr)
 {
-    1360:	ef 92       	push	r14
-    1362:	ff 92       	push	r15
-    1364:	0f 93       	push	r16
-    1366:	1f 93       	push	r17
-    1368:	cf 93       	push	r28
-    136a:	df 93       	push	r29
-    136c:	8c 01       	movw	r16, r24
-    136e:	ec 01       	movw	r28, r24
-    1370:	7c 01       	movw	r14, r24
-    1372:	84 e0       	ldi	r24, 0x04	; 4
-    1374:	e8 0e       	add	r14, r24
-    1376:	f1 1c       	adc	r15, r1
+    13b0:	ef 92       	push	r14
+    13b2:	ff 92       	push	r15
+    13b4:	0f 93       	push	r16
+    13b6:	1f 93       	push	r17
+    13b8:	cf 93       	push	r28
+    13ba:	df 93       	push	r29
+    13bc:	8c 01       	movw	r16, r24
+    13be:	ec 01       	movw	r28, r24
+    13c0:	7c 01       	movw	r14, r24
+    13c2:	84 e0       	ldi	r24, 0x04	; 4
+    13c4:	e8 0e       	add	r14, r24
+    13c6:	f1 1c       	adc	r15, r1
 	* config the lcd to start working
 	*/
 	uint8 i;
 	for(i=0;i<DATA_PINS;i++)
 	{
 		SetPinDirection(ptr->arr_DataPins[i],SET_PIN_OUT);
-    1378:	61 e0       	ldi	r22, 0x01	; 1
-    137a:	89 91       	ld	r24, Y+
-    137c:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
+    13c8:	61 e0       	ldi	r22, 0x01	; 1
+    13ca:	89 91       	ld	r24, Y+
+    13cc:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
 	/*
 	* set dirction output for data and control pins
 	* config the lcd to start working
 	*/
 	uint8 i;
 	for(i=0;i<DATA_PINS;i++)
-    1380:	ce 15       	cp	r28, r14
-    1382:	df 05       	cpc	r29, r15
-    1384:	c9 f7       	brne	.-14     	; 0x1378 <lcd_init+0x18>
+    13d0:	ce 15       	cp	r28, r14
+    13d2:	df 05       	cpc	r29, r15
+    13d4:	c9 f7       	brne	.-14     	; 0x13c8 <lcd_init+0x18>
 	{
 		SetPinDirection(ptr->arr_DataPins[i],SET_PIN_OUT);
 	}
 	SetPinDirection(RS,SET_PIN_OUT);
-    1386:	61 e0       	ldi	r22, 0x01	; 1
-    1388:	f8 01       	movw	r30, r16
-    138a:	85 81       	ldd	r24, Z+5	; 0x05
-    138c:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
+    13d6:	61 e0       	ldi	r22, 0x01	; 1
+    13d8:	f8 01       	movw	r30, r16
+    13da:	85 81       	ldd	r24, Z+5	; 0x05
+    13dc:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
 	SetPinDirection(EN,SET_PIN_OUT);
-    1390:	61 e0       	ldi	r22, 0x01	; 1
-    1392:	f8 01       	movw	r30, r16
-    1394:	84 81       	ldd	r24, Z+4	; 0x04
-    1396:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
+    13e0:	61 e0       	ldi	r22, 0x01	; 1
+    13e2:	f8 01       	movw	r30, r16
+    13e4:	84 81       	ldd	r24, Z+4	; 0x04
+    13e6:	0e 94 11 03 	call	0x622	; 0x622 <SetPinDirection>
 	
 	#ifdef _4BIT_MODE
 	lcd_cmd(ptr,0x02);						//config lcd mode send commands to
-    139a:	62 e0       	ldi	r22, 0x02	; 2
-    139c:	c8 01       	movw	r24, r16
-    139e:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
+    13ea:	62 e0       	ldi	r22, 0x02	; 2
+    13ec:	c8 01       	movw	r24, r16
+    13ee:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
 	lcd_cmd(ptr,BIT_4);
-    13a2:	68 e2       	ldi	r22, 0x28	; 40
-    13a4:	c8 01       	movw	r24, r16
-    13a6:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
+    13f2:	68 e2       	ldi	r22, 0x28	; 40
+    13f4:	c8 01       	movw	r24, r16
+    13f6:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
 	
 	#ifdef _8BIT_MODE
 	lcd_cmd(ptr,BIT_8);
 	#endif
 	
 	lcd_cmd(ptr,ENTRY_MODE);                          // init lcd to use
-    13aa:	66 e0       	ldi	r22, 0x06	; 6
-    13ac:	c8 01       	movw	r24, r16
-    13ae:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
+    13fa:	66 e0       	ldi	r22, 0x06	; 6
+    13fc:	c8 01       	movw	r24, r16
+    13fe:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
 	lcd_goto(ptr,0, 0);
-    13b2:	40 e0       	ldi	r20, 0x00	; 0
-    13b4:	60 e0       	ldi	r22, 0x00	; 0
-    13b6:	c8 01       	movw	r24, r16
-    13b8:	0e 94 94 09 	call	0x1328	; 0x1328 <lcd_goto>
+    1402:	40 e0       	ldi	r20, 0x00	; 0
+    1404:	60 e0       	ldi	r22, 0x00	; 0
+    1406:	c8 01       	movw	r24, r16
+    1408:	0e 94 bc 09 	call	0x1378	; 0x1378 <lcd_goto>
 	lcd_cmd(ptr,CURSOR_OFF);
-    13bc:	6c e0       	ldi	r22, 0x0C	; 12
-    13be:	c8 01       	movw	r24, r16
-    13c0:	0e 94 56 09 	call	0x12ac	; 0x12ac <lcd_cmd>
+    140c:	6c e0       	ldi	r22, 0x0C	; 12
+    140e:	c8 01       	movw	r24, r16
+    1410:	0e 94 7e 09 	call	0x12fc	; 0x12fc <lcd_cmd>
 	lcd_clear(ptr);
-    13c4:	c8 01       	movw	r24, r16
-    13c6:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+    1414:	c8 01       	movw	r24, r16
+    1416:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 }
-    13ca:	df 91       	pop	r29
-    13cc:	cf 91       	pop	r28
-    13ce:	1f 91       	pop	r17
-    13d0:	0f 91       	pop	r16
-    13d2:	ff 90       	pop	r15
-    13d4:	ef 90       	pop	r14
-    13d6:	08 95       	ret
+    141a:	df 91       	pop	r29
+    141c:	cf 91       	pop	r28
+    141e:	1f 91       	pop	r17
+    1420:	0f 91       	pop	r16
+    1422:	ff 90       	pop	r15
+    1424:	ef 90       	pop	r14
+    1426:	08 95       	ret
 
-000013d8 <lcd_str>:
+00001428 <lcd_str>:
 		// should never be here
 	}
 }
 
 void lcd_str(const struct_PinsCnfg_t* ptr_lcd,uint8 row, uint8 col,uint8* ptr_chr)
 {
-    13d8:	df 92       	push	r13
-    13da:	ef 92       	push	r14
-    13dc:	ff 92       	push	r15
-    13de:	0f 93       	push	r16
-    13e0:	1f 93       	push	r17
-    13e2:	cf 93       	push	r28
-    13e4:	df 93       	push	r29
-    13e6:	8c 01       	movw	r16, r24
-    13e8:	f6 2e       	mov	r15, r22
-    13ea:	d2 2e       	mov	r13, r18
-    13ec:	e3 2e       	mov	r14, r19
+    1428:	df 92       	push	r13
+    142a:	ef 92       	push	r14
+    142c:	ff 92       	push	r15
+    142e:	0f 93       	push	r16
+    1430:	1f 93       	push	r17
+    1432:	cf 93       	push	r28
+    1434:	df 93       	push	r29
+    1436:	8c 01       	movw	r16, r24
+    1438:	f6 2e       	mov	r15, r22
+    143a:	d2 2e       	mov	r13, r18
+    143c:	e3 2e       	mov	r14, r19
 	lcd_goto(ptr_lcd,row,col);
-    13ee:	0e 94 94 09 	call	0x1328	; 0x1328 <lcd_goto>
-    13f2:	cd 2d       	mov	r28, r13
-    13f4:	de 2d       	mov	r29, r14
+    143e:	0e 94 bc 09 	call	0x1378	; 0x1378 <lcd_goto>
+    1442:	cd 2d       	mov	r28, r13
+    1444:	de 2d       	mov	r29, r14
 	while (*ptr_chr != '\0')
-    13f6:	0c c0       	rjmp	.+24     	; 0x1410 <lcd_str+0x38>
+    1446:	0c c0       	rjmp	.+24     	; 0x1460 <lcd_str+0x38>
 	{
 		if (*ptr_chr == '*') // so i can't put * inside string to be shown in lcd
-    13f8:	6a 32       	cpi	r22, 0x2A	; 42
-    13fa:	39 f4       	brne	.+14     	; 0x140a <lcd_str+0x32>
+    1448:	6a 32       	cpi	r22, 0x2A	; 42
+    144a:	39 f4       	brne	.+14     	; 0x145a <lcd_str+0x32>
 		{
 			lcd_goto(ptr_lcd,++row,0);
-    13fc:	f3 94       	inc	r15
-    13fe:	40 e0       	ldi	r20, 0x00	; 0
-    1400:	6f 2d       	mov	r22, r15
-    1402:	c8 01       	movw	r24, r16
-    1404:	0e 94 94 09 	call	0x1328	; 0x1328 <lcd_goto>
+    144c:	f3 94       	inc	r15
+    144e:	40 e0       	ldi	r20, 0x00	; 0
+    1450:	6f 2d       	mov	r22, r15
+    1452:	c8 01       	movw	r24, r16
+    1454:	0e 94 bc 09 	call	0x1378	; 0x1378 <lcd_goto>
 			ptr_chr++;
 			continue; // SKIP priniting '*'
-    1408:	03 c0       	rjmp	.+6      	; 0x1410 <lcd_str+0x38>
+    1458:	03 c0       	rjmp	.+6      	; 0x1460 <lcd_str+0x38>
 		}
 		lcd_chr(ptr_lcd,*ptr_chr);
-    140a:	c8 01       	movw	r24, r16
-    140c:	0e 94 73 09 	call	0x12e6	; 0x12e6 <lcd_chr>
+    145a:	c8 01       	movw	r24, r16
+    145c:	0e 94 9b 09 	call	0x1336	; 0x1336 <lcd_chr>
 }
 
 void lcd_str(const struct_PinsCnfg_t* ptr_lcd,uint8 row, uint8 col,uint8* ptr_chr)
 {
 	lcd_goto(ptr_lcd,row,col);
 	while (*ptr_chr != '\0')
-    1410:	69 91       	ld	r22, Y+
-    1412:	61 11       	cpse	r22, r1
-    1414:	f1 cf       	rjmp	.-30     	; 0x13f8 <lcd_str+0x20>
+    1460:	69 91       	ld	r22, Y+
+    1462:	61 11       	cpse	r22, r1
+    1464:	f1 cf       	rjmp	.-30     	; 0x1448 <lcd_str+0x20>
 			continue; // SKIP priniting '*'
 		}
 		lcd_chr(ptr_lcd,*ptr_chr);
 		ptr_chr++;
 	}
 }
-    1416:	df 91       	pop	r29
-    1418:	cf 91       	pop	r28
-    141a:	1f 91       	pop	r17
-    141c:	0f 91       	pop	r16
-    141e:	ff 90       	pop	r15
-    1420:	ef 90       	pop	r14
-    1422:	df 90       	pop	r13
-    1424:	08 95       	ret
+    1466:	df 91       	pop	r29
+    1468:	cf 91       	pop	r28
+    146a:	1f 91       	pop	r17
+    146c:	0f 91       	pop	r16
+    146e:	ff 90       	pop	r15
+    1470:	ef 90       	pop	r14
+    1472:	df 90       	pop	r13
+    1474:	08 95       	ret
 
-00001426 <Get_option>:
+00001476 <Get_option>:
 bool_t Remote_ControlSemphore=0; // to make live control work
 bool_t CommRX_DisspatcherSemphore=0;// to make commrxwork
 
 void Get_option(uint8 num)
 {
 	Keypad_semphore = 0; // to make it free to use from other modules
-    1426:	10 92 bb 06 	sts	0x06BB, r1	; 0x8006bb <Keypad_semphore>
+    1476:	10 92 a7 06 	sts	0x06A7, r1	; 0x8006a7 <Keypad_semphore>
 	switch(num)
-    142a:	83 33       	cpi	r24, 0x33	; 51
-    142c:	39 f0       	breq	.+14     	; 0x143c <Get_option+0x16>
-    142e:	84 33       	cpi	r24, 0x34	; 52
-    1430:	41 f0       	breq	.+16     	; 0x1442 <Get_option+0x1c>
-    1432:	81 33       	cpi	r24, 0x31	; 49
-    1434:	41 f4       	brne	.+16     	; 0x1446 <Get_option+0x20>
+    147a:	83 33       	cpi	r24, 0x33	; 51
+    147c:	39 f0       	breq	.+14     	; 0x148c <Get_option+0x16>
+    147e:	84 33       	cpi	r24, 0x34	; 52
+    1480:	41 f0       	breq	.+16     	; 0x1492 <Get_option+0x1c>
+    1482:	81 33       	cpi	r24, 0x31	; 49
+    1484:	41 f4       	brne	.+16     	; 0x1496 <Get_option+0x20>
 	{
 		case '1' :
 		{   //authentication
 			System_LogIn();
-    1436:	0e 94 ba 02 	call	0x574	; 0x574 <System_LogIn>
+    1486:	0e 94 ba 02 	call	0x574	; 0x574 <System_LogIn>
 			break;
-    143a:	08 95       	ret
+    148a:	08 95       	ret
 		{	// bootloadr
 			break;
 		}
 		case '3' :
 		{	//remot control
 			Remot_controlMode();
-    143c:	0e 94 35 06 	call	0xc6a	; 0xc6a <Remot_controlMode>
+    148c:	0e 94 65 06 	call	0xcca	; 0xcca <Remot_controlMode>
 			break;
-    1440:	08 95       	ret
+    1490:	08 95       	ret
 		}
 		case '4' :
 		{	// change passwor "authentication"
 			Change_password();
-    1442:	0e 94 42 01 	call	0x284	; 0x284 <Change_password>
-    1446:	08 95       	ret
+    1492:	0e 94 42 01 	call	0x284	; 0x284 <Change_password>
+    1496:	08 95       	ret
 
-00001448 <system_init>:
+00001498 <system_init>:
 	}
 }
 
 void system_init()
 {
 	kpad_init(&mykeypad,Get_option);
-    1448:	63 e1       	ldi	r22, 0x13	; 19
-    144a:	7a e0       	ldi	r23, 0x0A	; 10
-    144c:	86 e6       	ldi	r24, 0x66	; 102
-    144e:	90 e0       	ldi	r25, 0x00	; 0
-    1450:	0e 94 f5 07 	call	0xfea	; 0xfea <kpad_init>
+    1498:	6b e3       	ldi	r22, 0x3B	; 59
+    149a:	7a e0       	ldi	r23, 0x0A	; 10
+    149c:	86 e6       	ldi	r24, 0x66	; 102
+    149e:	90 e0       	ldi	r25, 0x00	; 0
+    14a0:	0e 94 1d 08 	call	0x103a	; 0x103a <kpad_init>
 	lcd_init(&mylcd);
-    1454:	8d e6       	ldi	r24, 0x6D	; 109
-    1456:	90 e0       	ldi	r25, 0x00	; 0
-    1458:	0e 94 b0 09 	call	0x1360	; 0x1360 <lcd_init>
+    14a4:	8d e6       	ldi	r24, 0x6D	; 109
+    14a6:	90 e0       	ldi	r25, 0x00	; 0
+    14a8:	0e 94 d8 09 	call	0x13b0	; 0x13b0 <lcd_init>
 	gpio_spi_cng_master();
-    145c:	0e 94 70 04 	call	0x8e0	; 0x8e0 <gpio_spi_cng_master>
+    14ac:	0e 94 70 04 	call	0x8e0	; 0x8e0 <gpio_spi_cng_master>
 	gpio_uart_cng();
-    1460:	0e 94 67 04 	call	0x8ce	; 0x8ce <gpio_uart_cng>
-    1464:	08 95       	ret
+    14b0:	0e 94 67 04 	call	0x8ce	; 0x8ce <gpio_uart_cng>
+    14b4:	08 95       	ret
 
-00001466 <system_options>:
+000014b6 <system_options>:
 	*/
 }
 
 void system_options()
 {
 	lcd_clear(&mylcd);
-    1466:	8d e6       	ldi	r24, 0x6D	; 109
-    1468:	90 e0       	ldi	r25, 0x00	; 0
-    146a:	0e 94 90 09 	call	0x1320	; 0x1320 <lcd_clear>
+    14b6:	8d e6       	ldi	r24, 0x6D	; 109
+    14b8:	90 e0       	ldi	r25, 0x00	; 0
+    14ba:	0e 94 b8 09 	call	0x1370	; 0x1370 <lcd_clear>
 	lcd_str(&mylcd,0,0,"1-Enter system*2-Update system*3-Remote control*4-settings"); // authentication
-    146e:	27 e4       	ldi	r18, 0x47	; 71
-    1470:	32 e0       	ldi	r19, 0x02	; 2
-    1472:	40 e0       	ldi	r20, 0x00	; 0
-    1474:	60 e0       	ldi	r22, 0x00	; 0
-    1476:	8d e6       	ldi	r24, 0x6D	; 109
-    1478:	90 e0       	ldi	r25, 0x00	; 0
-    147a:	0e 94 ec 09 	call	0x13d8	; 0x13d8 <lcd_str>
+    14be:	23 e3       	ldi	r18, 0x33	; 51
+    14c0:	32 e0       	ldi	r19, 0x02	; 2
+    14c2:	40 e0       	ldi	r20, 0x00	; 0
+    14c4:	60 e0       	ldi	r22, 0x00	; 0
+    14c6:	8d e6       	ldi	r24, 0x6D	; 109
+    14c8:	90 e0       	ldi	r25, 0x00	; 0
+    14ca:	0e 94 14 0a 	call	0x1428	; 0x1428 <lcd_str>
 	Change_CallBackfunction(Get_option); // change call back funcation
-    147e:	83 e1       	ldi	r24, 0x13	; 19
-    1480:	9a e0       	ldi	r25, 0x0A	; 10
-    1482:	0e 94 10 09 	call	0x1220	; 0x1220 <Change_CallBackfunction>
+    14ce:	8b e3       	ldi	r24, 0x3B	; 59
+    14d0:	9a e0       	ldi	r25, 0x0A	; 10
+    14d2:	0e 94 38 09 	call	0x1270	; 0x1270 <Change_CallBackfunction>
 	Keypad_semphore = 1;  // run the Keypad for get option
-    1486:	81 e0       	ldi	r24, 0x01	; 1
-    1488:	80 93 bb 06 	sts	0x06BB, r24	; 0x8006bb <Keypad_semphore>
-    148c:	08 95       	ret
+    14d6:	81 e0       	ldi	r24, 0x01	; 1
+    14d8:	80 93 a7 06 	sts	0x06A7, r24	; 0x8006a7 <Keypad_semphore>
+    14dc:	08 95       	ret
 
-0000148e <main>:
+000014de <main>:
 }
 
 int main(void)
 {
 	system_init();
-    148e:	0e 94 24 0a 	call	0x1448	; 0x1448 <system_init>
+    14de:	0e 94 4c 0a 	call	0x1498	; 0x1498 <system_init>
 	system_options();
-    1492:	0e 94 33 0a 	call	0x1466	; 0x1466 <system_options>
+    14e2:	0e 94 5b 0a 	call	0x14b6	; 0x14b6 <system_options>
 	sei(); // open global interrupt for timer
-    1496:	78 94       	sei
+    14e6:	78 94       	sei
 	while (1)
 	{
 		if (Keypad_semphore)
-    1498:	80 91 bb 06 	lds	r24, 0x06BB	; 0x8006bb <Keypad_semphore>
-    149c:	88 23       	and	r24, r24
-    149e:	21 f0       	breq	.+8      	; 0x14a8 <main+0x1a>
+    14e8:	80 91 a7 06 	lds	r24, 0x06A7	; 0x8006a7 <Keypad_semphore>
+    14ec:	88 23       	and	r24, r24
+    14ee:	21 f0       	breq	.+8      	; 0x14f8 <main+0x1a>
 		{
 			keyPad_dispatcher(&mykeypad);
-    14a0:	86 e6       	ldi	r24, 0x66	; 102
-    14a2:	90 e0       	ldi	r25, 0x00	; 0
-    14a4:	0e 94 16 08 	call	0x102c	; 0x102c <keyPad_dispatcher>
+    14f0:	86 e6       	ldi	r24, 0x66	; 102
+    14f2:	90 e0       	ldi	r25, 0x00	; 0
+    14f4:	0e 94 3e 08 	call	0x107c	; 0x107c <keyPad_dispatcher>
 		}
 		if (SYSTEM_OPTIONS_flag)
-    14a8:	80 91 b9 06 	lds	r24, 0x06B9	; 0x8006b9 <SYSTEM_OPTIONS_flag>
-    14ac:	88 23       	and	r24, r24
-    14ae:	21 f0       	breq	.+8      	; 0x14b8 <main+0x2a>
+    14f8:	80 91 a5 06 	lds	r24, 0x06A5	; 0x8006a5 <SYSTEM_OPTIONS_flag>
+    14fc:	88 23       	and	r24, r24
+    14fe:	21 f0       	breq	.+8      	; 0x1508 <main+0x2a>
 		{
 			SYSTEM_OPTIONS_flag=0;
-    14b0:	10 92 b9 06 	sts	0x06B9, r1	; 0x8006b9 <SYSTEM_OPTIONS_flag>
+    1500:	10 92 a5 06 	sts	0x06A5, r1	; 0x8006a5 <SYSTEM_OPTIONS_flag>
 			system_options();
-    14b4:	0e 94 33 0a 	call	0x1466	; 0x1466 <system_options>
+    1504:	0e 94 5b 0a 	call	0x14b6	; 0x14b6 <system_options>
 		}
 		if (TMU_semphore)
-    14b8:	80 91 b8 06 	lds	r24, 0x06B8	; 0x8006b8 <TMU_semphore>
-    14bc:	81 11       	cpse	r24, r1
+    1508:	80 91 a4 06 	lds	r24, 0x06A4	; 0x8006a4 <TMU_semphore>
+    150c:	81 11       	cpse	r24, r1
 		{
 			TMU_Dispatcher();
-    14be:	0e 94 b1 07 	call	0xf62	; 0xf62 <TMU_Dispatcher>
+    150e:	0e 94 d9 07 	call	0xfb2	; 0xfb2 <TMU_Dispatcher>
 		}
 		if (authentication_DispatcherSemphore)
-    14c2:	80 91 b7 06 	lds	r24, 0x06B7	; 0x8006b7 <authentication_DispatcherSemphore>
-    14c6:	81 11       	cpse	r24, r1
+    1512:	80 91 a3 06 	lds	r24, 0x06A3	; 0x8006a3 <authentication_DispatcherSemphore>
+    1516:	81 11       	cpse	r24, r1
 		{
 			Authentication_Dispatcher();
-    14c8:	0e 94 7b 01 	call	0x2f6	; 0x2f6 <Authentication_Dispatcher>
+    1518:	0e 94 7b 01 	call	0x2f6	; 0x2f6 <Authentication_Dispatcher>
 		}
 		if (Remote_ControlSemphore)
-    14cc:	80 91 b6 06 	lds	r24, 0x06B6	; 0x8006b6 <Remote_ControlSemphore>
-    14d0:	81 11       	cpse	r24, r1
+    151c:	80 91 a2 06 	lds	r24, 0x06A2	; 0x8006a2 <Remote_ControlSemphore>
+    1520:	81 11       	cpse	r24, r1
 		{
 			Remot_controlDisspatcher();
-    14d2:	0e 94 58 06 	call	0xcb0	; 0xcb0 <Remot_controlDisspatcher>
+    1522:	0e 94 88 06 	call	0xd10	; 0xd10 <Remot_controlDisspatcher>
 		}
 		if (CommRX_DisspatcherSemphore)
-    14d6:	80 91 b5 06 	lds	r24, 0x06B5	; 0x8006b5 <CommRX_DisspatcherSemphore>
-    14da:	88 23       	and	r24, r24
-    14dc:	e9 f2       	breq	.-70     	; 0x1498 <main+0xa>
+    1526:	80 91 a1 06 	lds	r24, 0x06A1	; 0x8006a1 <CommRX_DisspatcherSemphore>
+    152a:	88 23       	and	r24, r24
+    152c:	e9 f2       	breq	.-70     	; 0x14e8 <main+0xa>
 		{
 			RX_com_dispatch();
-    14de:	0e 94 13 05 	call	0xa26	; 0xa26 <RX_com_dispatch>
-    14e2:	da cf       	rjmp	.-76     	; 0x1498 <main+0xa>
+    152e:	0e 94 13 05 	call	0xa26	; 0xa26 <RX_com_dispatch>
+    1532:	da cf       	rjmp	.-76     	; 0x14e8 <main+0xa>
 
-000014e4 <_exit>:
-    14e4:	f8 94       	cli
+00001534 <_exit>:
+    1534:	f8 94       	cli
 
-000014e6 <__stop_program>:
-    14e6:	ff cf       	rjmp	.-2      	; 0x14e6 <__stop_program>
+00001536 <__stop_program>:
+    1536:	ff cf       	rjmp	.-2      	; 0x1536 <__stop_program>
